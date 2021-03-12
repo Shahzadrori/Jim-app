@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@350&display=swap');
+
 body{
     margin: 0%;
     padding: 0;
@@ -16,7 +18,7 @@ body{
 }
 .home-main button{
     background-color: #fd5e53;
-    padding: 7px;
+    padding: 5px;
     width: 150px;
     border: none;
     outline: none;
@@ -26,4 +28,10 @@ body{
     -moz-border-radius: 5px ;
     -ms-border-radius: 5px ;
     -o-border-radius: 5px ;
+
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+
+    margin-bottom: 200px;
 }
