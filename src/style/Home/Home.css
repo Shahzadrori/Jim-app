@@ -14,3 +14,16 @@ body{
     align-items: center;
     justify-content: center;
 }
+.home-main button{
+    background-color: #fd5e53;
+    padding: 7px;
+    width: 150px;
+    border: none;
+    outline: none;
+    
+    border-radius: 5px ;
+    -webkit-border-radius: 5px ;
+    -moz-border-radius: 5px ;
+    -ms-border-radius: 5px ;
+    -o-border-radius: 5px ;
+}
