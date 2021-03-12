@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+/* body{
+    opacity: 0.8;
+} */
+.hide{
+    display: none;
+}
+.fas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 270px;
+    margin-top: -5px;
+    width: 20px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+form{
+    position: fixed;
+    top: 130px;
+    cursor: pointer;
+}
+.fas:active{
+   background-color: #f9f6f7;
+   -webkit-transition: background-color 0.01s ease-in-out;
+   transition: background-color 0.01s ease-in-out;
+   -moz-transition: background-color 0.01s ease-in-out;
+   -ms-transition: background-color 0.01s ease-in-out;
+   -o-transition: background-color 0.01s ease-in-out;
+}
+.inner a{
+    text-decoration: none;
+}
+div.outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 430px;
+    border: 1px solid #51e3d4;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzKkomBTJl1llZApch0jHRKRjqStuHdImQxg&usqp=CAU');
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.8);
+}
+.inner h1{    
+    font-family: 'Akaya Telivigala', cursive;
+}
+.inner label{
+    font-family: 'RocknRoll One', sans-serif;
+    margin-right: 150px;
+    margin-top: 20px;
+}
+.inner .email{
+    margin-right: 190px;
+}
+.inner .inp{
+    border: none;
+    outline: none;
+    width: 220px;
+    padding: 7px;
+    border: none;
+    font-size: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+
+}
+.inner .inp::placeholder{
+    margin-left: 10px;
+    color: #51e3d4;
+}
+.inner .inp[type=text]{
+    padding-left: 15px;
+}
+.inner .inp[type=password]{
+    padding-left: 15px;
+}
+.inner .inp[type=text]:focus{
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    width: 250px;
+    -moz-transition: width .35s ease-in-out;
+    -ms-transition: width .35s ease-in-out;
+    -o-transition: width .35s ease-in-out;
+}
+.inner .inp[type=password]:focus{
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    width: 250px;
+    -moz-transition: width .35s ease-in-out;
+    -ms-transition: width .35s ease-in-out;
+    -o-transition: width .35s ease-in-out;
+}
+.inner .inp[type=text]:hover{
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    width: 250px;
+    -moz-transition: width .35s ease-in-out;
+    -ms-transition: width .35s ease-in-out;
+    -o-transition: width .35s ease-in-out;
+}
+.inner .inp[type=password]:hover{
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    width: 250px;
+    -moz-transition: width .35s ease-in-out;
+    -ms-transition: width .35s ease-in-out;
+    -o-transition: width .35s ease-in-out;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.btns .sub-btn{
+    /* background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    width: 80px;
+    border: none;
+    font-family: 'RocknRoll One', sans-serif;
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.btns .res-btn{
+    /* background-image: linear-gradient(to right top, #053737, #004a5e, #005c91, #0068c5, #1269eb); */
+    background-color: white;
+    color: rgba(0, 0, 0, 0.9);
+    padding: 5px;
+    width: 80px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-family: 'RocknRoll One', sans-serif;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.btns button a{
+    text-decoration: none;
+    color: black;
+}
+.btns .sub-btn:hover{
+    /* background-image: linear-gradient(to right top, #333705, #653e00, #a43017, #dd005d, #eb12c7);*/
+    /* background-color: ; */
+    background-color: #01c5c4;
+    color: white;
+}
+.btns .res-btn:hover{
+    background-color: #01c5c4;
+    color: white;
+  
+}
+.btns .sub-btn:active{
+    background-color: #14b1ab;
+    color: black;
+  
+}
+.btns .res-btn:active{
+    background-color: #14b1ab;
+    color: black;
+  
+}
