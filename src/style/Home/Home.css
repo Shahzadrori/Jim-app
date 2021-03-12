@@ -30,7 +30,7 @@ body{
     color: white;
     font-family: 'Oswald', sans-serif;
     font-size: 1.2em;
-    margin-bottom: 200px;
+    margin-bottom: 300px;
     transition:width 200ms ;
     -webkit-transition:width 200ms ;
     -moz-transition:width 200ms ;
