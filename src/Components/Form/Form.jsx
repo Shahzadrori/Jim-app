@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../Style/form.css";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { Allow } from "../Redux/Action";
 
 const Form = (propes) => {
   const [data, setdata] = useState({
@@ -12,10 +10,7 @@ const Form = (propes) => {
     email: "",
     password: "",
   });
-  const [check, setcheck] = useState(false);
-  const Check = () => {
-    setcheck(true);
-  };
+
   const Sub = (e) => {
     e.preventDefault();
 
@@ -44,23 +39,9 @@ const Form = (propes) => {
       );
     } else if (furt.length < 6) {
       alert("Password must contain atleast 6 digits");
-    } else {
-      setcheck(true);
-      Dispatchdata();
-    var storage =   localStorage.setItem("formdata", JSON.stringify(data));
-    propes.addtask(storage);
     }
   };
 
-  function Dispatchdata() {
-    if (localStorage.getItem("formdata")) {
-      const { fname, lname, email, password } = JSON.parse(
-        localStorage.getItem("formdata")
-      );
-      propes.addtask({ fname, lname, email, password });
-      console.log(`${fname} and ${lname} and ${email} and ${password}`);
-    }
-  }
   const targetval = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -101,7 +82,6 @@ const Form = (propes) => {
     <>
       <div className="outer">
         <form action="/action_page.php" autoComplete="on" onSubmit={Sub}>
-          {!check ? (
             <div id="mains" className="inner">
               <Link to="/">
                 <i className="fas fa-times" />
@@ -153,7 +133,6 @@ const Form = (propes) => {
                 </button>
               </div>
             </div>
-          ) : null}
         </form>
       </div>
     </>
