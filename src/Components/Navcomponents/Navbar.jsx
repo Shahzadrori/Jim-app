@@ -21,12 +21,11 @@ const Nav = () => {
             About us
           </li>
           </Link>
-          <Link to='/contact'>
+         
           <li>
             <ContactsIcon className="icons" />
             Contact
           </li>
-          </Link>
         </ul>
       </div>
     </>
