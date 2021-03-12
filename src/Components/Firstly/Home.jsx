@@ -6,6 +6,9 @@ const Home=()=>{
       <div className='home-main'>
           <button>Register</button>
       </div>
+      <div className='test'>
+          
+      </div>
         </>
     )
 }
