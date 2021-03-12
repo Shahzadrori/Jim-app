@@ -1,0 +1,21 @@
+body{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.navs{
+    background-color: #d3e0ea;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.navs ul{
+    display: flex;
+    flex-direction: row;
+}
+.navs ul li{
+    text-decoration: none;
+    list-style-type: none;
+    padding-right: 20px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../style/Nav/Nav.css'
 const Nav = ()=>{
     return(
         <>
@@ -14,4 +14,4 @@ const Nav = ()=>{
     )
 }
 
-export default Nav
+export default Nav;
