@@ -17,6 +17,7 @@ body{
     flex-direction: row;
 }
 .navs ul li{
+    cursor: pointer;
     text-decoration: none;
     list-style-type: none;
     font-family: 'Roboto', sans-serif;
