@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { connect } from "react-redux";
-
-const Form = (propes) => {
+import '../../style/Form.css'
+const Form = () => {
   const [data, setdata] = useState({
     fname: "",
     lname: "",
@@ -31,11 +30,7 @@ const Form = (propes) => {
     ) {
       alert(
         "Please enter valid email address"
-        //  at position: "
-        // +
-        //   atposition +
-        //   "dotposition " +
-        //   dotposition
+
       );
     } else if (furt.length < 6) {
       alert("Password must contain atleast 6 digits");
