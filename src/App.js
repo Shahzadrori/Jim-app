@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Router, Switch } from 'react-router';
-import Form from './Components/Form/Form';
 import Home from './Components/Home/Home';
 import About from './Components/Navcomponents/About';
 import Contact from './Components/Navcomponents/contact';
@@ -17,9 +16,9 @@ function App() {
           <Route exact path='/' component={Home}/>
           <Route exact path='/about' component={About}/>
           <Route exact path='/contact' component={Contact}/>
-          <Route exact path='/login' component={Form}/>
           <Route component={Error_msg}/>
       </Switch>
+     
         </>
     )
 }

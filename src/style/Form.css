@@ -4,8 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 /* body{
-    opacity: 0.8;
-} */
+    background-color: rebeccapurple;} */
 .hide{
     display: none;
 }
@@ -25,7 +24,7 @@
 }
 form{
     position: fixed;
-    top: 130px;
+    top: 100px;
     cursor: pointer;
 }
 .fas:active{
@@ -65,6 +64,7 @@ div.inner{
 }
 .inner h1{    
     font-family: 'Akaya Telivigala', cursive;
+    margin-top: -10px;
 }
 .inner label{
     font-family: 'RocknRoll One', sans-serif;
@@ -145,6 +145,7 @@ div.inner{
     padding: 5px;
     width: 80px;
     border: none;
+    
     font-family: 'RocknRoll One', sans-serif;
     outline: none;
     border-radius: 5px;
