@@ -15,12 +15,10 @@ const Nav = () => {
               Home
             </li>
           </Link>
-          <Link to='/about'>
           <li>
             <InfoIcon className="icons" />
             About us
           </li>
-          </Link>
           <Link to='/contact'>
           <li>
             <ContactsIcon className="icons" />

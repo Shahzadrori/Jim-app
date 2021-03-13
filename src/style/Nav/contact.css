@@ -1,10 +1,15 @@
-
+body{
+    background-image: linear-gradient(to left, #05372c, #00633f, #1b9045, #59be3c, #a0eb12);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #A8EB12; */
+}
 
 .main{
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,10 +20,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 100px;
-    background-color: aqua;
+    opacity: 0.7;
     height: 300px;
-    width: 300px;
+    width: 800px;
+    margin-left: 100px;
+    border-radius: 20%;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
 }
 
 .text h2,h4,h5{
@@ -30,5 +40,9 @@
 .img img{
     margin-left: 160px;
     height: 100vh;
-
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
