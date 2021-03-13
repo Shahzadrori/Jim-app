@@ -3,7 +3,8 @@ import '../../style/Nav/contact.css'
 function Contact() {
     return (
         <>
-        <div className='main'>
+        <div className='main-contact'>
+        <div className='inner-contact'>
             <div className='text'>
             <div className='inner-content'>
                 <h1>Welcome to Muscle Mania</h1>
@@ -15,6 +16,7 @@ function Contact() {
             <div className='img'>
                 <img src='https://i.pinimg.com/564x/01/17/0f/01170fb1427e32b05ceff61bbf30f10b.jpg'/>
             </div>
+        </div>
         </div>
         </>
     )

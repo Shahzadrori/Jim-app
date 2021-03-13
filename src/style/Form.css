@@ -3,11 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
-body{
-    /* background-color: #01c5c4; */
-    /* background-image: linear-gradient(to right top, #050e37, #003969, #00689a, #009ac6, #12cfeb); */
-    background-color: #f1f3f8;
-}
+
 .hide{
     display: none;
 }
