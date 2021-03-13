@@ -18,6 +18,7 @@ a {
 .navs ul{
     display: flex;
     flex-direction: row;
+    margin-right: 50px;
 }
 .navs ul li{
     display: flex;
