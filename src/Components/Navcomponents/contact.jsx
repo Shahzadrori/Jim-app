@@ -10,6 +10,9 @@ function Contact() {
                 <h2>Contact</h2>
                 <h5>########</h5>
             </div>
+            <div className='img'>
+                <img src='https://lh3.googleusercontent.com/_ACtMYLRQQWSgZQI_AGC--8GH5SUwbu610BlBqKpeW-DDYiVdqimUKdTZTOQaQcfD1wQG5U=s85'/>
+            </div>
         </div>
         </>
     )
