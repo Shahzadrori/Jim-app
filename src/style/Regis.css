@@ -33,7 +33,7 @@
 }
 .inner_regis h1 {
   text-align: center;
-  color: #435560;
+  color: #12EBD8;
 }
 .inner_regis {
   font-family: "Rubik", sans-serif;
@@ -46,7 +46,7 @@
   padding-left: 20px;
   color: white;
 }
-.inner_regis  input {
+.inner_regis input {
   padding: 10px;
   padding-left: 20px;
   margin-left: 30px;
@@ -62,7 +62,7 @@
   font-size: 15px;
   font-weight: 400;
 }
-.inner_regis  input:focus {
+.inner_regis input:focus {
   background-color: #12eb25;
   border-bottom: 3px solid yellow;
   transition: border 0.3s linear;
@@ -70,6 +70,13 @@
   -moz-transition: border 0.3s linear;
   -ms-transition: border 0.3s linear;
   -o-transition: border 0.3s linear;
+}
+.inner_regis input:hover{
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
 }
 /* Chrome, Safari, Edge, Opera */
 .inner_regis input::-webkit-outer-spin-button,
@@ -79,12 +86,36 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-.inner_regis input[type=number] {
+.inner_regis input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.inner_regis input::placeholder{
-    color: grey;
-    font-size: 1.2em;
+.inner_regis input::placeholder {
+  color: grey;
+  font-size: 1.1em;
 }
+.inner_regis button {
+  width: 100px;
+  margin: auto;
+  padding: 8px;
+  background-color:#11698e;
+  color: white;
+  font-size: 15px;
+  font-weight: 520;
+  border: none;
+  outline: none;
+  border-radius:10px ;
+  -webkit-border-radius:10px ;
+  -moz-border-radius:10px ;
+  -ms-border-radius:10px ;
+  -o-border-radius:10px ;
 
+  box-shadow: 2px 1px 6px black;
+}
+.inner_regis button:hover{
+    background-color: #03506f;
+    color: white;
+}
+.inner_regis button:active{
+    background-color: #00587a;
+}
