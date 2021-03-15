@@ -1,71 +1,152 @@
-import React ,{useState} from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast, Zoom, Bounce } from "react-toastify";
 import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const Regis_form = () => {
-const [inp_val,setinp_val] = useState();
-// console.log(inp_val);
-   var name = document.getElementById('name').value
-   var id = document.getElementById('id').value
-   var phone = document.getElementById('phone').value
-   var age = document.getElementById('age').value
-   console.log(name.length)
-const Submit = ()=>{
-    if(name == "" || name == null){
-        alert('Name field should not be empty')
-    }else if(name.length == 4 || name.length < 4){
-        alert('Name field should atleast contain 4 digits')
-    }
-}
+  const [inp_val, setinp_val] = useState({
+    name: "",
+    id: "",
+    phone: "",
+    age: "",
+  });
 
+  const Submit = () => {
+    var names = document.getElementById("names").value;
+    var id = document.getElementById("id").value;
+    var phone = document.getElementById("phone").value;
+    var age = document.getElementById("age").value;
 
-  function toasts() {
-    toast.success("Jobs Done");
-    toast.dark('New Registration', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+    if (names === "" || names === null) {
+      toast.error("Name field should not be empty");
+    } else if (names.length === 4 || names.length < 4) {
+      toast.error("Name field should atleast contain 4 digits");
+    } else if (Number(names)) {
+      toast.error("Name shoul contain alphabet letters");
+    } else if (id.length !== 13) {
+      toast.error("ID Number should be equal to 13");
+    } else if (phone.length !== 11) {
+      toast.error("Phone Number should contain 11 digits");
+    } else if (age < 16) {
+      toast.error("Age should be above sixteen");
+    } else {
+      function toasts() {
+        toast.dark(`${names} has been registered`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
-  }
+      }
 
+      toasts();
+      toast.success("Jobs Done");
+      console.log(inp_val);
+    }
+  };
+  const Target_val = (event) => {
+    let Values = event.target.value;
+    let Names = event.target.name;
 
-
+    setinp_val((allvalues) => {
+      if (Names == "names") {
+        return {
+          name: Values,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+        };
+      } else if (Names == "id") {
+        return {
+          name: allvalues.name,
+          id: Values,
+          phone: allvalues.phone,
+          age: allvalues.age,
+        };
+      } else if (Names == "phone") {
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: Values,
+          age: allvalues.age,
+        };
+      } else if (Names == "age") {
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: Values,
+        };
+      }
+    });
+  };
 
   return (
     <>
-           <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="main_regis">
         <div className="inner_regis">
           <h1>Login</h1>
           <label>Name :</label>
-          <input onChange = {e => setinp_val(e.target.value)} id='name' type="text" placeholder="Enter Your Name" />
+          <input
+            name="names"
+            value={inp_val.name}
+            onChange={Target_val}
+            id="names"
+            type="text"
+            placeholder="Enter Your Name"
+          />
           <label>ID :</label>
-          <input onChange = {e => setinp_val(e.target.value)} id='id' type="Number" placeholder="Enter Your ID Card Number" />
+          <input
+            name="id"
+            value={inp_val.id}
+            onChange={Target_val}
+            id="id"
+            type="Number"
+            placeholder="Enter Your ID Card Number"
+          />
           <label>Phone :</label>
-          <input onChange = {e => setinp_val(e.target.value)} id='phone' type="Number" placeholder="Enter Your Phone Number" />
+          <input
+            name="phone"
+            value={inp_val.phone}
+            onChange={Target_val}
+            id="phone"
+            type="Number"
+            placeholder="Enter Your Phone Number"
+          />
           <label>Age :</label>
-          <input onChange = {e => setinp_val(e.target.value)} id='age' type="text" placeholder="Enter Your Age in Numbers" />
-          <button onClick={toasts}>Submit</button>
+          <input
+            name="age"
+            value={inp_val.age}
+            onChange={Target_val}
+            id="age"
+            type="text"
+            placeholder="Enter Your Age in Numbers"
+          />
+          <button onClick={Submit}>Submit</button>
         </div>
-        <div className='img_regis'>
-        <h1>Muhammad Ali </h1>
-        <h2><q>DON'T COUNT THE DAYS;<br/>
-        MAKE THE DAYS COUNT</q></h2>
+        <div className="img_regis">
+          <h1>Muhammad Ali </h1>
+          <h2>
+            <q>
+              DON'T COUNT THE DAYS;
+              <br />
+              MAKE THE DAYS COUNT
+            </q>
+          </h2>
         </div>
       </div>
     </>

@@ -66,10 +66,10 @@
   font-weight: 400;
 }
 .inner_regis input[type=text]{
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .inner_regis input[type=Number]{
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .inner_regis input:focus {
   background-color: #12eb25;
