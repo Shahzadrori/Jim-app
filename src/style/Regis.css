@@ -1,19 +1,84 @@
-.main_regis{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(to right top, #37051b, #6b192a, #9e362f, #ca5e29, #eb8d12);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap");
+
+.main_regis {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #051d37,
+    #005077,
+    #00898f,
+    #00bf6f,
+    #a8eb12
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.inner_regis{
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: flex-start; */
-    border: 1px solid grey;
-    width: 400px;
-    height: 300px;
-    padding: 10px;
-    
+.inner_regis {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+  width: 400px;
+  height: 500px;
+  padding: 10px;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  margin-top: 100px;
 }
+.inner_regis h1 {
+  text-align: center;
+}
+.inner_regis {
+  font-family: "Rubik", sans-serif;
+}
+.inner_regis > label {
+  font-size: 1.2em;
+  /* margin-top: 10px; */
+  padding: 15px 0px 5px 0px;
+  font-family: "Open Sans", sans-serif;
+  padding-left: 20px;
+  color: white;
+}
+.inner_regis  input {
+  padding: 10px;
+  padding-left: 20px;
+  margin-left: 30px;
+  border: none;
+  outline: none;
+  background-color: #12eb25;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+
+  font-size: 15px;
+  font-weight: 400;
+}
+.inner_regis  input:focus {
+  background-color: #12eb25;
+  border-bottom: 3px solid yellow;
+  transition: border 0.3s linear;
+  -webkit-transition: border 0.3s linear;
+  -moz-transition: border 0.3s linear;
+  -ms-transition: border 0.3s linear;
+  -o-transition: border 0.3s linear;
+}
+/* Chrome, Safari, Edge, Opera */
+.inner_regis input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.inner_regis input[type=number] {
+  -moz-appearance: textfield;
+}
+
