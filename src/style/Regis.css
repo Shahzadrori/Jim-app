@@ -33,6 +33,7 @@
 }
 .inner_regis h1 {
   text-align: center;
+  color: #435560;
 }
 .inner_regis {
   font-family: "Rubik", sans-serif;
@@ -80,5 +81,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 .inner_regis input[type=number] {
   -moz-appearance: textfield;
+}
+
+.inner_regis input::placeholder{
+    color: grey;
+    font-size: 1.2em;
 }
 
