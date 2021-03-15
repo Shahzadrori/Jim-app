@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap');
 
 .main_regis {
   width: 100%;
@@ -12,6 +14,7 @@
     #00bf6f,
     #a8eb12
   );
+  overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -47,7 +50,7 @@
   color: white;
 }
 .inner_regis input {
-  padding: 10px;
+  padding: 9px;
   padding-left: 20px;
   margin-left: 30px;
   border: none;
@@ -61,6 +64,12 @@
 
   font-size: 15px;
   font-weight: 400;
+}
+.inner_regis input[type=text]{
+    font-size: 1.1em;
+}
+.inner_regis input[type=Number]{
+    font-size: 1.1em;
 }
 .inner_regis input:focus {
   background-color: #12eb25;
@@ -92,7 +101,7 @@ input::-webkit-inner-spin-button {
 
 .inner_regis input::placeholder {
   color: grey;
-  font-size: 1.1em;
+  /* font-size: 1.1em; */
 }
 .inner_regis button {
   width: 100px;
@@ -118,4 +127,13 @@ input::-webkit-inner-spin-button {
 }
 .inner_regis button:active{
     background-color: #00587a;
+}
+.img_regis{
+    margin-left: 400px;
+}
+.img_regis h2{
+    font-family: 'Dancing Script', cursive;
+}
+.img_regis h1{
+    font-family: 'IBM Plex Sans', sans-serif;
 }
