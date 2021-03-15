@@ -1,31 +1,23 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import React from 'react';
+import '../../style/Regis.css'
 
-const Regis_form = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
-    },
-  }));
-  const classes = useStyles();
-  return (
-    <>
-      <div className="main_regis">
-        <div className="inner_regis">
-          <form className={classes.root} noValidate autoComplete="off">
-          
-            {/* <TextField id="standard-basic" label="Standard" /> */}
-            <TextField id="filled-basic" label="Filled" variant="filled" />
-            {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-          </form>
-        </div>
-      </div>
-    </>
-  );
-};
+const Regis_form = ()=>{
+      return(
+          <>
+              <div className='main_regis'>
+              <div className='inner_regis'>
+                  <label>Name :</label>
+                  <input type='text' placeholder='Enter Your Name'/>
+                  <label>ID :</label>
+                  <input type='Number' placeholder='Enter Your ID Card Number'/>
+                  <label>Phone :</label>
+                  <input type='Number' placeholder='Enter Your Phone Numbert'/>
+                  <label>Age :</label>
+                  <input type='text' placeholder='Enter Your Name'/>
+                  </div>
+              </div>
+          </>
+      )
+}
 
 export default Regis_form;
