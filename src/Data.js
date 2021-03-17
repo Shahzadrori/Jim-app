@@ -3,14 +3,14 @@ const Data = [
     imgsrc:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU',
     Name: "rori",
     Id: 2342342432,
-    Phone: 34324,
+    Phone: 3245345235342534,
     Age: 23,
   },
   {
     imgsrc:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU',
     Name: "dito",
     Id: 2342342,
-    Phone: 11111111111111,
+    Phone: 111111111111143251,
     Age: 23,
   },
   {
