@@ -30,7 +30,7 @@
   width: 400px;
   height: 500px;
   padding: 10px;
-  margin-bottom: 100px;
+  margin-bottom:150px;
   margin-left: 100px;
   margin-top: 100px;
 }
@@ -129,7 +129,7 @@ input::-webkit-inner-spin-button {
     background-color: #00587a;
 }
 .img_regis{
-    margin-left: 400px;
+    margin-left: 350px;
 }
 .img_regis h2{
     font-family: 'Dancing Script', cursive;

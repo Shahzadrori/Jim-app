@@ -1,13 +1,12 @@
 import React from 'react';
-import { Add_It } from './Actinon';
 import { Init_State } from './State';
+import { ADD } from './Type';
 
-export const Reducer=(state = Init_State,action)=>{
+export const Reducer=(state = Init_State , action)=>{
     switch(action.type){
-        case Add_It:
+        case ADD:
             return{
-                ...state,
-                Persona:[...state,action.payload]
+                card_item:[action.payload]
             }
             default:
             return state

@@ -21,23 +21,11 @@ const Regis_form = () => {
         });
       },
     });
-    // for(var vls in inp_val){
-    // console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>",inp_val)
     try {
       await db.put("rowData", { key: Number(inp_val.id), value: inp_val });
-      const infor = await db.getAllKeys("rowData", Number(inp_val.id));
-      // db.get().then(users =>{
-      //   console.log('users :' + users)
-      // })
-      toast.success(infor);
-      console.log(infor);
     } catch (error) {
       console.log(error);
     }
-    // }
-    // inp_val.forEach( async rowObj => {
-    //   await db.put('rowData',rowObj)
-    // })
     db.close();
   }
 
@@ -48,17 +36,17 @@ const Regis_form = () => {
     var age = document.getElementById("age").value;
 
     if (names === "" || names === null) {
-        toast.error("Name field should not be empty");
-      // } else if (names.length === 4 || names.length < 4) {
-      //   toast.error("Name field should atleast contain 4 digits");
-      // } else if (Number(names)) {
-      //   toast.error("Name shoul contain alphabet letters");
-      // } else if (id.length !== 13) {
-      //   toast.error("ID Number should be equal to 13");
-      // } else if (phone.length !== 11) {
-      //   toast.error("Phone Number should contain 11 digits");
-      // } else if (age < 16) {
-      //   toast.error("Age should be above sixteen");
+      toast.error("Name field should not be empty");
+    } else if (names.length === 4 || names.length < 4) {
+      toast.error("Name field should atleast contain 4 digits");
+    } else if (Number(names)) {
+      toast.error("Name shoul contain alphabet letters");
+    } else if (id.length !== 13) {
+      toast.error("ID Number should be equal to 13");
+    } else if (phone.length !== 11) {
+      toast.error("Phone Number should contain 11 digits");
+    } else if (age < 16) {
+      toast.error("Age should be above sixteen");
     } else {
       function toasts() {
         toast.dark(`${names} has been registered`, {
@@ -74,7 +62,6 @@ const Regis_form = () => {
       doDatabaseStuff();
       toasts();
       toast.success("Jobs Done");
-      // console.log(inp_val);
     }
   };
 
