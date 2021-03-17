@@ -11,12 +11,11 @@ const Regis_form = () => {
     age: "",
   });
   // console.log(inp_val);
-  var storeRow = null;
 
   async function doDatabaseStuff() {
     const db = await openDB(`Data`, 1, {
       upgrade(db) {
-        storeRow = db.createObjectStore("rowData", {
+        let storeRow = db.createObjectStore("rowData", {
           keyPath: "key",
           autoIncrement: true,
         });
@@ -49,7 +48,7 @@ const Regis_form = () => {
     var age = document.getElementById("age").value;
 
     if (names === "" || names === null) {
-      //   toast.error("Name field should not be empty");
+        toast.error("Name field should not be empty");
       // } else if (names.length === 4 || names.length < 4) {
       //   toast.error("Name field should atleast contain 4 digits");
       // } else if (Number(names)) {

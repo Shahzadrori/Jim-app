@@ -15,15 +15,17 @@ const Nav = () => {
               Home
             </li>
           </Link>
-          <li>
-            <InfoIcon className="icons" />
-            About us
-          </li>
-          <Link to='/contact'>
-          <li>
-            <ContactsIcon className="icons" />
-            Contact
-          </li>
+          <Link to="/list">
+            <li>
+              <InfoIcon className="icons" />
+              List
+            </li>
+          </Link>
+          <Link to="/contact">
+            <li>
+              <ContactsIcon className="icons" />
+              Contact
+            </li>
           </Link>
         </ul>
       </div>
