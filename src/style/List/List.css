@@ -1,6 +1,7 @@
 .list-main{
-    width: 100%;
+    /* width: ; */
     height: max-content;
-    display: inline-flex;
-    
+    /* display: inline-flex; */
+    border: 1px solid;
+    /* margin-left: 50px; */
 }

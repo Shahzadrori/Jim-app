@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "./List";
 import Data from "../Data.js";
-import '../style/List/Disp.css'
+import "../style/List/Disp.css";
+import { connect } from "react-redux";
 const Display = () => {
+  const [inp_Data, setinp_Data] = useState();
   function ncards(item) {
     return (
       <List
@@ -14,12 +16,25 @@ const Display = () => {
       />
     );
   }
-  // console.log(<Data/>)
   return (
     <>
+      <input
+        type="text"
+        placeholder="Search"
+        onChange={(e) => setinp_Data(e.target.value)}
+      />
       <div className="disp-main">{Data.map(ncards)}</div>
     </>
   );
 };
+const mapstate=(state)=>{
+   return{
 
-export default Display;
+   }
+}
+const mapdispatch=(dispatch)=>{
+   return{
+    
+   }
+}
+export default connect(mapstate, mapdispatch)(Display);
