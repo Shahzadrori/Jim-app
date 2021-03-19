@@ -1,2 +1,2 @@
 export const ADD = 'ADD_INFO';
-export const Take = 'TAKE_INFO';
+export const TAKE= 'TAKE_INFO';

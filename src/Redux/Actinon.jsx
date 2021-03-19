@@ -1,15 +1,14 @@
-import { ADD, Take } from "./Type"
+import { ADD, TAKE } from "./Type"
 
 export const Add_It=(Data)=>{
-    console.log(Data)
     return{
         type:ADD,
         payload:Data
     }
 }
-export const Take_It=(Inp_values) =>{
-    return{
-        type:Take,
-        payload:Inp_values
-    }
+export const Take_It=(REGIS)=>{
+     return{
+         type:TAKE,
+         payload:REGIS
+     }
 }
