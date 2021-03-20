@@ -1,19 +1,22 @@
-// import Dexie from 'dexie';
-// import { connect } from 'react-redux';
-// import { Take_It } from '../../Redux/Actinon';
+import Dexie from 'dexie';
+import { connect } from 'react-redux';
+import { Take_It } from '../../Redux/Actinon';
 
-// async function Database(){
-//     const db = new Dexie('Database');
-//    await db.version(1).stores({notes: '++id'})
-//    await db.open()
-//    try{
-//     //  await db.notes.add()
+const  Database = async (regis_value)=>{
+    // console.log(regis_value)
+//   async  function Dataphase(){
+    const db = new Dexie('Database');
+   await db.version(1).stores({notes: '++id'})
+   await db.open()
+   try{
+     await db.notes.add(regis_value)
 //     // await db.notes.each(info => )
 //     // toasts();
-//    }catch(error){
-//       alert('Same ID exist')
-//    }
-//    }
+   }catch(error){
+      alert('Same ID exist')
+   }
+   }
+// }
 //  const mapstatess = (state)=>{
 //      console.log(state)
 //  }
@@ -25,3 +28,4 @@
 //             }
 //         }
 //    export default connect(mapstatess,mapdispatches)(Database);
+export default Database

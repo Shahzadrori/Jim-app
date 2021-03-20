@@ -14,6 +14,7 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
   });
+  // console.log(inp_val)
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -25,6 +26,18 @@ const Regis_form = (pare) => {
       progress: undefined,
     });
   }
+  // async  function Dataphase(){
+  //   const db = new Dexie('Database');
+  //  await db.version(1).stores({notes: '++id'})
+  //  await db.open()
+  //  try{
+  //   //  await db.notes.add()
+  //   // await db.notes.each(info => )
+  //   // toasts();
+  //  }catch(error){
+  //     alert('Same ID exist')
+  //  }
+  //  }
   //  Database()
   // async function doDatabaseStuff() {
   //   const db = await openDB(`Data`, 1, {
@@ -62,7 +75,8 @@ const Regis_form = (pare) => {
     // } else if (age < 16) {
     //   toast.error("Age should be above sixteen");
     } else {
-      pare.take_it(inp_val)
+      pare.take_it(inp_val);
+      Database(inp_val)
       // doDatabaseStuff();
     //  Database();
       // toast.success("Jobs Done");

@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import Dexie from 'dexie'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
-  console.log()
   function ncards(item) {
     // console.log(item);
     // if (check(item.name) == true) {
@@ -44,8 +43,8 @@ const Display = (prep) => {
           onKeyPress={get_it}
         />
       </div>
-      <div className="disp-main">{prep.regis_items.map(ncards)}</div>
-      {/* <div className="disp-main">{Data.map(ncards)}</div> */}
+      {/* <div className="disp-main">{prep.regis_items.map(ncards)}</div> */}
+      <div className="disp-main">{Data.map(ncards)}</div>
     </>
   );
 };
