@@ -62,9 +62,9 @@ const Regis_form = (pare) => {
     // } else if (age < 16) {
     //   toast.error("Age should be above sixteen");
     } else {
-
+      pare.take_it(inp_val)
       // doDatabaseStuff();
-     Database();
+    //  Database();
       // toast.success("Jobs Done");
       // const storage = localStorage.setItem("formdata", JSON.stringify(pare.values));
       // function Dispatchdata() {
@@ -192,8 +192,8 @@ const mapstates = (state) =>{
 }
 const mapdispatchs = (dispatch)=>{
   return{
-    take_it:(taking)=>{
-     dispatch(Take_It(taking))
+    take_it:(tak)=>{
+     dispatch(Take_It(tak))
     }
   }
 }
