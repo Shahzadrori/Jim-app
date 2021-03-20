@@ -9,43 +9,48 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
-  function ncards(item, index) {
-    if (check(item.Name)) {
+  function ncards(item) {
+    // console.log(item);
+    // if (check(item.name)) {
       return (
         <List
-          imgsrc={item.imgsrc}
-          Name={item.Name}
-          Id={item.Id}
-          Phone={item.Phone}
-          Age={item.Age}
+          // imgsrc={item.imgsrc}
+          Name={item.name}
+          Id={item.id}
+          Phone={item.phone}
+          Age={item.age}
         />
       );
-    }
-    return null;
+    // }
+
+    // return null;
   }
   function check(cardname) {
-    return cardname.includes(prep.card_item)
+    var value = cardname.indexOf(prep.card_item) > -1;
+    return value;
   }
   function get_it() {
     prep.add_it(inp_Data);
   }
   return (
     <>
-    <div className='disp-top'>
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={(e) => setinp_Data(e.target.value)}
-        onKeyUp={get_it}
-      />
+      <div className="disp-top">
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setinp_Data(e.target.value)}
+          onKeyPress={get_it}
+        />
       </div>
-      <div className="disp-main">{Data.map(ncards)}</div>
+      <div className="disp-main">{prep.regis_items.map(ncards)}</div>
     </>
   );
 };
 const mapstate = (state) => {
+  console.log(state.Areducer);
   return {
-    card_item: state.card_item,
+    card_item: state.Areducer,
+    regis_items: state.Breducer,
   };
 };
 const mapdispatch = (dispatch) => {

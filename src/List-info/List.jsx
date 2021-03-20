@@ -5,7 +5,7 @@ const List = (props) => {
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
-        <img src={props.imgsrc} />
+        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
         <div className="list-wrap">
           <div className="list-txt">
             <h2>Name :</h2>
