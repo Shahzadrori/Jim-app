@@ -6,6 +6,7 @@ import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Take_It } from "../../Redux/Actinon";
 import Dexie from 'dexie'
+import Database from "../DB/Db";
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -13,20 +14,18 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
   });
-
-  // console.log(inp_val);
-  async function Database(){
-    const db = new Dexie('Database');
-   await db.version(1).stores({notes: '++id'})
-   await db.open()
-   try{
-     await db.notes.add(inp_val)
-     await db.notes.each(info => pare.take_it(info))
-   }catch(error){
-     alert(error)
-   }
-   }
-   Database()
+   function toasts() {
+    toast.dark(`Jobs Done`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+  //  Database()
   // async function doDatabaseStuff() {
   //   const db = await openDB(`Data`, 1, {
   //     upgrade(db) {
@@ -63,29 +62,18 @@ const Regis_form = (pare) => {
     // } else if (age < 16) {
     //   toast.error("Age should be above sixteen");
     } else {
-      function toasts() {
-        toast.dark(`${names} has been registered`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
+
       // doDatabaseStuff();
-     
-      toasts();
-      toast.success("Jobs Done");
-      const storage = localStorage.setItem("formdata", JSON.stringify(pare.values));
-      function Dispatchdata() {
-      localStorage.getItem("formdata")
-          const { Name,ID , Phone, Age } = JSON.parse(
-            localStorage.getItem("formdata")
-          );
-          console.log(`${Name} and ${ID} and ${Phone} and ${Age}`);
-      }
+     Database();
+      // toast.success("Jobs Done");
+      // const storage = localStorage.setItem("formdata", JSON.stringify(pare.values));
+      // function Dispatchdata() {
+      // localStorage.getItem("formdata")
+      //     const { Name,ID , Phone, Age } = JSON.parse(
+      //       localStorage.getItem("formdata")
+      //     );
+      //     console.log(`${Name} and ${ID} and ${Phone} and ${Age}`);
+      // }
 
     }
   };

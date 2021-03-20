@@ -6,12 +6,13 @@ import { connect } from "react-redux";
 import { Add_It } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-
+import Dexie from 'dexie'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
+  console.log()
   function ncards(item) {
     // console.log(item);
-    // if (check(item.name)) {
+    // if (check(item.name) == true) {
       return (
         <List
           // imgsrc={item.imgsrc}
@@ -21,12 +22,13 @@ const Display = (prep) => {
           Age={item.age}
         />
       );
-    // }
+    }
 
     // return null;
-  }
+  // }
   function check(cardname) {
-    var value = cardname.indexOf(prep.card_item) > -1;
+    var value = 
+    cardname.indexOf(prep.card_item) > -1;
     return value;
   }
   function get_it() {
@@ -43,6 +45,7 @@ const Display = (prep) => {
         />
       </div>
       <div className="disp-main">{prep.regis_items.map(ncards)}</div>
+      {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );
 };

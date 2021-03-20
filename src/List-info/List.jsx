@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/List/List.css";
 
 const List = (props) => {
+  
+  const [flag,setflag] = useState(false);
+  function fot(){
+    setflag(false)
+  }
+   setTimeout(
+        function(){
+          setflag(true)
+        },1000
+        // 2628288000
+        // 2592000000
+  )
+
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
@@ -20,6 +33,9 @@ const List = (props) => {
             <h3>{props.Age}</h3>
           </div>
         </div>
+        <div className='warn' style = {{display: flag ? 'flex' :'none'}} >
+          <button onClick={fot}>Paid</button>
+       </div>
       </div>
     </div>
   );
