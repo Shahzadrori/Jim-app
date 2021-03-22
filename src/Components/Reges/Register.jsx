@@ -14,7 +14,6 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
   });
-  // console.log(inp_val)
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -76,7 +75,8 @@ const Regis_form = (pare) => {
     //   toast.error("Age should be above sixteen");
     } else {
       pare.take_it(inp_val);
-      Database(inp_val)
+      Database(inp_val);
+      toasts()
       // doDatabaseStuff();
     //  Database();
       // toast.success("Jobs Done");

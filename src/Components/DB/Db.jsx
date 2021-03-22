@@ -9,13 +9,13 @@ const  Database = async (regis_value)=>{
    await db.version(1).stores({notes: '++id'})
    await db.open()
    try{
-     await db.notes.add(regis_value)
-//     // await db.notes.each(info => )
+     await db.notes.add(regis_value);
+    const Result = await db.notes.each(res => console.log(res))
+    //  await db.notes.each(info => console.log(info))
 //     // toasts();
-   }catch(error){
-      alert('Same ID exist')
-   }
-   }
+   }catch (error){
+       alert('Same id exists' + error)
+   }}
 // }
 //  const mapstatess = (state)=>{
 //      console.log(state)

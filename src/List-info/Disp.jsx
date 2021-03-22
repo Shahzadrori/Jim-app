@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import List from "./List";
 import Data from "../Data.js";
 import "../style/List/Disp.css";
@@ -6,9 +6,14 @@ import { connect } from "react-redux";
 import { Add_It } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import Dexie from 'dexie'
+import Dexie from 'dexie';
+import { Dataget } from "../Components/DB/Notes";
+import Database from "../Components/DB/Db";
+
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
+    // Database.get().each(info => console.log(info))
+    // Dataget()
   function ncards(item) {
     // console.log(item);
     // if (check(item.name) == true) {
@@ -43,13 +48,13 @@ const Display = (prep) => {
           onKeyPress={get_it}
         />
       </div>
-      {/* <div className="disp-main">{prep.regis_items.map(ncards)}</div> */}
-      <div className="disp-main">{Data.map(ncards)}</div>
+      <div className="disp-main">{prep.regis_items.map(ncards)}</div>
+      {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );
 };
 const mapstate = (state) => {
-  console.log(state.Areducer);
+  // console.log(state.Areducer);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,

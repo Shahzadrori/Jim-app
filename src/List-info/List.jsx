@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "../style/List/List.css";
 
 const List = (props) => {
@@ -13,7 +14,8 @@ const List = (props) => {
         },1000
         // 2628288000
         // 2592000000
-  )
+  );
+
 
   return (
     <div className="list-main">
