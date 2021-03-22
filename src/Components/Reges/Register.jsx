@@ -78,16 +78,16 @@ const Regis_form = (pare) => {
 
     if (names === "" || names === null) {
       toast.error("Name field should not be empty");
-    // } else if (names.length === 4 || names.length < 4) {
-    //   toast.error("Name field should atleast contain 4 digits");
-    // } else if (Number(names)) {
-    //   toast.error("Name shoul contain alphabet letters");
-    // } else if (id.length !== 13) {
-    //   toast.error("ID Number should be equal to 13");
-    // } else if (phone.length !== 11) {
-    //   toast.error("Phone Number should contain 11 digits");
-    // } else if (age < 16) {
-    //   toast.error("Age should be above sixteen");
+    } else if (names.length === 4 || names.length < 4) {
+      toast.error("Name field should atleast contain 4 digits");
+    } else if (Number(names)) {
+      toast.error("Name shoul contain alphabet letters");
+    } else if (id.length !== 13) {
+      toast.error("ID Number should be equal to 13");
+    } else if (phone.length !== 11) {
+      toast.error("Phone Number should contain 11 digits");
+    } else if (age < 16) {
+      toast.error("Age should be above sixteen");
     } else {
       // Database(inp_val);
       // Database(inp_val)
