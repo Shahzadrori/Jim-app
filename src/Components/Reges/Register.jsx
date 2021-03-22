@@ -6,7 +6,8 @@ import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Take_It } from "../../Redux/Actinon";
 import Dexie from 'dexie'
-import Database from "../DB/Db";
+// import Database from '../DB/Db'
+// import Dataget from '../DB/Notes'
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -14,6 +15,20 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
   });
+//   const  Database = async ()=>{
+//     // console.log(regis_value)
+// //   async  function Dataphase(){
+//     const db = new Dexie('Database');
+//    await db.version(1).stores({notes: '++id'})
+//    await db.open()
+//    try{
+//      await db.notes.add(pare.values);
+//      await db.notes.each((result)=>{
+//        pare.take_it(result)
+//      })
+//    }catch (error){
+//        alert('Same id exists' + error)
+//    }}
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -25,18 +40,18 @@ const Regis_form = (pare) => {
       progress: undefined,
     });
   }
-  // async  function Dataphase(){
-  //   const db = new Dexie('Database');
-  //  await db.version(1).stores({notes: '++id'})
-  //  await db.open()
-  //  try{
-  //   //  await db.notes.add()
-  //   // await db.notes.each(info => )
-  //   // toasts();
-  //  }catch(error){
-  //     alert('Same ID exist')
-  //  }
-  //  }
+  async function Database(){
+    const db = new Dexie('Database');
+   await db.version(1).stores({notes: '++id'})
+   await db.open()
+   try{
+     await db.notes.add(inp_val)
+     await db.notes.each(info => pare.take_it(info))
+   }catch(error){
+     alert(error)
+   }
+   }
+
   //  Database()
   // async function doDatabaseStuff() {
   //   const db = await openDB(`Data`, 1, {
@@ -74,9 +89,10 @@ const Regis_form = (pare) => {
     // } else if (age < 16) {
     //   toast.error("Age should be above sixteen");
     } else {
-      pare.take_it(inp_val);
-      Database(inp_val);
-      toasts()
+      // Database(inp_val);
+      // Database(inp_val)
+      Database()
+      toasts();
       // doDatabaseStuff();
     //  Database();
       // toast.success("Jobs Done");

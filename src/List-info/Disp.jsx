@@ -6,10 +6,6 @@ import { connect } from "react-redux";
 import { Add_It } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import Dexie from 'dexie';
-import { Dataget } from "../Components/DB/Notes";
-import Database from "../Components/DB/Db";
-
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
     // Database.get().each(info => console.log(info))
