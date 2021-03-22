@@ -12,7 +12,7 @@ const Display = (prep) => {
     // Dataget()
   function ncards(item) {
     // console.log(item);
-    // if (check(item.name) == true) {
+    if (check(item.name) == true) {
       return (
         <List
           // imgsrc={item.imgsrc}
@@ -25,7 +25,7 @@ const Display = (prep) => {
     }
 
     // return null;
-  // }
+  }
   function check(cardname) {
     var value = 
     cardname.indexOf(prep.card_item) > -1;
