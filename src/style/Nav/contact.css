@@ -55,3 +55,9 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+@media (max-width:390px){
+    .inner-contact{
+        width: min-content;
+        
+    }
+}
