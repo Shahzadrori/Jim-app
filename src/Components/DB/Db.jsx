@@ -1,16 +1,15 @@
 import { openDB } from "idb"
 
 
-
-export async function Database(regis,index) {
-    console.log(regis)
-    console.log(regis.id)
+export async function Database(regis) {
+    // console.log(regis)
+    // console.log(regis.id)
     const db1 = await
     openDB('db', 1, {
         upgrade(db) {
           db.createObjectStore('store1',{
               keyPath: 'key',
-            autoIncrement:true
+            autoIncrement:false
             });
         },
       });
@@ -21,5 +20,9 @@ export async function Database(regis,index) {
       .catch(err => {
         console.error('error: ', err);
       });
-    db1.close();
+    db1.close()
   }
+
+export const idb = {
+  db1 : openDB('db',1)
+}

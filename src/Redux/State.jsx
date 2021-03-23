@@ -1,6 +1,4 @@
-export const Init_State=[
-    
-]
+export const Init_State=[]
     // card_item:[]
 // }
 export const B_STATE=[
