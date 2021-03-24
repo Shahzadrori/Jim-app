@@ -12,7 +12,6 @@ const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
   const [isload,setisload] = useState(false)
     useEffect(()=>{
-
             dbi()
     },[])
   
