@@ -6,7 +6,7 @@ import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Take_It } from "../../Redux/Actinon";
 import Dexie from 'dexie'
-import {Database, Get_it} from "../DB/Db";
+import {Database} from "../DB/Db";
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",

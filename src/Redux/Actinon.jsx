@@ -1,4 +1,4 @@
-import { ADD, TAKE } from "./Type"
+import { ADD, GET, TAKE } from "./Type"
 
 export const Add_It=(Data)=>{
     return{
@@ -11,4 +11,10 @@ export const Take_It=(REGIS)=>{
          type:TAKE,
          payload:REGIS
      }
+}
+export const Get_It = (Fil_value)=>{
+    return{
+        type:GET,
+        payload:Fil_value
+    }
 }

@@ -12,28 +12,74 @@ const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
     useEffect(()=>{
       async function add(){
+        try{
        await (await (idb.db1)).getAll('store1').then((res) =>{
          prep.take_it(res)
        })
+      }catch (err){
+        alert('Error :' + err)
       }
+    }
             add()
     },[])
-
-  function ncards(item) {
-    console.log(item.key)
-    // for(var i = 0; i++; i >= item.length){
-    //   console.log(item[i])
-    // }
-    // if (check(item.name) == true) {
-      return (
-        <List
-          Name={item[0].value.name}
-          Id={item[0].value.id}
-          Phone={item[0].value.phone}
-          Age={item[0].value.age}
-        />
-      );
+    function data(item){
+      var dat = Object.entries(item).forEach(([value,key])=>{
+        // if(value ; )
+        console.log(key[value].value)
+      
+        // return(
+        //   <List
+        //     Name={key.value.name}
+        //   />
+        // )
+      })
+    
     }
+    data(prep.regis_items)
+  // function ncards(item,index) {
+  //   console.log(item)
+  //   console.log(Number(index))
+  //   console.log(Object.keys(item));
+      // Object.keys(item).forEach(key =>{
+      //   var val = item[key]
+      //   console.log(val.value)
+      // })
+
+    // const valarr = Object.entries(item);
+  //  valarr.forEach(([key,value])=>{
+    //  console.log(value.value)
+  //  var   arr = value.value
+  //  console.log(arr)
+  // var i = 0;
+  // while(i <item.length){
+  //  i++
+  // }
+  // console.log(i)
+    // return(
+    //   <List
+    //         Name={item[index].value.name}
+    //         Id = {item[index].value.id}
+    //         Phone = {item[index].value.phone}
+    //         Age= {item[index].value.age}
+    //       />
+    // )
+    //  Dito(arr)
+  //  })
+  //  function Dito(arr){
+  //   console.log(arr)
+  //   return(
+  //     <List
+  //       Name={arr.name}
+  //       Id = {arr.id}
+  //       Phone = {arr.phone}
+  //       Age= {arr.age}
+  //     />
+  //   )
+  // }
+      //  console.log(Object.entries(item))
+    //  }
+ 
+    // if (check(item.name) == true) {
 
     // return null;
   // }
@@ -55,13 +101,13 @@ const Display = (prep) => {
           onKeyPress={get_it}
         />
       </div>
-      <div className="disp-main">{prep.regis_items.map(ncards)}</div>
+      {/* <div className="disp-main">{prep.regis_items.map(data)}</div> */}
       {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );
 };
 const mapstate = (state) => {
-  console.log(state.Breducer);
+  // console.log(state.Breducer);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,
