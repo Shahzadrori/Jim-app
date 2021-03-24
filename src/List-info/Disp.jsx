@@ -6,33 +6,28 @@ import { connect } from "react-redux";
 import { Add_It, Take_It } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import { Database, Get_it, idb } from "../Components/DB/Db";
+import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
 import { openDB } from "idb";
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
     useEffect(()=>{
       async function add(){
         try{
+    
+     
        await (await (idb.db1)).getAll('store1').then((res) =>{
          prep.take_it(res)
        })
       }catch (err){
-        alert('Error :' + err)
+        console.log('Error :' + err)
       }
     }
             add()
+            dbi()
     },[])
     function data(item){
-      var dat = Object.entries(item).forEach(([value,key])=>{
-        // if(value ; )
-        console.log(key[value].value)
-      
-        // return(
-        //   <List
-        //     Name={key.value.name}
-        //   />
-        // )
-      })
+      // console.log(Object.values(item))
+      // console.log(item)
     
     }
     data(prep.regis_items)
@@ -102,6 +97,7 @@ const Display = (prep) => {
         />
       </div>
       {/* <div className="disp-main">{prep.regis_items.map(data)}</div> */}
+      <div className="disp-main">{data}</div>
       {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );

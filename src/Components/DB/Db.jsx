@@ -14,16 +14,7 @@ export async function Database(regis) {
             });
         },
       });
-      // let cursor = await db1.transaction('store1').store.openCursor();
-      // while(cursor){
-      //   console.log(cursor.value,cursor.key);
-      //   cursor = await cursor.continue();
-      // }
-      // let tx = db1.transaction('store1').store;
-      // console.log(tx.store)
-      // for  (const cursor of tx){
-      //   console.log(cursor.value)
-      // }
+  
     
     await db1.put('store1',{key: Number(regis.id),value: regis})
       .then(result => {
@@ -34,18 +25,25 @@ export async function Database(regis) {
       });
     db1.close()
   }
-
+  export const dbi = async (props)=>{
+    let cursor = await (await idb.db1).transaction('store1').store.openCursor();
+    while(cursor){
+      console.log(cursor.value.value);
+      cursor = await cursor.continue();
+    }
+  }
+  export const array = []
 export const idb = {
   db1 : openDB('db',1)
 }
-const mapstate=(state)=>{
-  console.log(state)
-}
-const mapdispatch = (dispatch) =>{
-  return{
-    get_it:(fil_val)=>{
-      dispatch(Get_It(fil_val))
-    }
-  }
-}
-connect(mapstate,mapdispatch)(Database)
+// const mapstate=(state)=>{
+//   console.log(state)
+// }
+// const mapdispatch = (dispatch) =>{
+//   return{
+//     get_it:(fil_val)=>{
+//       dispatch(Get_It(fil_val))
+//     }
+//   }
+// }
+// connect(mapstate,mapdispatch)(dbi)
