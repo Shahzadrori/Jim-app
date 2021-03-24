@@ -14,8 +14,6 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
   });
-  // useEffect(()=>{
-  // })
 
    function toasts() {
     toast.dark(`Jobs Done`, {
@@ -49,8 +47,15 @@ const Regis_form = (pare) => {
     // } else if (age < 16) {
     //   toast.error("Age should be above sixteen");
     } else {
+      toasts()
       console.log('Done')
-      Database(inp_val)
+      Database(inp_val);
+      setinp_val({
+        name: "",
+        id: "",
+        phone: "",
+        age: "",
+      })
 
     }
   };
