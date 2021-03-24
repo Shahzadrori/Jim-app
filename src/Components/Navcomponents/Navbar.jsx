@@ -4,6 +4,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import { Link } from "react-router-dom";
+import Display from "../../List-info/Disp";
 const Nav = () => {
   return (
     <>
@@ -15,12 +16,12 @@ const Nav = () => {
               Home
             </li>
           </Link>
-          <Link to="/list">
+          <a href='/list'>
             <li>
               <InfoIcon className="icons" />
               List
             </li>
-          </Link>
+          </a>
           <Link to="/contact">
             <li>
               <ContactsIcon className="icons" />

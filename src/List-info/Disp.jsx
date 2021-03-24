@@ -10,31 +10,32 @@ import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
 import { openDB } from "idb";
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
+  const [isload,setisload] = useState(false)
     useEffect(()=>{
-      async function add(){
-        try{
-    
-     
-       await (await (idb.db1)).getAll('store1').then((res) =>{
-         prep.take_it(res)
-       })
-      }catch (err){
-        console.log('Error :' + err)
-      }
-    }
-            add()
+
             dbi()
     },[])
+  
     const dbi = async ()=>{
       let cursor = await (await idb.db1).transaction('store1').store.openCursor();
       while(cursor){
-        console.log(cursor.value.value);
+        // console.log(cursor.value.value);
         await prep.get_data(cursor.value.value)
         cursor = await cursor.continue();
       }
     }
 
-   
+   function ncards(item){
+    //  console.log(item)
+     return(
+       <List
+         Name={item.name}
+         Id = {item.id}
+        Phone = {item.phone}
+         Age = {item.age}
+       />
+     )
+   }
  
     // if (check(item.name) == true) {
 

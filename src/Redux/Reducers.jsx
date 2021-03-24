@@ -16,7 +16,8 @@ export const B_Reducer=(state = B_STATE,action)=>{
     switch(action.type){
         case TAKE:
             return[
-            ...state,action.payload
+            
+            action.payload
             ]
             default:
                 return state
