@@ -25,14 +25,7 @@ export async function Database(regis) {
       });
     db1.close()
   }
-  export const dbi = async (props)=>{
-    let cursor = await (await idb.db1).transaction('store1').store.openCursor();
-    while(cursor){
-      console.log(cursor.value.value);
-      cursor = await cursor.continue();
-    }
-  }
-  export const array = []
+
 export const idb = {
   db1 : openDB('db',1)
 }

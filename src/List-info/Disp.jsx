@@ -3,7 +3,7 @@ import List from "./List";
 import Data from "../Data.js";
 import "../style/List/Disp.css";
 import { connect } from "react-redux";
-import { Add_It, Take_It } from "../Redux/Actinon";
+import { Add_It, Get_It, Take_It } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
@@ -25,54 +25,16 @@ const Display = (prep) => {
             add()
             dbi()
     },[])
-    function data(item){
-      // console.log(Object.values(item))
-      // console.log(item)
-    
+    const dbi = async ()=>{
+      let cursor = await (await idb.db1).transaction('store1').store.openCursor();
+      while(cursor){
+        console.log(cursor.value.value);
+        await prep.get_data(cursor.value.value)
+        cursor = await cursor.continue();
+      }
     }
-    data(prep.regis_items)
-  // function ncards(item,index) {
-  //   console.log(item)
-  //   console.log(Number(index))
-  //   console.log(Object.keys(item));
-      // Object.keys(item).forEach(key =>{
-      //   var val = item[key]
-      //   console.log(val.value)
-      // })
 
-    // const valarr = Object.entries(item);
-  //  valarr.forEach(([key,value])=>{
-    //  console.log(value.value)
-  //  var   arr = value.value
-  //  console.log(arr)
-  // var i = 0;
-  // while(i <item.length){
-  //  i++
-  // }
-  // console.log(i)
-    // return(
-    //   <List
-    //         Name={item[index].value.name}
-    //         Id = {item[index].value.id}
-    //         Phone = {item[index].value.phone}
-    //         Age= {item[index].value.age}
-    //       />
-    // )
-    //  Dito(arr)
-  //  })
-  //  function Dito(arr){
-  //   console.log(arr)
-  //   return(
-  //     <List
-  //       Name={arr.name}
-  //       Id = {arr.id}
-  //       Phone = {arr.phone}
-  //       Age= {arr.age}
-  //     />
-  //   )
-  // }
-      //  console.log(Object.entries(item))
-    //  }
+   
  
     // if (check(item.name) == true) {
 
@@ -96,17 +58,17 @@ const Display = (prep) => {
           onKeyPress={get_it}
         />
       </div>
-      {/* <div className="disp-main">{prep.regis_items.map(data)}</div> */}
-      <div className="disp-main">{data}</div>
+      <div className="disp-main">{prep.filte_data.map(ncards)}</div>
       {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );
 };
 const mapstate = (state) => {
-  // console.log(state.Breducer);
+  console.log(state.Creducer);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,
+    filte_data:state.Creducer
   };
 };
 const mapdispatch = (dispatch) => {
@@ -116,6 +78,9 @@ const mapdispatch = (dispatch) => {
     },
     take_it: (regis_data)=>{
       dispatch(Take_It(regis_data))
+    },
+    get_data:(filter_data)=>{
+     dispatch(Get_It(filter_data))
     }
   };
 };
