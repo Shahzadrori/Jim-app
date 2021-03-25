@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
 import { openDB } from "idb";
+// import {toast} from 'react-toastify'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
   const [isload,setisload] = useState(false)
@@ -16,11 +17,17 @@ const Display = (prep) => {
     },[])
   
     const dbi = async ()=>{
+       try{
       let cursor = await (await idb.db1).transaction('store1').store.openCursor();
       while(cursor){
         await prep.get_data(cursor.value.value)
         cursor = await cursor.continue();
+      }}
+      catch(erro){
+        // toast('There is no Data')
+        console.log(erro)
       }
+
     }
 
    function ncards(item){

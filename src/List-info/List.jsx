@@ -35,7 +35,7 @@ const List = (props) => {
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
-      <DeleteIcon className='btn-del' onClick={del}/>
+      <DeleteIcon id={props.Id} className='btn-del' onClick={del}/>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
         <div className="list-wrap">
           <div className="list-txt">
