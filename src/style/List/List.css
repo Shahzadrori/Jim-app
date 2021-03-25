@@ -38,6 +38,34 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius:20px ;
 }
+.list-wrapper{
+    position: relative;
+}
+.list-wrapper .btn-del{
+    color: black;
+    padding: 3px;
+    background-color: white;
+    border-radius: 20%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: +1;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+}
+.list-wrapper .btn-del:hover{
+    color: red;
+}
+.list-wrapper .btn-del:active{
+    color: #be0000;
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+}
 .warn button{
     margin-left: auto;
     margin-right: 20px;

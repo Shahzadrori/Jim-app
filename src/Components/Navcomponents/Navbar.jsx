@@ -17,10 +17,12 @@ const Nav = () => {
             </li>
           </Link>
           <a href='/list'>
+          {/* <Link to='/list'> */}
             <li>
               <InfoIcon className="icons" />
               List
             </li>
+            {/* </Link> */}
           </a>
           <Link to="/contact">
             <li>

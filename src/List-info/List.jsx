@@ -5,22 +5,27 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import del from '../Components/DB/Db'
 import { openDB } from "idb";
 const List = (props) => {
-     useEffect(()=>{
-       
-     })
   const [flag,setflag] = useState(false);
-  function fot(){
-    setflag(false)
-  }
-   setTimeout(
-        function(){
-          setflag(true)
-        },  3000
-        // 1000
-        // 2628288000
-        // 2592000000
-  );
-  console.log(props.Id)
+  const [tag,settag] = useState(false)
+  const Dates = new Date();
+  const date = Dates.getDate();
+  useEffect(()=>{
+    if(
+      date == 25
+      ){
+      function start(){
+       get_start =  setTimeout(
+          function(){
+            setflag(true)
+          })}
+          start()
+        }
+  },[])
+  var get_start;
+      function fot(){
+        clearTimeout(get_start);
+        setflag(false)
+      }
   async function del() {
     window.location.reload()
     const db = await openDB('db',1)
@@ -30,7 +35,7 @@ const List = (props) => {
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
-      <DeleteIcon onClick={del}/>
+      <DeleteIcon className='btn-del' onClick={del}/>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
         <div className="list-wrap">
           <div className="list-txt">

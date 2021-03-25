@@ -24,6 +24,7 @@ const Display = (prep) => {
     }
 
    function ncards(item){
+      if (check(item.name) == true) {
      return(
        <List
          Name={item.name}
@@ -32,12 +33,11 @@ const Display = (prep) => {
          Age = {item.age}
        />
      )
+    }else{
+       return null
+     }
    }
- 
-    // if (check(item.name) == true) {
 
-    // return null;
-  // }
   function check(cardname) {
     var value = 
     cardname.indexOf(prep.card_item) > -1;
@@ -53,11 +53,10 @@ const Display = (prep) => {
           type="text"
           placeholder="Search"
           onChange={(e) => setinp_Data(e.target.value)}
-          onKeyPress={get_it}
+          onKeyUp={get_it}
         />
       </div>
       <div className="disp-main">{prep.filte_data.map(ncards)}</div>
-      {/* <div className="disp-main">{Data.map(ncards)}</div> */}
     </>
   );
 };
