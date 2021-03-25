@@ -18,14 +18,12 @@ const Display = (prep) => {
     const dbi = async ()=>{
       let cursor = await (await idb.db1).transaction('store1').store.openCursor();
       while(cursor){
-        // console.log(cursor.value.value);
         await prep.get_data(cursor.value.value)
         cursor = await cursor.continue();
       }
     }
 
    function ncards(item){
-    //  console.log(item)
      return(
        <List
          Name={item.name}
@@ -64,7 +62,6 @@ const Display = (prep) => {
   );
 };
 const mapstate = (state) => {
-  console.log(state.Creducer);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,

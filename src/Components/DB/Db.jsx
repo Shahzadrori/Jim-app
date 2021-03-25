@@ -15,6 +15,7 @@ export async function Database(regis) {
         },
       });
   
+      
     
     await db1.put('store1',{key: Number(regis.id),value: regis})
       .then(result => {
@@ -29,14 +30,4 @@ export async function Database(regis) {
 export const idb = {
   db1 : openDB('db',1)
 }
-// const mapstate=(state)=>{
-//   console.log(state)
-// }
-// const mapdispatch = (dispatch) =>{
-//   return{
-//     get_it:(fil_val)=>{
-//       dispatch(Get_It(fil_val))
-//     }
-//   }
-// }
-// connect(mapstate,mapdispatch)(dbi)
+

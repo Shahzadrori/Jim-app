@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import "../style/List/List.css";
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import del from '../Components/DB/Db'
+import { openDB } from "idb";
 const List = (props) => {
-  
+     useEffect(()=>{
+       
+     })
   const [flag,setflag] = useState(false);
   function fot(){
     setflag(false)
@@ -11,15 +15,22 @@ const List = (props) => {
    setTimeout(
         function(){
           setflag(true)
-        },1000
+        },  3000
+        // 1000
         // 2628288000
         // 2592000000
   );
-
+  console.log(props.Id)
+  async function del() {
+    window.location.reload()
+    const db = await openDB('db',1)
+    return await db.delete('store1',Number(props.Id));
+    }
 
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
+      <DeleteIcon onClick={del}/>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
         <div className="list-wrap">
           <div className="list-txt">
@@ -42,5 +53,4 @@ const List = (props) => {
     </div>
   );
 };
-
 export default List;
