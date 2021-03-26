@@ -13,9 +13,28 @@ const Regis_form = (pare) => {
     id: "",
     phone: "",
     age: "",
-    pic:""
   });
-  console.table(inp_val)
+  async function Pic_Db(img_val) {
+    const db1 = await openDB('Pic', 1, {
+        upgrade(db1) {
+          db1.createObjectStore('Pic-store',{
+              keyPath: 'key',
+            autoIncrement:true
+            });
+        },
+      });
+      await db1.put('Pic-store',{value:img_val})
+      .then(result => {
+        console.log('success!', result);
+      })
+      .catch(err => {
+        console.error('error: ', err);
+      });
+    db1.close()
+  }
+    
+ 
+  // console.table(inp_val)
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -29,7 +48,7 @@ const Regis_form = (pare) => {
   }
 
 
-  const Submit = async () => {
+  const Submit =  () => {
     var names = document.getElementById("names").value;
     var id = document.getElementById("id").value;
     var phone = document.getElementById("phone").value;
@@ -51,38 +70,41 @@ const Regis_form = (pare) => {
       toasts()
       toast('Good luck')
       Database(inp_val);
+      Pic_Db(pare.values)
       setinp_val({
         name: "",
         id: "",
         phone: "",
         age: "",
-        pic:""
       })
+      document.getElementById('pic').value = ""
 
     }
   };
-  const Targ_pic=(eve)=>{
-    let Files = eve.target.files[0];
+  const Targ_pic=  (eve)=>{
+    let file = eve.target.files;
     let reader = new FileReader();
-    reader.readAsDataURL(Files);
-    reader.onload = (e)=>{
+  reader.readAsDataURL(file[0]);
+     reader.onload = (e)=>{
       var pic = e.target.result;
       pare.take_it(pic)
-      console.log(pare.values)
+
+    }
+    reader.onerror = (err) =>{
+      console.log(err)
     }
   }
 
   const Target_val = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
-    setinp_val((allvalues,sec = pare.values) => {
+    setinp_val((allvalues) => {
       if (Names === "names") {
         return {
           name: Values,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:allvalues.pic
         };
       } else if (Names === "id") {
         return {
@@ -90,7 +112,6 @@ const Regis_form = (pare) => {
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:allvalues.pic
 
         };
       } else if (Names === "phone") {
@@ -99,7 +120,6 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: Values,
           age: allvalues.age,
-          pic:allvalues.pic
 
         };
       } else if (Names === "age") {
@@ -108,7 +128,6 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: Values,
-          pic:allvalues.pic
         } 
       }else if(Names === 'pic'){
         return {
@@ -116,7 +135,6 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:sec
         } 
       }
     });
@@ -178,9 +196,9 @@ const Regis_form = (pare) => {
           <label>Photo :</label>
            <input type="file" 
              name="pic"
-            value={inp_val.pic}
-            onClick={Target_val}
-            onChange={Targ_pic}
+            // value={inp_val.pic}
+            // onClick={Target_val}
+            onMouseOut={Targ_pic}
             id="pic"
            />
           <button onClick={Submit}>Submit</button>
@@ -201,9 +219,10 @@ const Regis_form = (pare) => {
 };
 
 const mapstates = (state) =>{
-  console.log(state)
+  console.log(state.Creducer)
   return{
-    values:state.Breducer
+    values:state.Breducer,
+    regis_item:state.Creducer
   }
 }
 const mapdispatchs = (dispatch)=>{
