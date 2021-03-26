@@ -64,7 +64,9 @@ const Regis_form = (pare) => {
   const Target_val = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
-
+    let Files = event.target.files;
+    
+    console.table(Files)
     setinp_val((allvalues) => {
       if (Names === "names") {
         return {
@@ -72,6 +74,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
+          pic:allvalues.pic
         };
       } else if (Names === "id") {
         return {
@@ -79,6 +82,7 @@ const Regis_form = (pare) => {
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
+          pic:allvalues.pic
         };
       } else if (Names === "phone") {
         return {
@@ -86,6 +90,8 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: Values,
           age: allvalues.age,
+          pic:allvalues.pic
+
         };
       } else if (Names === "age") {
         return {
@@ -93,6 +99,8 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: Values,
+          pic:allvalues.pic
+
         } 
       } else if (Names === "pic") {
         return {
@@ -100,7 +108,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:Values
+          // pic:Files
         };
       }
     });

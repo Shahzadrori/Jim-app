@@ -31,12 +31,15 @@ const List = (props) => {
     const db = await openDB('db',1)
     return await db.delete('store1',Number(props.Id));
     }
+    console.log(props.Img)
 
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
       <DeleteIcon id={props.Id} className='btn-del' onClick={del}/>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
+        <a href="http://my.domain.com/Projecten/Protocollen/346/Uitvoeringsoverzicht.xls">
+        <img src={props.Img}/></a>
         <div className="list-wrap">
           <div className="list-txt">
             <h2>Name :</h2>

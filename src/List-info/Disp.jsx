@@ -34,6 +34,7 @@ const Display = (prep) => {
       if (check(item.name) == true) {
      return(
        <List
+         Img={item.pic}
          Name={item.name}
          Id = {item.id}
         Phone = {item.phone}

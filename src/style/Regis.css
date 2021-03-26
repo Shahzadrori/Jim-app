@@ -163,4 +163,12 @@ input::-webkit-inner-spin-button {
   back
   ground: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 } */
-/*  */
+input[type=file]::file-selector-button {
+  display: none;
+  /* padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #A8EB12;
+  border: 1px solid;
+  outline: none;
+  transition: 1s; */
+}
