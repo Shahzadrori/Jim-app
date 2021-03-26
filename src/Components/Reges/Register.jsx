@@ -13,8 +13,9 @@ const Regis_form = (pare) => {
     id: "",
     phone: "",
     age: "",
+    pic:""
   });
-
+  console.table(inp_val)
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -60,14 +61,21 @@ const Regis_form = (pare) => {
 
     }
   };
+  const Targ_pic=(eve)=>{
+    let Files = eve.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(Files);
+    reader.onload = (e)=>{
+      var pic = e.target.result;
+      pare.take_it(pic)
+      console.log(pare.values)
+    }
+  }
 
   const Target_val = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
-    let Files = event.target.files;
-    
-    console.table(Files)
-    setinp_val((allvalues) => {
+    setinp_val((allvalues,sec = pare.values) => {
       if (Names === "names") {
         return {
           name: Values,
@@ -83,6 +91,7 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           pic:allvalues.pic
+
         };
       } else if (Names === "phone") {
         return {
@@ -100,16 +109,15 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: Values,
           pic:allvalues.pic
-
         } 
-      } else if (Names === "pic") {
+      }else if(Names === 'pic'){
         return {
           name: allvalues.name,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          // pic:Files
-        };
+          pic:sec
+        } 
       }
     });
   };
@@ -161,6 +169,7 @@ const Regis_form = (pare) => {
           <input
             name="age"
             value={inp_val.age}
+            // onDoubl={Targ_pic}
             onChange={Target_val}
             id="age"
             type="text"
@@ -170,7 +179,8 @@ const Regis_form = (pare) => {
            <input type="file" 
              name="pic"
             value={inp_val.pic}
-            onChange={Target_val}
+            onClick={Target_val}
+            onChange={Targ_pic}
             id="pic"
            />
           <button onClick={Submit}>Submit</button>
