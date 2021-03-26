@@ -3,7 +3,7 @@ import List from "./List";
 import Data from "../Data.js";
 import "../style/List/Disp.css";
 import { connect } from "react-redux";
-import { Add_It, Get_It, Take_It } from "../Redux/Actinon";
+import { Add_It, Get_It, Take_It ,Get_Pic} from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
@@ -14,22 +14,27 @@ const Display = (prep) => {
   const [isload,setisload] = useState(false)
     useEffect(()=>{
             dbi()
+            pics()
     },[])
   
     const dbi = async ()=>{
-       try{
       let cursor = await (await idb.db1).transaction('store1').store.openCursor();
       while(cursor){
         await prep.get_data(cursor.value.value)
         cursor = await cursor.continue();
-      }}
-      catch(erro){
-        // toast('There is no Data')
-        console.log(erro)
       }
 
     }
-
+  const pics = async ()=>{
+    const pic_db = await openDB('Pic',1);
+           let cursor = await (await pic_db).transaction('Pic-store').store.openCursor();
+        while(cursor){
+          console.table(cursor.value.value);
+          prep.Pic_it(cursor.value.value)
+          cursor = await cursor.continue();
+        
+        }
+  }
    function ncards(item){
       if (check(item.name) == true) {
      return(
@@ -85,6 +90,9 @@ const mapdispatch = (dispatch) => {
     },
     get_data:(filter_data)=>{
      dispatch(Get_It(filter_data))
+    },
+    Pic_it:(Img)=>{
+      dispatch(Get_Pic(Img))
     }
   };
 };

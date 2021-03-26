@@ -4,7 +4,7 @@ import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
 import { openDB } from "idb";
 import { connect } from "react-redux";
-import { Take_It } from "../../Redux/Actinon";
+import { Get_Pic, Take_It } from "../../Redux/Actinon";
 import Dexie from 'dexie'
 import {Database} from "../DB/Db";
 const Regis_form = (pare) => {
@@ -30,9 +30,20 @@ const Regis_form = (pare) => {
       .catch(err => {
         console.error('error: ', err);
       });
-    db1.close()
-  }
+      
+        // let cursor = await (await db1).transaction('Pic-store').store.openCursor();
+        // while(cursor){
+        //   console.table(cursor.value.value)
+          
+        //   cursor = await cursor.continue();
+        
+        // }
     
+    
+    db1.close()
+
+  }
+  
  
   // console.table(inp_val)
    function toasts() {
@@ -198,7 +209,7 @@ const Regis_form = (pare) => {
              name="pic"
             // value={inp_val.pic}
             // onClick={Target_val}
-            onMouseOut={Targ_pic}
+            onChange={Targ_pic}
             id="pic"
            />
           <button onClick={Submit}>Submit</button>
@@ -229,7 +240,8 @@ const mapdispatchs = (dispatch)=>{
   return{
     take_it:(tak)=>{
      dispatch(Take_It(tak))
-    }
+    },
+ 
   }
 }
 export default connect(mapstates,mapdispatchs)(Regis_form);
