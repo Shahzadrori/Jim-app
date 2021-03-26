@@ -54,7 +54,8 @@ const Regis_form = (pare) => {
         name: "",
         id: "",
         phone: "",
-        age: ""
+        age: "",
+        pic:""
       })
 
     }
@@ -92,6 +93,14 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: Values,
+        } 
+      } else if (Names === "pic") {
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          pic:Values
         };
       }
     });
@@ -149,6 +158,13 @@ const Regis_form = (pare) => {
             type="text"
             placeholder="Enter Your Age in Numbers"
           />
+          <label>Photo :</label>
+           <input type="file" 
+             name="pic"
+            value={inp_val.pic}
+            onChange={Target_val}
+            id="pic"
+           />
           <button onClick={Submit}>Submit</button>
         </div>
         <div className="img_regis">
