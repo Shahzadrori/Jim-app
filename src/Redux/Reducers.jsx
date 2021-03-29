@@ -38,7 +38,10 @@ export const D_Reducer = (state = D_State,action)=>{
     switch(action.type){
         case PIC:
             return[
-                ...state,action.payload
+                action.payload
             ]
+            default:
+                return state
     }
+
 }

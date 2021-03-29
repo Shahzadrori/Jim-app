@@ -8,6 +8,7 @@
     margin-top: 30px;
     border: 1px solid;
     height: 435px;
+    width: 300px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -24,6 +25,10 @@
     flex-direction: row;
     flex-grow: 1;
 }
+.list-wrapper .content{
+    margin-top: -5px;
+}
+
 .list-cont{
     margin-top: 5px;
     font-family: 'Oswald', sans-serif;
@@ -38,18 +43,12 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius:20px ;
 }
-.list-wrapper{
-    position: relative;
-}
+
 .list-wrapper .btn-del{
     color: black;
     padding: 3px;
     background-color: white;
     border-radius: 20%;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: +1;
     -webkit-border-radius: 20%;
     -moz-border-radius: 20%;
     -ms-border-radius: 20%;

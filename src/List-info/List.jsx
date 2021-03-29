@@ -4,15 +4,13 @@ import "../style/List/List.css";
 import DeleteIcon from '@material-ui/icons/Delete';
 import del from '../Components/DB/Db'
 import { openDB } from "idb";
+import { connect } from "react-redux";
 const List = (props) => {
   const [flag,setflag] = useState(false);
-  const [tag,settag] = useState(false)
   const Dates = new Date();
   const date = Dates.getDate();
   useEffect(()=>{
-    if(
-      date == 25
-      ){
+    if(date == 30){
       function start(){
        get_start =  setTimeout(
           function(){
@@ -31,15 +29,16 @@ const List = (props) => {
     const db = await openDB('db',1)
     return await db.delete('store1',Number(props.Id));
     }
-    console.log(props.Img)
-
+  
+    console.log(props.Pic_data)
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
-      <DeleteIcon id={props.Id} className='btn-del' onClick={del}/>
         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU' />
-        <a href="http://my.domain.com/Projecten/Protocollen/346/Uitvoeringsoverzicht.xls">
-        <img src={props.Img}/></a>
+        <div className='content'>
+        <DeleteIcon id={props.Id} className='btn-del' onClick={del}/>
+        <img src={props.Img} className='Pers-img'/>
+        </div>
         <div className="list-wrap">
           <div className="list-txt">
             <h2>Name :</h2>
@@ -61,4 +60,9 @@ const List = (props) => {
     </div>
   );
 };
-export default List;
+const mpastate = (state)=>{
+  return{
+    Pic_data:state.Dreducer
+  }
+}
+export default connect(mpastate,null) (List);

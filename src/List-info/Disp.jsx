@@ -11,10 +11,9 @@ import { openDB } from "idb";
 // import {toast} from 'react-toastify'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
-  const [isload,setisload] = useState(false)
     useEffect(()=>{
             dbi()
-            pics()
+            // pics()
     },[])
   
     const dbi = async ()=>{
@@ -25,16 +24,16 @@ const Display = (prep) => {
       }
 
     }
-  const pics = async ()=>{
-    const pic_db = await openDB('Pic',1);
-           let cursor = await (await pic_db).transaction('Pic-store').store.openCursor();
-        while(cursor){
-          console.table(cursor.value.value);
-          prep.Pic_it(cursor.value.value)
-          cursor = await cursor.continue();
+  // const pics = async ()=>{
+  //   const pic_db = await openDB('Pic',1);
+  //          let cursor = await (await pic_db).transaction('Pic-store').store.openCursor();
+  //       while(cursor){
+  //         // console.table(cursor.value.value);
+  //         prep.Pic_it(cursor.value.value)
+  //         cursor = await cursor.continue();
         
-        }
-  }
+  //       }
+  // }
    function ncards(item){
       if (check(item.name) == true) {
      return(
@@ -59,6 +58,7 @@ const Display = (prep) => {
   function get_it() {
     prep.add_it(inp_Data);
   }
+  
   return (
     <>
       <div className="disp-top">
@@ -69,15 +69,19 @@ const Display = (prep) => {
           onKeyUp={get_it}
         />
       </div>
-      <div className="disp-main">{prep.filte_data.map(ncards)}</div>
+      <div className="disp-main">{prep.filte_data.map(ncards)}
+      </div>
+      
     </>
   );
 };
 const mapstate = (state) => {
+  console.table(state)
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,
-    filte_data:state.Creducer
+    filte_data:state.Creducer,
+    Pic_data:state.Dreducer
   };
 };
 const mapdispatch = (dispatch) => {

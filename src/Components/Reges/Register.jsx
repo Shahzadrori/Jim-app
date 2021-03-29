@@ -2,48 +2,39 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
-import { openDB } from "idb";
+// import { openDB } from "idb";
 import { connect } from "react-redux";
-import { Get_Pic, Take_It } from "../../Redux/Actinon";
-import Dexie from 'dexie'
+import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
 import {Database} from "../DB/Db";
 const Regis_form = (pare) => {
+  const [picture,setpicture] = useState('');
   const [inp_val, setinp_val] = useState({
     name: "",
     id: "",
     phone: "",
     age: "",
+    pic:""
   });
-  async function Pic_Db(img_val) {
-    const db1 = await openDB('Pic', 1, {
-        upgrade(db1) {
-          db1.createObjectStore('Pic-store',{
-              keyPath: 'key',
-            autoIncrement:true
-            });
-        },
-      });
-      await db1.put('Pic-store',{value:img_val})
-      .then(result => {
-        console.log('success!', result);
-      })
-      .catch(err => {
-        console.error('error: ', err);
-      });
-      
-        // let cursor = await (await db1).transaction('Pic-store').store.openCursor();
-        // while(cursor){
-        //   console.table(cursor.value.value)
-          
-        //   cursor = await cursor.continue();
-        
-        // }
-    
-    
-    db1.close()
 
-  }
-  
+  // async function Pic_Db(img_val) {
+  //   const db1 = await openDB('Pic', 1, {
+  //       upgrade(db1) {
+  //         db1.createObjectStore('Pic-store',{
+  //             keyPath: 'key',
+  //           autoIncrement:true
+  //           });
+  //       },
+  //     });
+  //     await db1.put('Pic-store',{value:img_val})
+  //     .then(result => {
+  //       console.log('success!', result);
+  //     })
+  //     .catch(err => {
+  //       console.error('error: ', err);
+  //     });
+  //   db1.close()
+
+  // }
  
   // console.table(inp_val)
    function toasts() {
@@ -81,14 +72,15 @@ const Regis_form = (pare) => {
       toasts()
       toast('Good luck')
       Database(inp_val);
-      Pic_Db(pare.values)
+      // Pic_Db(picu)
       setinp_val({
         name: "",
         id: "",
         phone: "",
         age: "",
+        // pic:""
       })
-      document.getElementById('pic').value = ""
+      document.getElementById('pic').value = null
 
     }
   };
@@ -98,11 +90,9 @@ const Regis_form = (pare) => {
   reader.readAsDataURL(file[0]);
      reader.onload = (e)=>{
       var pic = e.target.result;
-      pare.take_it(pic)
+      setpicture(e.target.result)
+      console.log(pic)
 
-    }
-    reader.onerror = (err) =>{
-      console.log(err)
     }
   }
 
@@ -116,6 +106,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
+          pic:allvalues.pic
         };
       } else if (Names === "id") {
         return {
@@ -123,6 +114,8 @@ const Regis_form = (pare) => {
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
+          pic:allvalues.pic
+
 
         };
       } else if (Names === "phone") {
@@ -131,6 +124,8 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: Values,
           age: allvalues.age,
+          pic:allvalues.pic
+
 
         };
       } else if (Names === "age") {
@@ -139,13 +134,17 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: Values,
+          pic:allvalues.pic
+
         } 
       }else if(Names === 'pic'){
+        Targ_pic(event)
         return {
           name: allvalues.name,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
+          pic:picture
         } 
       }
     });
@@ -208,8 +207,8 @@ const Regis_form = (pare) => {
            <input type="file" 
              name="pic"
             // value={inp_val.pic}
-            // onClick={Target_val}
-            onChange={Targ_pic}
+            onChange={Target_val}
+            // onChange={Targ_pic}
             id="pic"
            />
           <button onClick={Submit}>Submit</button>
@@ -230,10 +229,11 @@ const Regis_form = (pare) => {
 };
 
 const mapstates = (state) =>{
-  console.log(state.Creducer)
+  console.log(state.Dreducer)
   return{
     values:state.Breducer,
-    regis_item:state.Creducer
+    regis_item:state.Creducer,
+    Pic_data:state.Dreducer
   }
 }
 const mapdispatchs = (dispatch)=>{
@@ -241,6 +241,9 @@ const mapdispatchs = (dispatch)=>{
     take_it:(tak)=>{
      dispatch(Take_It(tak))
     },
+    Pic_img:(img)=>{
+      dispatch(Get_Pic(img))
+    }
  
   }
 }
