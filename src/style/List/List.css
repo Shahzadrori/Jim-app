@@ -26,12 +26,30 @@
     flex-grow: 1;
 }
 .list-wrapper .content{
-    margin-top: -5px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -200px;
 }
-
+.list-wrapper .content .btn-del{
+    margin-right: 10px;
+}
+.list-wrapper .content .Pers-img{
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
 .list-cont{
     margin-top: 5px;
     font-family: 'Oswald', sans-serif;
+}
+.list-wrap{
+    margin-top: 30px;
 }
 .list-wrapper .warn{
     display:flex;

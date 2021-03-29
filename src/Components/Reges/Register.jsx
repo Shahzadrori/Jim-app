@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
 import {Database} from "../DB/Db";
 const Regis_form = (pare) => {
-  const [picture,setpicture] = useState('');
+  const [picture,setpicture] = useState();
   const [inp_val, setinp_val] = useState({
     name: "",
     id: "",
@@ -15,7 +15,6 @@ const Regis_form = (pare) => {
     age: "",
     pic:""
   });
-
   // async function Pic_Db(img_val) {
   //   const db1 = await openDB('Pic', 1, {
   //       upgrade(db1) {
@@ -80,7 +79,7 @@ const Regis_form = (pare) => {
         age: "",
         // pic:""
       })
-      document.getElementById('pic').value = null
+      document.getElementById('pic').value = ''
 
     }
   };
@@ -91,7 +90,6 @@ const Regis_form = (pare) => {
      reader.onload = (e)=>{
       var pic = e.target.result;
       setpicture(e.target.result)
-      console.log(pic)
 
     }
   }
