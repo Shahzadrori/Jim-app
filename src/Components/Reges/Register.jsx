@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
-// import { openDB } from "idb";
+import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
 import {Database} from "../DB/Db";
 const Regis_form = (pare) => {
-  const [picture,setpicture] = useState();
+  const [img,setimg] = useState();
   const [inp_val, setinp_val] = useState({
     name: "",
     id: "",
@@ -15,6 +15,11 @@ const Regis_form = (pare) => {
     age: "",
     pic:""
   });
+  let info = pare.imgdata
+  useEffect(()=>{
+    dito()
+  },[info])
+  console.log(img)
   // async function Pic_Db(img_val) {
   //   const db1 = await openDB('Pic', 1, {
   //       upgrade(db1) {
@@ -33,13 +38,17 @@ const Regis_form = (pare) => {
   //     });
   //   db1.close()
 
-  // }
+  // } 
+  function dito(value = pare.imgdata){
+    setimg(value)
+    return img 
+  }
+//  console.log(info)
  
-  // console.table(inp_val)
    function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -69,15 +78,12 @@ const Regis_form = (pare) => {
     //   toast.error("Age should be above sixteen");
     } else {
       toasts()
-      toast('Good luck')
       Database(inp_val);
-      // Pic_Db(picu)
       setinp_val({
         name: "",
         id: "",
         phone: "",
         age: "",
-        // pic:""
       })
       document.getElementById('pic').value = ''
 
@@ -88,9 +94,8 @@ const Regis_form = (pare) => {
     let reader = new FileReader();
   reader.readAsDataURL(file[0]);
      reader.onload = (e)=>{
-      var pic = e.target.result;
-      setpicture(e.target.result)
-
+      pare.Pic_img(e.target.result);
+  
     }
   }
 
@@ -142,7 +147,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:picture
+          pic:dito()
         } 
       }
     });
@@ -151,8 +156,8 @@ const Regis_form = (pare) => {
   return (
     <>
       <ToastContainer
-        position="top-right"
-        autoClose={5000}
+        position="top-left"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -227,11 +232,11 @@ const Regis_form = (pare) => {
 };
 
 const mapstates = (state) =>{
-  console.log(state.Dreducer)
+  // console.log(state.Dreducer)
   return{
-    values:state.Breducer,
-    regis_item:state.Creducer,
-    Pic_data:state.Dreducer
+    // values:state.Breducer,
+    // regis_item:state.Creducer,
+    imgdata:state.Dreducer
   }
 }
 const mapdispatchs = (dispatch)=>{
