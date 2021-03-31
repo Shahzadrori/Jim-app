@@ -10,7 +10,7 @@ const List = (props) => {
   const Dates = new Date();
   const date = Dates.getDate();
   useEffect(()=>{
-    if(date == 30){
+    if(date === 30){
       function start(){
        get_start =  setTimeout(
           function(){
@@ -53,11 +53,11 @@ const List = (props) => {
             <h3>{props.Age}</h3>
           </div>
         </div>
-        <div className='warn' style = {{display: flag ? 'flex' :'none'}} >
-          <button onClick={fot}>Paid</button>
+        {/* <div className='warn' style = {{display: flag ? 'flex' :'none'}} > */}
+          {/* <button onClick={fot}>Paid</button> */}
        </div>
       </div>
-    </div>
+    // </div>g
   );
 };
 const mpastate = (state)=>{

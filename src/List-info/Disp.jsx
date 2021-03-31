@@ -1,19 +1,16 @@
 import React, { useState,useEffect } from "react";
 import List from "./List";
-import Data from "../Data.js";
 import "../style/List/Disp.css";
 import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It ,Get_Pic} from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
 import { openDB } from "idb";
-// import {toast} from 'react-toastify'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
     useEffect(()=>{
             dbi()
-            // pics()
     },[])
   
     const dbi = async ()=>{
@@ -24,18 +21,8 @@ const Display = (prep) => {
       }
 
     }
-  // const pics = async ()=>{
-  //   const pic_db = await openDB('Pic',1);
-  //          let cursor = await (await pic_db).transaction('Pic-store').store.openCursor();
-  //       while(cursor){
-  //         // console.table(cursor.value.value);
-  //         prep.Pic_it(cursor.value.value)
-  //         cursor = await cursor.continue();
-        
-  //       }
-  // }
    function ncards(item){
-      if (check(item.name) == true) {
+      if (check(item.name) ==+ true) {
      return(
        <List
          Img={item.pic}

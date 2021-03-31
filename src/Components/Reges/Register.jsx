@@ -6,6 +6,7 @@ import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
 import {Database} from "../DB/Db";
+import { Info } from "@material-ui/icons";
 const Regis_form = (pare) => {
   const [img,setimg] = useState();
   const [inp_val, setinp_val] = useState({
@@ -15,35 +16,6 @@ const Regis_form = (pare) => {
     age: "",
     pic:""
   });
-  let info = pare.imgdata
-  useEffect(()=>{
-    dito()
-  },[info])
-  console.log(img)
-  // async function Pic_Db(img_val) {
-  //   const db1 = await openDB('Pic', 1, {
-  //       upgrade(db1) {
-  //         db1.createObjectStore('Pic-store',{
-  //             keyPath: 'key',
-  //           autoIncrement:true
-  //           });
-  //       },
-  //     });
-  //     await db1.put('Pic-store',{value:img_val})
-  //     .then(result => {
-  //       console.log('success!', result);
-  //     })
-  //     .catch(err => {
-  //       console.error('error: ', err);
-  //     });
-  //   db1.close()
-
-  // } 
-  function dito(value = pare.imgdata){
-    setimg(value)
-    return img 
-  }
-//  console.log(info)
  
    function toasts() {
     toast.dark(`Jobs Done`, {
@@ -57,7 +29,7 @@ const Regis_form = (pare) => {
     });
   }
 
-
+  let Info =[];
   const Submit =  () => {
     var names = document.getElementById("names").value;
     var id = document.getElementById("id").value;
@@ -141,13 +113,18 @@ const Regis_form = (pare) => {
 
         } 
       }else if(Names === 'pic'){
-        Targ_pic(event)
+        let file = event.target.files;
+        let reader = new FileReader();
+      reader.readAsDataURL(file[0]);
+         reader.onload = (e)=>{
+          Info.push(e.target.result)
+        }
         return {
           name: allvalues.name,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:dito()
+          pic:Info
         } 
       }
     });
