@@ -11,23 +11,7 @@
   padding: 10px;
   position: sticky;
   top: 40px;
-  /* background-image: linear-gradient(
-    to bottom,
-    #6bd178,
-    #77d57a,
-    #82da7d,
-    #8dde7f,
-    #97e282,
-    #9be581,
-    #9fe97f,
-    #a3ec7e,
-    #a3f077,
-    #a3f470,
-    #a3f768,
-    #a3fb5f
-  ); */
-  background-image: linear-gradient(to left bottom, #000000, #3e111c, #780e26, #b30825, #eb1b12);
-
+  background-image: linear-gradient(to left bottom, #a3a3a3, #7c7d7e, #565959, #343736, #171815);
 }
 .disp-top input {
   padding: 9px;

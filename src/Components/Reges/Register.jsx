@@ -8,15 +8,14 @@ import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
 import { Database } from "../DB/Db";
 import { Info } from "@material-ui/icons";
 const Regis_form = (pare) => {
-  const [img, setimg] = useState();
   const [inp_val, setinp_val] = useState({
     name: "",
     id: "",
     phone: "",
     age: "",
     pic: "",
+    date:""
   });
-
   function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -60,15 +59,6 @@ const Regis_form = (pare) => {
       document.getElementById("pic").value = "";
     }
   };
-  const Targ_pic = (eve) => {
-    let file = eve.target.files;
-    let reader = new FileReader();
-    reader.readAsDataURL(file[0]);
-    reader.onload = (e) => {
-      pare.Pic_img(e.target.result);
-    };
-  };
-
   const Target_val = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
@@ -80,14 +70,21 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
+          date:allvalues.date
         };
       } else if (Names === "id") {
+        let time = new Date();
+        let date = time.getDate();
+        let month = time.getMonth();
+        let year = time.getFullYear();
+        let datestring = `${date}/${month + 1}/${year}`;
         return {
           name: allvalues.name,
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
+          date:datestring
         };
       } else if (Names === "phone") {
         return {
@@ -96,6 +93,7 @@ const Regis_form = (pare) => {
           phone: Values,
           age: allvalues.age,
           pic: allvalues.pic,
+          date:allvalues.date
         };
       } else if (Names === "age") {
         return {
@@ -104,6 +102,7 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: Values,
           pic: allvalues.pic,
+          date:allvalues.date
         };
       } else if (Names === "pic") {
         let file = event.target.files;
@@ -117,6 +116,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
+          date:allvalues.date,
           pic: Info,
         };
       }
@@ -170,7 +170,6 @@ const Regis_form = (pare) => {
           <input
             name="age"
             value={inp_val.age}
-            // onDoubl={Targ_pic}
             onChange={Target_val}
             id="age"
             type="text"
@@ -180,14 +179,12 @@ const Regis_form = (pare) => {
           <input
             type="file"
             name="pic"
-            // value={inp_val.pic}
             onChange={Target_val}
-            // onChange={Targ_pic}
             id="pic"
           />
           <button onClick={Submit}>Submit</button>
         </div>
-        {/* <div className="img_regis">
+        <div className="img_regis">
           <h1>Muhammad Ali </h1>
           <h2>
             <q>
@@ -196,17 +193,14 @@ const Regis_form = (pare) => {
               MAKE THE DAYS COUNT
             </q>
           </h2>
-        </div> */}
+        </div>
       </div>
     </>
   );
 };
 
 const mapstates = (state) => {
-  // console.log(state.Dreducer)
   return {
-    // values:state.Breducer,
-    // regis_item:state.Creducer,
     imgdata: state.Dreducer,
   };
 };

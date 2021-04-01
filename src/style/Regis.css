@@ -6,8 +6,7 @@
 .main_regis {
   width: 100%;
   height: 94vh;
-  /* background-image: linear-gradient(to left bottom, #000000, #3e111c, #780e26, #b30825, #eb1b12); */
-  background-image: url('https://i.pinimg.com/170x/f0/92/67/f0926701cea42e34e4f34136b46fcd06.jpg');
+  background-image: linear-gradient(to left bottom, #000000, #0e0908, #16110c, #1a1710, #1b1e15);
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,7 +25,7 @@
   padding: 10px;
   margin-bottom: 150px;
   margin-left: 50px;
-  margin-top: 120px;
+  margin-top: 140px;
   padding-right: 20px;
 }
 .inner_regis h1 {
@@ -125,6 +124,7 @@ input::-webkit-inner-spin-button {
   background-color: #00587a;
 }
 .img_regis {
+  color: #f4f9f4;
   margin-left: 350px;
 }
 .img_regis h2 {

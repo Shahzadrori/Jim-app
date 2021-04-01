@@ -52,9 +52,9 @@ h3 {
   margin-top: 5px;
   font-family: "Oswald", sans-serif;
 }
-.list-wrap {
+/* .list-wrap {
   /* margin-top: 10px; */
-}
+/* }  */
 .list-wrapper .warn {
   display: flex;
   align-items: center;
