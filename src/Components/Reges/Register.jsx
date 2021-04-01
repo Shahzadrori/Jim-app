@@ -5,19 +5,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { openDB } from "idb";
 import { connect } from "react-redux";
 import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
-import {Database} from "../DB/Db";
+import { Database } from "../DB/Db";
 import { Info } from "@material-ui/icons";
 const Regis_form = (pare) => {
-  const [img,setimg] = useState();
+  const [img, setimg] = useState();
   const [inp_val, setinp_val] = useState({
     name: "",
     id: "",
     phone: "",
     age: "",
-    pic:""
+    pic: "",
   });
- 
-   function toasts() {
+
+  function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
       autoClose: 3000,
@@ -29,8 +29,8 @@ const Regis_form = (pare) => {
     });
   }
 
-  let Info =[];
-  const Submit =  () => {
+  let Info = [];
+  const Submit = () => {
     var names = document.getElementById("names").value;
     var id = document.getElementById("id").value;
     var phone = document.getElementById("phone").value;
@@ -38,38 +38,36 @@ const Regis_form = (pare) => {
 
     if (names === "" || names === null) {
       toast.error("Name field should not be empty");
-    // } else if (names.length === 4 || names.length < 4) {
-    //   toast.error("Name field should atleast contain 4 digits");
-    // } else if (Number(names)) {
-    //   toast.error("Name shoul contain alphabet letters");
-    // } else if (id.length !== 13) {
-    //   toast.error("ID Number should contain 13 digits");
-    // } else if (phone.length !== 11) {
-    //   toast.error("Phone Number should contain 11 digits");
-    // } else if (age < 16) {
-    //   toast.error("Age should be above sixteen");
+      // } else if (names.length === 4 || names.length < 4) {
+      //   toast.error("Name field should atleast contain 4 digits");
+      // } else if (Number(names)) {
+      //   toast.error("Name shoul contain alphabet letters");
+      // } else if (id.length !== 13) {
+      //   toast.error("ID Number should contain 13 digits");
+      // } else if (phone.length !== 11) {
+      //   toast.error("Phone Number should contain 11 digits");
+      // } else if (age < 16) {
+      //   toast.error("Age should be above sixteen");
     } else {
-      toasts()
+      toasts();
       Database(inp_val);
       setinp_val({
         name: "",
         id: "",
         phone: "",
         age: "",
-      })
-      document.getElementById('pic').value = ''
-
+      });
+      document.getElementById("pic").value = "";
     }
   };
-  const Targ_pic=  (eve)=>{
+  const Targ_pic = (eve) => {
     let file = eve.target.files;
     let reader = new FileReader();
-  reader.readAsDataURL(file[0]);
-     reader.onload = (e)=>{
+    reader.readAsDataURL(file[0]);
+    reader.onload = (e) => {
       pare.Pic_img(e.target.result);
-  
-    }
-  }
+    };
+  };
 
   const Target_val = (event) => {
     let Values = event.target.value;
@@ -81,7 +79,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:allvalues.pic
+          pic: allvalues.pic,
         };
       } else if (Names === "id") {
         return {
@@ -89,9 +87,7 @@ const Regis_form = (pare) => {
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:allvalues.pic
-
-
+          pic: allvalues.pic,
         };
       } else if (Names === "phone") {
         return {
@@ -99,9 +95,7 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: Values,
           age: allvalues.age,
-          pic:allvalues.pic
-
-
+          pic: allvalues.pic,
         };
       } else if (Names === "age") {
         return {
@@ -109,23 +103,22 @@ const Regis_form = (pare) => {
           id: allvalues.id,
           phone: allvalues.phone,
           age: Values,
-          pic:allvalues.pic
-
-        } 
-      }else if(Names === 'pic'){
+          pic: allvalues.pic,
+        };
+      } else if (Names === "pic") {
         let file = event.target.files;
         let reader = new FileReader();
-      reader.readAsDataURL(file[0]);
-         reader.onload = (e)=>{
-          Info.push(e.target.result)
-        }
+        reader.readAsDataURL(file[0]);
+        reader.onload = (e) => {
+          Info.push(e.target.result);
+        };
         return {
           name: allvalues.name,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          pic:Info
-        } 
+          pic: Info,
+        };
       }
     });
   };
@@ -184,16 +177,17 @@ const Regis_form = (pare) => {
             placeholder="Enter Your Age in Numbers"
           />
           <label>Photo :</label>
-           <input type="file" 
-             name="pic"
+          <input
+            type="file"
+            name="pic"
             // value={inp_val.pic}
             onChange={Target_val}
             // onChange={Targ_pic}
             id="pic"
-           />
+          />
           <button onClick={Submit}>Submit</button>
         </div>
-        <div className="img_regis">
+        {/* <div className="img_regis">
           <h1>Muhammad Ali </h1>
           <h2>
             <q>
@@ -202,29 +196,28 @@ const Regis_form = (pare) => {
               MAKE THE DAYS COUNT
             </q>
           </h2>
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
 
-const mapstates = (state) =>{
+const mapstates = (state) => {
   // console.log(state.Dreducer)
-  return{
+  return {
     // values:state.Breducer,
     // regis_item:state.Creducer,
-    imgdata:state.Dreducer
-  }
-}
-const mapdispatchs = (dispatch)=>{
-  return{
-    take_it:(tak)=>{
-     dispatch(Take_It(tak))
+    imgdata: state.Dreducer,
+  };
+};
+const mapdispatchs = (dispatch) => {
+  return {
+    take_it: (tak) => {
+      dispatch(Take_It(tak));
     },
-    Pic_img:(img)=>{
-      dispatch(Get_Pic(img))
-    }
- 
-  }
-}
-export default connect(mapstates,mapdispatchs)(Regis_form);
+    Pic_img: (img) => {
+      dispatch(Get_Pic(img));
+    },
+  };
+};
+export default connect(mapstates, mapdispatchs)(Regis_form);

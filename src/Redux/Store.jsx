@@ -2,10 +2,10 @@ import { combineReducers, createStore } from "redux";
 import { B_Reducer, C_Reducer, D_Reducer, Reducer } from "./Reducers";
 
 const Rootreducer = combineReducers({
-  Areducer : Reducer,
-  Breducer : B_Reducer,
+  Areducer: Reducer,
+  Breducer: B_Reducer,
   Creducer: C_Reducer,
-  Dreducer:D_Reducer
+  Dreducer: D_Reducer,
 });
 export const Store = createStore(
   // Reducer

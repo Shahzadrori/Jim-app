@@ -1,19 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap");
 
 .main_regis {
   width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(
-    to right top,
-    #051d37,
-    #005077,
-    #00898f,
-    #00bf6f,
-    #a8eb12
-  );
+  height: 94vh;
+  /* background-image: linear-gradient(to left bottom, #000000, #3e111c, #780e26, #b30825, #eb1b12); */
+  background-image: url('https://i.pinimg.com/170x/f0/92/67/f0926701cea42e34e4f34136b46fcd06.jpg');
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,22 +22,22 @@
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00c853, #b2ff59);
   width: 300px;
-  height: 550px;
+  height: 520px;
   padding: 10px;
-  margin-bottom:150px;
+  margin-bottom: 150px;
   margin-left: 50px;
   margin-top: 120px;
   padding-right: 20px;
 }
 .inner_regis h1 {
   text-align: center;
-  color: #12EBD8;
+  color: #12ebd8;
   margin-top: -5px;
 }
 .inner_regis {
   font-family: "Rubik", sans-serif;
 }
-.inner_regis  label {
+.inner_regis label {
   font-size: 1.2em;
   /* margin-top: 10px; */
   padding: 15px 0px 5px 0px;
@@ -67,11 +61,11 @@
   font-size: 15px;
   font-weight: 400;
 }
-.inner_regis input[type=text]{
-    font-size: 1em;
+.inner_regis input[type="text"] {
+  font-size: 1em;
 }
-.inner_regis input[type=Number]{
-    font-size: 1em;
+.inner_regis input[type="Number"] {
+  font-size: 1em;
 }
 .inner_regis input:focus {
   background-color: #12eb25;
@@ -82,12 +76,12 @@
   -ms-transition: border 0.3s linear;
   -o-transition: border 0.3s linear;
 }
-.inner_regis input:hover{
-    transform: scale(1.02);
-    -webkit-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -ms-transform: scale(1.02);
-    -o-transform: scale(1.02);
+.inner_regis input:hover {
+  transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+  -moz-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  -o-transform: scale(1.02);
 }
 /* Chrome, Safari, Edge, Opera */
 .inner_regis input::-webkit-outer-spin-button,
@@ -109,35 +103,35 @@ input::-webkit-inner-spin-button {
   width: 100px;
   margin: auto;
   padding: 8px;
-  background-color:#11698e;
+  background-color: #11698e;
   color: white;
   font-size: 15px;
   font-weight: 520;
   border: none;
   outline: none;
-  border-radius:10px ;
-  -webkit-border-radius:10px ;
-  -moz-border-radius:10px ;
-  -ms-border-radius:10px ;
-  -o-border-radius:10px ;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 
   box-shadow: 2px 1px 6px black;
 }
-.inner_regis button:hover{
-    background-color: #03506f;
-    color: white;
+.inner_regis button:hover {
+  background-color: #03506f;
+  color: white;
 }
-.inner_regis button:active{
-    background-color: #00587a;
+.inner_regis button:active {
+  background-color: #00587a;
 }
-.img_regis{
-    margin-left: 350px;
+.img_regis {
+  margin-left: 350px;
 }
-.img_regis h2{
-    font-family: 'Dancing Script', cursive;
+.img_regis h2 {
+  font-family: "Dancing Script", cursive;
 }
-.img_regis h1{
-    font-family: 'IBM Plex Sans', sans-serif;
+.img_regis h1 {
+  font-family: "IBM Plex Sans", sans-serif;
 }
 /* .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -163,7 +157,7 @@ input::-webkit-inner-spin-button {
   back
   ground: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 } */
-input[type=file]::file-selector-button {
+input[type="file"]::file-selector-button {
   display: none;
   /* padding: .2em .4em;
   border-radius: .2em;

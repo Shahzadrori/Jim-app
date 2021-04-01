@@ -16,8 +16,8 @@ const Nav = () => {
               Home
             </li>
           </Link>
-          <a href='/list'>
-          {/* <Link to='/list'> */}
+          <a href="/list">
+            {/* <Link to='/list'> */}
             <li>
               <InfoIcon className="icons" />
               List

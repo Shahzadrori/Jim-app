@@ -1,32 +1,49 @@
-.disp-main{
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+.disp-main {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .disp-top {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px;
-    background-image: linear-gradient(to bottom, #6bd178, #77d57a, #82da7d, #8dde7f, #97e282, #9be581, #9fe97f, #a3ec7e, #a3f077, #a3f470, #a3f768, #a3fb5f);
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  position: sticky;
+  top: 40px;
+  /* background-image: linear-gradient(
+    to bottom,
+    #6bd178,
+    #77d57a,
+    #82da7d,
+    #8dde7f,
+    #97e282,
+    #9be581,
+    #9fe97f,
+    #a3ec7e,
+    #a3f077,
+    #a3f470,
+    #a3f768,
+    #a3fb5f
+  ); */
+  background-image: linear-gradient(to left bottom, #000000, #3e111c, #780e26, #b30825, #eb1b12);
 
 }
-.disp-top input{
-    padding: 9px;
-    width: 300px;
-    border: none;
-    outline: none;
-    padding-left: 20px;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+.disp-top input {
+  padding: 9px;
+  width: 300px;
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }
-.disp-top input:hover{
-    background-color: #f9f6f7;
+.disp-top input:hover {
+  background-color: #f9f6f7;
 }
-.disp-top input:focus{
-    background-color: #f4f3f3;
+.disp-top input:focus {
+  background-color: #f4f3f3;
 }
