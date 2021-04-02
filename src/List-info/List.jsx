@@ -1,28 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
 const List = (props) => {
+  const [style, setstyle] = useState({});
+  useEffect(() => {
+    Pay();
+  }, []);
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
     return await db.delete("store1", Number(props.Id));
   }
-  const Pay = async ()=> {
+  const Pay = async () => {
     const db1 = await openDB("db", 1);
-     await db1.get('store1',Number(props.Id)).then(
-     (result) => {
-      //  let data = 0
-      console.log(result)
-     }
-    ).catch((err)=> console.log(err))
-  }
-// }
-  // console.log(props.Id)
+    await db1
+      .get("store1", Number(props.Id))
+      .then((result) => {
+        console.log(result.value.paydate);
+        let paydate = moment(result.value.paydate, "DD-MM-YYYY");
+        let presentdate = moment();
+        let diff = presentdate.diff(paydate, "days");
+       let duedate = 30 - diff
+       console.log(duedate)
+        if (duedate == 0 || duedate<=5 ) {
+          setstyle({
+            backgroundColor: "red",
+            height: "30px",
+            borderBottomLeftRadius: "20px",
+            borderBottomRightRadius: "20px",
+          });
+        }else if(duedate >= 24){
+          setstyle({
+            backgroundColor: "green",
+            height: "30px",
+            borderBottomLeftRadius: "20px",
+            borderBottomRightRadius: "20px",
+          })
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   async function set() {
     const db1 = await openDB("db", 1);
-    return db1.put("store1", {
+    await db1.put("store1", {
       id: Number(props.Id),
       value: {
         paydate: moment().format("DD-MM-YYYY"),
@@ -34,7 +56,7 @@ const List = (props) => {
         date: props.Time,
       },
     });
-    
+    window.location.reload();
   }
   return (
     <div className="list-main">
@@ -58,12 +80,20 @@ const List = (props) => {
             <h3>{props.Age}</h3>
           </div>
         </div>
-        {/* <div className='warn' style = {{display: flag ? 'flex' :'none'}} > */}
-        <button onClick={set}>Paid</button>
-        <button onClick={Pay}>Pay</button>
+        <div id="warn" style={style}>
+          <p id="warn-txt"></p>
+          <button
+            onClick={set}
+            style={{
+              marginLeft: "20px",
+            }}
+          >
+            Paid
+          </button>
+          {/* <button onClick={Pay}>Pay</button> */}
+        </div>
       </div>
     </div>
-    // </div>
   );
 };
 export default List;
