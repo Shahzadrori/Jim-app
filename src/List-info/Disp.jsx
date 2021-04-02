@@ -14,8 +14,8 @@ const Display = (prep) => {
   const dbi = async () => {
     let cursor = await (await idb.db1).transaction("store1").store.openCursor();
     while (cursor) {
-      await prep.get_data(cursor.value.value)
-      cursor = await cursor.continue()
+      await prep.get_data(cursor.value.value);
+      cursor = await cursor.continue();
     }
   };
   function ncards(item) {
