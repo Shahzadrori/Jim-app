@@ -21,17 +21,17 @@
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #00c853, #b2ff59);
   width: 300px;
-  height: 520px;
+  height: 535px;
   padding: 10px;
   margin-bottom: 150px;
   margin-left: 50px;
-  margin-top: 140px;
+  margin-top: 170px;
   padding-right: 20px;
 }
 .inner_regis h1 {
   text-align: center;
   color: #12ebd8;
-  margin-top: -5px;
+  margin-top: 5px;
 }
 .inner_regis {
   font-family: "Rubik", sans-serif;
@@ -113,7 +113,7 @@ input::-webkit-inner-spin-button {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-
+   margin-bottom: -1px;
   box-shadow: 2px 1px 6px black;
 }
 .inner_regis button:hover {

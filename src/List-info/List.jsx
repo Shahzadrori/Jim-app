@@ -1,36 +1,41 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
-import del from "../Components/DB/Db";
 import { openDB } from "idb";
-import { connect } from "react-redux";
+import moment from "moment";
 const List = (props) => {
-  const [flag, setflag] = useState(false);
-  const Dates = new Date();
-  const date = Dates.getDate();
-  useEffect(() => {
-    if (date === 30) {
-      function start() {
-        get_start = setTimeout(function () {
-          setflag(true);
-        });
-      }
-      start();
-    }
-  }, []);
-  var get_start;
-  function fot() {
-    clearTimeout(get_start);
-    setflag(false);
-  }
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
     return await db.delete("store1", Number(props.Id));
   }
-
-  console.log(props.Pic_data);
+  const Pay = async ()=> {
+    const db1 = await openDB("db", 1);
+     await db1.get('store1',Number(props.Id)).then(
+     (result) => {
+      //  let data = 0
+      console.log(result)
+     }
+    ).catch((err)=> console.log(err))
+  }
+// }
+  // console.log(props.Id)
+  async function set() {
+    const db1 = await openDB("db", 1);
+    return db1.put("store1", {
+      id: Number(props.Id),
+      value: {
+        paydate: moment().format("DD-MM-YYYY"),
+        age: props.Age,
+        name: props.Name,
+        phone: props.Phone,
+        id: props.Id,
+        pic: props.Img,
+        date: props.Time,
+      },
+    });
+    
+  }
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
@@ -54,15 +59,11 @@ const List = (props) => {
           </div>
         </div>
         {/* <div className='warn' style = {{display: flag ? 'flex' :'none'}} > */}
-        {/* <button onClick={fot}>Paid</button> */}
+        <button onClick={set}>Paid</button>
+        <button onClick={Pay}>Pay</button>
       </div>
     </div>
-    // </div>g
+    // </div>
   );
 };
-const mpastate = (state) => {
-  return {
-    Pic_data: state.Dreducer,
-  };
-};
-export default connect(mpastate, null)(List);
+export default List;

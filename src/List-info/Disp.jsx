@@ -4,9 +4,7 @@ import "../style/List/Disp.css";
 import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
-// import { ToastContainer, toast } from "react-toastify";
-import { Database, dbi, Get_it, idb } from "../Components/DB/Db";
-import { openDB } from "idb";
+import { idb } from "../Components/DB/Db";
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
   useEffect(() => {
@@ -21,9 +19,10 @@ const Display = (prep) => {
     }
   };
   function ncards(item) {
-    if (check(item.name) == +true) {
+    if (check(item.name) == true) {
       return (
         <List
+          Time={item.date}
           Img={item.pic}
           Name={item.name}
           Id={item.id}
@@ -59,7 +58,6 @@ const Display = (prep) => {
   );
 };
 const mapstate = (state) => {
-  console.table(state);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,

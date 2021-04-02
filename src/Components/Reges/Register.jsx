@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
-import { openDB } from "idb";
 import { connect } from "react-redux";
-import { Get_It, Get_Pic, Take_It } from "../../Redux/Actinon";
+import {  Get_Pic, Take_It } from "../../Redux/Actinon";
 import { Database } from "../DB/Db";
-import { Info } from "@material-ui/icons";
+import moment from 'moment'
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -14,7 +13,8 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
     pic: "",
-    date:""
+    date:"",
+    paydate:""
   });
   function toasts() {
     toast.dark(`Jobs Done`, {
@@ -70,21 +70,18 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:allvalues.date
+          date:allvalues.date,
+          paydate:allvalues.paydate
         };
       } else if (Names === "id") {
-        let time = new Date();
-        let date = time.getDate();
-        let month = time.getMonth();
-        let year = time.getFullYear();
-        let datestring = `${date}/${month + 1}/${year}`;
         return {
           name: allvalues.name,
           id: Values,
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:datestring
+          date:moment().format('DD-MM-YYYY'),
+          paydate:allvalues.paydate
         };
       } else if (Names === "phone") {
         return {
@@ -93,7 +90,8 @@ const Regis_form = (pare) => {
           phone: Values,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:allvalues.date
+          date:allvalues.date,
+          paydate:allvalues.paydate
         };
       } else if (Names === "age") {
         return {
@@ -102,7 +100,8 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: Values,
           pic: allvalues.pic,
-          date:allvalues.date
+          date:allvalues.date,
+          paydate:null
         };
       } else if (Names === "pic") {
         let file = event.target.files;
@@ -118,6 +117,7 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           date:allvalues.date,
           pic: Info,
+          paydate:allvalues.paydate
         };
       }
     });
@@ -199,11 +199,6 @@ const Regis_form = (pare) => {
   );
 };
 
-const mapstates = (state) => {
-  return {
-    imgdata: state.Dreducer,
-  };
-};
 const mapdispatchs = (dispatch) => {
   return {
     take_it: (tak) => {
@@ -214,4 +209,4 @@ const mapdispatchs = (dispatch) => {
     },
   };
 };
-export default connect(mapstates, mapdispatchs)(Regis_form);
+export default connect(null, mapdispatchs)(Regis_form);

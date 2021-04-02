@@ -17,6 +17,10 @@
   box-shadow: 2px 1px 5px black;
   font-family: "Chango", cursive;
 }
+.list-main a{
+  text-decoration: none;
+  color: black;
+}
 .list-main h2,
 h3 {
   padding-left: 20px;

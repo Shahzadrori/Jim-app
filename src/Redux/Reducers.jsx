@@ -1,4 +1,3 @@
-import React from "react";
 import { B_STATE, C_State, D_State, Init_State } from "./State";
 import { ADD, GET, PIC, TAKE } from "./Type";
 
