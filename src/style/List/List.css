@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts#googleapis.com/css2?family=Oswald&display=swap");
 .list-main img {
   width: 100%;
   border-top-left-radius: 20px;
@@ -91,8 +91,7 @@ h3 {
   -ms-transform: scale(1.03);
   -o-transform: scale(1.03);
 }
-.warn button {
-  margin-left: auto;
+#warn .paid-btn {
   margin-right: 20px;
   padding: 4px;
   width: 50px;
@@ -104,11 +103,13 @@ h3 {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 7px;
 }
-.warn button:hover {
+#warn .paid-btn:hover {
   background-color: #c7cfb7;
 }
-.warn button:active {
+#warn .paid-btn:active {
   background-color: yellowgreen;
   color: white;
 }

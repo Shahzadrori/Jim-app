@@ -37,6 +37,8 @@ const List = (props) => {
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
+            paddingBottom:'7px',
+            marginTop:"6px"
           })
         }
       })
@@ -81,16 +83,10 @@ const List = (props) => {
           </div>
         </div>
         <div id="warn" style={style}>
-          <p id="warn-txt"></p>
           <button
-            onClick={set}
-            style={{
-              marginLeft: "20px",
-            }}
-          >
+            onClick={set} className='paid-btn'>
             Paid
           </button>
-          {/* <button onClick={Pay}>Pay</button> */}
         </div>
       </div>
     </div>
