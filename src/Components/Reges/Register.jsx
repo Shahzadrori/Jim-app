@@ -14,7 +14,6 @@ const Regis_form = (pare) => {
     age: "",
     pic: "",
     date:"",
-    paydate:""
   });
   function toasts() {
     toast.dark(`Jobs Done`, {
@@ -36,19 +35,19 @@ const Regis_form = (pare) => {
     var age = document.getElementById("age").value;
 
     if (names === "" || names === null) {
-      toast.error("Name field should not be empty");
-      } else if (names.length === 4 || names.length < 4) {
-        toast.error("Name field should atleast contain 4 digits");
-      } else if (Number(names)) {
-        toast.error("Name shoul contain alphabet letters");
-      } else if (id.length !== 13) {
-        toast.error("ID Number should contain 13 digits");
-      } else if (phone.length !== 11) {
-        toast.error("Phone Number should contain 11 digits");
-      } else if (age < 16) {
-        toast.error("Age should be above sixteen");
-    } else if(document.getElementById("pic").value == '' || document.getElementById("pic").value == null){
-      toast.error('Image field should not be empty')
+    //   toast.error("Name field should not be empty");
+    //   } else if (names.length === 4 || names.length < 4) {
+    //     toast.error("Name field should atleast contain 4 digits");
+    //   } else if (Number(names)) {
+    //     toast.error("Name shoul contain alphabet letters");
+    //   } else if (id.length !== 13) {
+    //     toast.error("ID Number should contain 13 digits");
+    //   } else if (phone.length !== 11) {
+    //     toast.error("Phone Number should contain 11 digits");
+    //   } else if (age < 16) {
+    //     toast.error("Age should be above sixteen");
+    // } else if(document.getElementById("pic").value == '' || document.getElementById("pic").value == null){
+    //   toast.error('Image field should not be empty')
     }
     else {
       toasts();
@@ -74,7 +73,6 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:allvalues.date,
-          paydate:allvalues.paydate
         };
       } else if (Names === "id") {
         return {
@@ -84,7 +82,6 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:moment().format('DD-MM-YYYY'),
-          paydate:allvalues.paydate
         };
       } else if (Names === "phone") {
         return {
@@ -94,7 +91,6 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:allvalues.date,
-          paydate:allvalues.paydate
         };
       } else if (Names === "age") {
         return {
@@ -104,7 +100,6 @@ const Regis_form = (pare) => {
           age: Values,
           pic: allvalues.pic,
           date:allvalues.date,
-          paydate:null
         };
       } else if (Names === "pic") {
         let file = event.target.files;
@@ -120,7 +115,6 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           date:allvalues.date,
           pic: Info,
-          paydate:allvalues.paydate
         };
       }
     });

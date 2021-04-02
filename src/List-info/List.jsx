@@ -18,11 +18,11 @@ const List = (props) => {
     await db1
       .get("store1", Number(props.Id))
       .then((result) => {
-        console.log(result.value.paydate);
+        console.log(result.value);
         let paydate = moment(result.value.paydate, "DD-MM-YYYY");
         let presentdate = moment();
         let diff = presentdate.diff(paydate, "days");
-       let duedate = 30 - diff
+       let duedate = result.value.duedays - diff
        console.log(duedate)
         if (duedate == 0 || duedate<=5 ) {
           setstyle({
@@ -45,10 +45,12 @@ const List = (props) => {
       .catch((err) => console.log(err));
   };
   async function set() {
+    console.log(props)
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
+        duedays:30,
         paydate: moment().format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
@@ -56,9 +58,9 @@ const List = (props) => {
         id: props.Id,
         pic: props.Img,
         date: props.Time,
-      },
+      } 
     });
-    window.location.reload();
+    // window.location.reload();
   }
   return (
     <div className="list-main">
