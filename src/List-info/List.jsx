@@ -21,36 +21,37 @@ const List = (props) => {
         console.log(result.value);
         let paydate = moment(result.value.paydate, "DD-MM-YYYY");
         let presentdate = moment();
-        let diff = presentdate.diff(paydate, "days");
-       let duedate = result.value.duedays - diff
-       console.log(duedate)
-        if (duedate == 0 || duedate<=5 ) {
+        let diff =
+          presentdate.diff(paydate, "days");
+        let duedate = result.value.duedays - diff;
+        console.log(duedate);
+        if (duedate == 0 || duedate <= 5) {
           setstyle({
             backgroundColor: "red",
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
           });
-        }else if(duedate >= 24){
+        } else if (duedate >= 24) {
           setstyle({
             backgroundColor: "green",
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
-            paddingBottom:'7px',
-            marginTop:"6px"
-          })
+            paddingBottom: "7px",
+            marginTop: "6px",
+          });
         }
       })
       .catch((err) => console.log(err));
   };
   async function set() {
-    console.log(props)
     const db1 = await openDB("db", 1);
+    console.log(props);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
-        duedays:30,
+        duedays: 30,
         paydate: moment().format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
@@ -58,10 +59,41 @@ const List = (props) => {
         id: props.Id,
         pic: props.Img,
         date: props.Time,
-      } 
+      },
     });
-    // window.location.reload();
+    window.location.reload();
   }
+  const repaid = async ()=>{
+    const db1 = openDB('db',1)
+    await (await db1).get("store1", Number(props.Id))
+    .then( async (result) => {
+      console.log(result);
+      console.log(result.value.duedays);
+      let paydate = moment(result.value.paydate, "DD-MM-YYYY");
+      let presentdate = moment();
+      let diff =
+        presentdate.diff(paydate, "days");
+      let duedate = result.value.duedays - diff;
+      console.log(duedate)
+      console.log(duedate);
+              if(await result.value.duedays){
+      await (await db1).put("store1", {
+        id: Number(props.Id),
+        value: {
+          duedays: duedate + 30,
+          paydate: moment().format("DD-MM-YYYY"),
+          age: result.value.age,
+          name: result.value.name,
+          phone: result.value.phone,
+          id: result.value.id,
+          pic: result.value.pic,
+          date: result.value.date,
+        },
+      });}
+    });
+    
+  }
+
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
@@ -85,10 +117,10 @@ const List = (props) => {
           </div>
         </div>
         <div id="warn" style={style}>
-          <button
-            onClick={set} className='paid-btn'>
+          <button onClick={set} className="paid-btn">
             Paid
           </button>
+          <button onClick={repaid} className='paid-btn'>Repaid</button>
         </div>
       </div>
     </div>
