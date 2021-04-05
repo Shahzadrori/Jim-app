@@ -29,7 +29,7 @@ export const C_Reducer = (state = C_State, action) => {
 export const D_Reducer = (state = D_State, action) => {
   switch (action.type) {
     case PIC:
-      return [action.payload];
+      return [...state,action.payload];
     default:
       return state;
   }

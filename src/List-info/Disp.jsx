@@ -5,19 +5,25 @@ import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { idb } from "../Components/DB/Db";
-import {openDB} from 'idb'
-const Display = (prep) => {
+import { openDB } from "idb";
+import moment from "moment";
+const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
+  // const [state,setstate] = useState()
   useEffect(() => {
-    dbi()
-  }, [])
-  const dbi = async () =>{
+    dbi();
+  }, []);
+  const dbi = async () => {
     let cursor = await (await idb.db1).transaction("store1").store.openCursor();
     while (cursor) {
-      await prep.get_data(cursor.value.value);
+      await props.get_data(cursor.value.value);
+      console.log(cursor.value);
+      // setstate([cursor.value.value])
+      props.Pic_it(cursor.value.value);
       cursor = await cursor.continue();
     }
   };
+  // console.log(state)
   function ncards(item) {
     if (check(item.name) == true) {
       return (
@@ -34,18 +40,31 @@ const Display = (prep) => {
       return null;
     }
   }
+  function filter(item) {
+    let expdate = moment(item.expdate);
+    let presentdate = moment();
+    let diff = -(presentdate.diff(expdate, "days"));
+    console.log(diff);
+    if (!item.paydate || diff <=5) {
+      return (
+        <List
+          Time={item.date}
+          Img={item.pic}
+          Name={item.name}
+          Id={item.id}
+          Phone={item.phone}
+          Age={item.age}
+        />
+      );
+    } 
+  }
   function check(cardname) {
-    var value = cardname.indexOf(prep.card_item) > -1;
+    var value = cardname.indexOf(props.card_item) > -1;
     return value;
   }
   function get_it() {
-    prep.add_it(inp_Data);
+    props.add_it(inp_Data);
   }
-  console.log(prep.filte_dat)
-  function filter(item){
-
-  }
-  filter()
   return (
     <>
       <div className="disp-top">
@@ -57,13 +76,11 @@ const Display = (prep) => {
         />
       </div>
       <div
-     style={{
-        backgroundColor:"green",
-        widht:"100%",
-        height:"30vh"
-      }}>
+       className='fil-div'
+      >
+        {props.Pic_data.map(filter)}
       </div>
-      <div className="disp-main">{prep.filte_data.map(ncards)}</div>
+      <div className="disp-main">{props.filte_data.map(ncards)}</div>
     </>
   );
 };
