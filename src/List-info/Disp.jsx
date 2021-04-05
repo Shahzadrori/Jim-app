@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { idb } from "../Components/DB/Db";
+import {openDB} from 'idb'
 const Display = (prep) => {
   const [inp_Data, setinp_Data] = useState();
   useEffect(() => {
-    dbi();
-  }, []);
-
-  const dbi = async () => {
+    dbi()
+  }, [])
+  const dbi = async () =>{
     let cursor = await (await idb.db1).transaction("store1").store.openCursor();
     while (cursor) {
       await prep.get_data(cursor.value.value);
@@ -34,7 +34,6 @@ const Display = (prep) => {
       return null;
     }
   }
-
   function check(cardname) {
     var value = cardname.indexOf(prep.card_item) > -1;
     return value;
@@ -42,7 +41,11 @@ const Display = (prep) => {
   function get_it() {
     prep.add_it(inp_Data);
   }
+  console.log(prep.filte_dat)
+  function filter(item){
 
+  }
+  filter()
   return (
     <>
       <div className="disp-top">
@@ -52,6 +55,13 @@ const Display = (prep) => {
           onChange={(e) => setinp_Data(e.target.value)}
           onKeyUp={get_it}
         />
+      </div>
+      <div
+     style={{
+        backgroundColor:"green",
+        widht:"100%",
+        height:"30vh"
+      }}>
       </div>
       <div className="disp-main">{prep.filte_data.map(ncards)}</div>
     </>
@@ -82,4 +92,3 @@ const mapdispatch = (dispatch) => {
   };
 };
 export default connect(mapstate, mapdispatch)(Display);
-// 2592000000 milli seconds in a month

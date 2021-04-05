@@ -3,12 +3,9 @@ import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 const List = (props) => {
   const [style, setstyle] = useState({});
-  const [mnvalue,setmnvalue] = useState([]);
-  console.log(mnvalue)
+  const [mnvalue, setmnvalue] = useState();
   useEffect(() => {
     Pay();
   }, []);
@@ -22,11 +19,9 @@ const List = (props) => {
     await db1
       .get("store1", Number(props.Id))
       .then((result) => {
-        console.log(result.value);
         let expdate = moment(result.value.expdate, "DD-MM-YYYY");
         let presentdate = moment();
         let diff = expdate.diff(presentdate, "days");
-        console.log(diff);
         if (diff == 0 || diff <= 5) {
           setstyle({
             backgroundColor: "red",
@@ -51,11 +46,11 @@ const List = (props) => {
   };
   async function set() {
     const db1 = await openDB("db", 1);
-    await  db1.put("store1", {
+    await db1.put("store1", {
       id: Number(props.Id),
       value: {
         paydate: moment().format("DD-MM-YYYY"),
-        expdate: moment().add( 1,"month").format("DD-MM-YYYY"),
+        expdate: moment().add(1, "month").format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
@@ -69,23 +64,15 @@ const List = (props) => {
   }
   function repaid() {
     var x = document.getElementById(props.Phone);
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      document.getElementsByClassName('paid-bnt').value = 'Cancel'
-    } else {
-      x.style.display = "none";
-    }
+     x.classList.toggle("none");
   }
-const  Done = async () =>{
+  const Done = async () => {
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
         paydate: moment().format("DD-MM-YYYY"),
-        expdate: moment().add(
-          mnvalue,
-          "month"
-        ).format("DD-MM-YYYY"),
+        expdate: moment().add(mnvalue, "month").format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
@@ -95,6 +82,10 @@ const  Done = async () =>{
       },
     });
     window.location.reload();
+  };
+  const Target =(eve)=>{
+       const value = eve.target.value
+       setmnvalue(value)
   }
   return (
     <div className="list-main">
@@ -103,14 +94,15 @@ const  Done = async () =>{
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
           <img src={props.Img} className="Pers-img" />
-          <div id={props.Phone} className="dis-content hide">
-            <input id={props.Phone} type="Number" 
-            value = {mnvalue}
-            onChange={(eve) => setmnvalue(eve.target.value)}
-             />
-            <button onClick={Done}>
-              Done
-            </button>
+          <div id={props.Phone} className="dis-content none">
+            <input
+              id={props.Phone}
+              type="Number"
+              value={mnvalue}
+              onChange={Target}
+            />
+            <button onClick={Done}>Done</button>
+            <button onClick={repaid}>Cancel</button>
           </div>
         </div>
         <div className="list-wrap">
