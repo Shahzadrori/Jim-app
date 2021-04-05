@@ -4,9 +4,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
 import { Button } from "@material-ui/core";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 const List = (props) => {
   const [style, setstyle] = useState({});
+  const [mnvalue,setmnvalue] = useState([]);
+  console.log(mnvalue)
   useEffect(() => {
     Pay();
   }, []);
@@ -21,7 +23,7 @@ const List = (props) => {
       .get("store1", Number(props.Id))
       .then((result) => {
         console.log(result.value);
-        let expdate =  moment(result.value.expdate,"DD-MM-YYYY")
+        let expdate = moment(result.value.expdate, "DD-MM-YYYY");
         let presentdate = moment();
         let diff = expdate.diff(presentdate, "days");
         console.log(diff);
@@ -31,7 +33,7 @@ const List = (props) => {
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
-            marginTop:'6px',
+            marginTop: "6px",
             paddingBottom: "7px",
           });
         } else if (diff >= 24) {
@@ -48,19 +50,12 @@ const List = (props) => {
       .catch((err) => console.log(err));
   };
   async function set() {
-    function repaid(value){
-      return value
-    }
     const db1 = await openDB("db", 1);
-    await db1.put("store1", {
+    await  db1.put("store1", {
       id: Number(props.Id),
       value: {
         paydate: moment().format("DD-MM-YYYY"),
-        expdate: moment().add(
-          1
-          // repaid(prompt('Enter the Month/s',1))
-          , "month"
-          ),
+        expdate: moment().add( 1,"month").format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
@@ -69,11 +64,37 @@ const List = (props) => {
         date: props.Time,
       },
     });
-    
+
     window.location.reload();
   }
-  const repaid = ()=>{
-    document.querySelector('.dis-content').classList.toggle('hid')
+  function repaid() {
+    var x = document.getElementById(props.Phone);
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      document.getElementsByClassName('paid-bnt').value = 'Cancel'
+    } else {
+      x.style.display = "none";
+    }
+  }
+const  Done = async () =>{
+    const db1 = await openDB("db", 1);
+    await db1.put("store1", {
+      id: Number(props.Id),
+      value: {
+        paydate: moment().format("DD-MM-YYYY"),
+        expdate: moment().add(
+          mnvalue,
+          "month"
+        ).format("DD-MM-YYYY"),
+        age: props.Age,
+        name: props.Name,
+        phone: props.Phone,
+        id: props.Id,
+        pic: props.Img,
+        date: props.Time,
+      },
+    });
+    window.location.reload();
   }
   return (
     <div className="list-main">
@@ -82,28 +103,15 @@ const List = (props) => {
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
           <img src={props.Img} className="Pers-img" />
-          {/* <div id="inp-div" className='dis-content hide' >
-      <input type="number" />
-      <button style={{
-        backgroundColor:"blue"
-      }}>asdf</button>
-      </div> */}
-         <div className="dis-content hid" style={{backgroundColor:"red"}}>
-                <ul className="list">
-                  <li>
-                    <Link to="#">Bikes</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Cars</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Mobiles</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Plots</Link>
-                  </li>
-                </ul>
-              </div>
+          <div id={props.Phone} className="dis-content hide">
+            <input id={props.Phone} type="Number" 
+            value = {mnvalue}
+            onChange={(eve) => setmnvalue(eve.target.value)}
+             />
+            <button onClick={Done}>
+              Done
+            </button>
+          </div>
         </div>
         <div className="list-wrap">
           <div className="list-txt">
@@ -123,7 +131,9 @@ const List = (props) => {
           <button onClick={set} className="paid-btn">
             Paid
           </button>
-          <button onClick={repaid} className='paid-btn'>Repaid</button>
+          <button onClick={repaid} className="paid-btn">
+            Repaid
+          </button>
         </div>
       </div>
     </div>
