@@ -3,6 +3,8 @@ import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
+import { Button } from "@material-ui/core";
+import {Link} from 'react-router-dom'
 const List = (props) => {
   const [style, setstyle] = useState({});
   useEffect(() => {
@@ -19,20 +21,20 @@ const List = (props) => {
       .get("store1", Number(props.Id))
       .then((result) => {
         console.log(result.value);
-        let paydate = moment(result.value.paydate, "DD-MM-YYYY");
+        let expdate =  moment(result.value.expdate,"DD-MM-YYYY")
         let presentdate = moment();
-        let diff =
-          presentdate.diff(paydate, "days");
-        let duedate = result.value.duedays - diff;
-        console.log(duedate);
-        if (duedate == 0 || duedate <= 5) {
+        let diff = expdate.diff(presentdate, "days");
+        console.log(diff);
+        if (diff == 0 || diff <= 5) {
           setstyle({
             backgroundColor: "red",
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
+            marginTop:'6px',
+            paddingBottom: "7px",
           });
-        } else if (duedate >= 24) {
+        } else if (diff >= 24) {
           setstyle({
             backgroundColor: "green",
             height: "30px",
@@ -46,13 +48,19 @@ const List = (props) => {
       .catch((err) => console.log(err));
   };
   async function set() {
+    function repaid(value){
+      return value
+    }
     const db1 = await openDB("db", 1);
-    console.log(props);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
-        duedays: 30,
         paydate: moment().format("DD-MM-YYYY"),
+        expdate: moment().add(
+          1
+          // repaid(prompt('Enter the Month/s',1))
+          , "month"
+          ),
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
@@ -61,39 +69,12 @@ const List = (props) => {
         date: props.Time,
       },
     });
+    
     window.location.reload();
   }
-  const repaid = async ()=>{
-    const db1 = openDB('db',1)
-    await (await db1).get("store1", Number(props.Id))
-    .then( async (result) => {
-      console.log(result);
-      console.log(result.value.duedays);
-      let paydate = moment(result.value.paydate, "DD-MM-YYYY");
-      let presentdate = moment();
-      let diff =
-        presentdate.diff(paydate, "days");
-      let duedate = result.value.duedays - diff;
-      console.log(duedate)
-      console.log(duedate);
-              if(await result.value.duedays){
-      await (await db1).put("store1", {
-        id: Number(props.Id),
-        value: {
-          duedays: duedate + 30,
-          paydate: moment().format("DD-MM-YYYY"),
-          age: result.value.age,
-          name: result.value.name,
-          phone: result.value.phone,
-          id: result.value.id,
-          pic: result.value.pic,
-          date: result.value.date,
-        },
-      });}
-    });
-    
+  const repaid = ()=>{
+    document.querySelector('.dis-content').classList.toggle('hid')
   }
-
   return (
     <div className="list-main">
       <div className="list-wrapper" key={Math.random()}>
@@ -101,6 +82,28 @@ const List = (props) => {
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
           <img src={props.Img} className="Pers-img" />
+          {/* <div id="inp-div" className='dis-content hide' >
+      <input type="number" />
+      <button style={{
+        backgroundColor:"blue"
+      }}>asdf</button>
+      </div> */}
+         <div className="dis-content hid" style={{backgroundColor:"red"}}>
+                <ul className="list">
+                  <li>
+                    <Link to="#">Bikes</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Cars</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Mobiles</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Plots</Link>
+                  </li>
+                </ul>
+              </div>
         </div>
         <div className="list-wrap">
           <div className="list-txt">
