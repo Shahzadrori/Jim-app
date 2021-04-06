@@ -8,19 +8,28 @@
 
 .fil-div{
   display: flex;
-  margin: auto;
-  justify-content: space-between;
-  background-color: #be0000;
-  width: 1200px;
-  min-width: 300px;
-  overflow-x: scroll;
+  margin: 100px auto;
+  margin-top: 50px;
+  justify-content: center;
+  background-image: linear-gradient(to right top, #b5072d, #c63129, #d54e23, #e2691b, #eb8312);
+  width: 1000px;
+  /* width: max-content; */
+  height: max-content;
+  /* height: 500px; */
+  border-radius: 20px;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 .fil-div .list-main {
   margin-top: 30px;
   border: 1px solid;
   height: 435px;
   width: 300px;
-  margin-left: 100px;
+  margin: 50px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -41,6 +50,9 @@
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+}
+.fil-div .list-wrapper .content{
+  width: 300px;
 }
 .disp-top {
   display: flex;

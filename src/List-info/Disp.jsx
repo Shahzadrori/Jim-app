@@ -9,7 +9,6 @@ import { openDB } from "idb";
 import moment from "moment";
 const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
-  // const [state,setstate] = useState()
   useEffect(() => {
     dbi();
   }, []);
@@ -17,19 +16,17 @@ const Display = (props) => {
     let cursor = await (await idb.db1).transaction("store1").store.openCursor();
     while (cursor) {
       await props.get_data(cursor.value.value);
-      console.log(cursor.value);
-      // setstate([cursor.value.value])
       props.Pic_it(cursor.value.value);
       cursor = await cursor.continue();
     }
   };
-  // console.log(state)
-  function ncards(item,index) {
+
+  function ncards(item, index) {
     if (check(item.name) == true) {
       return (
         <List
-         Unik = {Math.random() * 1000}
-          Index = {index}
+          Unik={Math.random() * 1000}
+          Index={index}
           Time={item.date}
           Img={item.pic}
           Name={item.name}
@@ -43,21 +40,25 @@ const Display = (props) => {
     }
   }
   function filter(item) {
-    let expdate = moment(item.expdate);
+    let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
     let diff = -presentdate.diff(expdate, "days");
     console.log(diff);
-    if (!item.paydate || diff <= 5) {
-      return (
-        <List
-          Time={item.date}
-          Img={item.pic}
-          Name={item.name}
-          Id={item.id}
-          Phone={item.phone}
-          Age={item.age}
-        />
-      );
+    if (diff <= 5) {
+      if (check(item.name) == true) {
+        return (
+          <List
+            Time={item.date}
+            Img={item.pic}
+            Name={item.name}
+            Id={item.id}
+            Phone={item.phone}
+            Age={item.age}
+          />
+        );
+      }
+    } else {
+      return null;
     }
   }
   function check(cardname) {

@@ -17,7 +17,6 @@ const List = (props) => {
     Pay();
   }, []);
   var data = [];
-  console.log(data);
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
@@ -72,7 +71,6 @@ const List = (props) => {
       }
     });
   };
-  console.log(num);
   async function set() {
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
@@ -94,7 +92,6 @@ const List = (props) => {
   function repaid() {
     document.getElementById(props.Phone).classList.toggle("none");
   }
-  console.log(num.name);
   const Done = async () => {
     let element = document.getElementById(props.Index).value;
     let elements = document.getElementById(props.Unik).value;
