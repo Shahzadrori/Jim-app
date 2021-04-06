@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { idb } from "../Components/DB/Db";
-import { openDB } from "idb";
 import moment from "moment";
 const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
@@ -16,13 +15,17 @@ const Display = (props) => {
     let cursor = await (await idb.db1).transaction("store1").store.openCursor();
     while (cursor) {
       await props.get_data(cursor.value.value);
-      props.Pic_it(cursor.value.value);
+     await props.Pic_it(cursor.value.value);
       cursor = await cursor.continue();
     }
   };
 
   function ncards(item, index) {
+    let expdate = moment(item.expdate, "DD-MM-YYYY");
+    let presentdate = moment();
+    let diff = -presentdate.diff(expdate, "days");
     if (check(item.name) == true) {
+      if (diff >  5) {
       return (
         <List
           Unik={Math.random() * 1000}
@@ -38,12 +41,14 @@ const Display = (props) => {
     } else {
       return null;
     }
+    } else {
+      return null;
+    }
   }
   function filter(item) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
     let diff = -presentdate.diff(expdate, "days");
-    console.log(diff);
     if (diff <= 5) {
       if (check(item.name) == true) {
         return (

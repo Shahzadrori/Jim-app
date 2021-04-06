@@ -3,7 +3,6 @@ import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
-import { toast } from "react-toastify";
 const List = (props) => {
   const [style, setstyle] = useState({});
   const [num, setnum] = useState({
@@ -96,13 +95,13 @@ const List = (props) => {
     let element = document.getElementById(props.Index).value;
     let elements = document.getElementById(props.Unik).value;
     if (
-      element === "" ||
-      element === null ||
-      elements === null ||
-      elements === ""
+      element == "" 
     ) {
       alert("Input Field should not be empty");
-    } else {
+    } else if(elements == "" ){
+      alert('Input Field should not be empty')
+    }
+    else {
       const db1 = await openDB("db", 1);
       await db1.put("store1", {
         id: Number(props.Id),
@@ -123,6 +122,7 @@ const List = (props) => {
       window.location.reload();
     }
   };
+  console.log(num)
   return (
     <div className="list-main" key={props.Index}>
       <div className="list-wrapper" key={props.Index}>

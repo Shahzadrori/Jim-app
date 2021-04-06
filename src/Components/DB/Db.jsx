@@ -4,7 +4,6 @@ export async function Database(regis) {
     upgrade(db) {
       db.createObjectStore("store1", {
         keyPath: "id",
-        // autoIncrement: true,
       });
     },
   });
