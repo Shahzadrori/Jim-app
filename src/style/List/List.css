@@ -9,8 +9,10 @@
   height: max-content;
   margin-top: -8px;
 }
-.dis-content input{
+.add-btn{
   width: 100px;
+  height: 20px;
+  margin-top: 3px;
   margin-right: 25px;
   padding: 3px;
   padding-left: 4px;
@@ -19,6 +21,12 @@
   border-bottom-right-radius: 10px;
   outline: none;
   text-align: center;
+}
+.done-btn{
+  height: 20px;
+}
+.cancel-btn{
+  height: 20px;
 }
 .dis-content button {
   border: none;
@@ -46,6 +54,7 @@
   border: 1px solid;
   height: 435px;
   width: 300px;
+  margin-left: 100px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;

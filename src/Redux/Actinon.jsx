@@ -1,4 +1,4 @@
-import { ADD, GET, PIC, TAKE } from "./Type";
+import { ADD, GET, PIC, TAKE, Time } from "./Type";
 
 export const Add_It = (Data) => {
   return {
@@ -24,3 +24,9 @@ export const Get_Pic = (imgs) => {
     payload: imgs,
   };
 };
+export const Add_Time =(time)=>{
+  return{
+    type: Time,
+    payload:time
+  }
+}

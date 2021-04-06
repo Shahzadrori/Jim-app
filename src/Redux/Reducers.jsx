@@ -1,5 +1,5 @@
-import { B_STATE, C_State, D_State, Init_State } from "./State";
-import { ADD, GET, PIC, TAKE } from "./Type";
+import { B_STATE, C_State, D_State, E_State, Init_State } from "./State";
+import { ADD, GET, PIC, TAKE, Time } from "./Type";
 
 export const Reducer = (state = Init_State, action) => {
   switch (action.type) {
@@ -34,3 +34,11 @@ export const D_Reducer = (state = D_State, action) => {
       return state;
   }
 };
+export const E_Reducer = (state = E_State,action) =>{
+  switch(action.type){
+    case Time:
+      return [action.payload]
+      default :
+       return state
+  }
+}

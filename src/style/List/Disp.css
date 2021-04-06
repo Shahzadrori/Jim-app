@@ -5,6 +5,16 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+.fil-div{
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+  background-color: #be0000;
+  width: 1200px;
+  min-width: 300px;
+  overflow-x: scroll;
+}
 .disp-top {
   display: flex;
   justify-content: flex-start;

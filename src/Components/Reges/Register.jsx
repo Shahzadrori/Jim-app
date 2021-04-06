@@ -106,7 +106,7 @@ const Regis_form = (pare) => {
         let reader = new FileReader();
         reader.readAsDataURL(file[0]);
         reader.onload = (e) => {
-          Info.push(e.target.result);
+        Info.push(e.target.result);
         };
         return {
           name: allvalues.name,

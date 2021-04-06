@@ -3,17 +3,24 @@ import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
+import { connect } from "react-redux";
+import { Add_Time } from "../Redux/Actinon";
 const List = (props) => {
   const [style, setstyle] = useState({});
-  const [mnvalue, setmnvalue] = useState();
+  const [num, setnum] = useState({
+    name:""
+  });
   useEffect(() => {
     Pay();
   }, []);
+  var data=[]
+  console.log(data)
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
     return await db.delete("store1", Number(props.Id));
   }
+
   const Pay = async () => {
     const db1 = await openDB("db", 1);
     await db1
@@ -44,6 +51,18 @@ const List = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  const Target =  (eve)=>{
+    const value = eve.target.value
+    const Name = eve.target.name
+    console.log(value)
+    setnum((allvalues)=>{
+      if(Name === 'time-btn'){
+         return{
+           name:value
+         }
+      }
+    })
+}
   async function set() {
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
@@ -63,16 +82,16 @@ const List = (props) => {
     window.location.reload();
   }
   function repaid() {
-    var x = document.getElementById(props.Phone);
-     x.classList.toggle("none");
+    var x = document.getElementById(props.Phone).classList.toggle("none")
   }
+console.log(num.name)
   const Done = async () => {
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
         paydate: moment().format("DD-MM-YYYY"),
-        expdate: moment().add(mnvalue, "month").format("DD-MM-YYYY"),
+        expdate: moment().add(Number(num.name), "month").format("DD-MM-YYYY"),
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
@@ -83,26 +102,24 @@ const List = (props) => {
     });
     window.location.reload();
   };
-  const Target =(eve)=>{
-       const value = eve.target.value
-       setmnvalue(value)
-  }
   return (
-    <div className="list-main">
-      <div className="list-wrapper" key={Math.random()}>
+    <div className="list-main" key={props.Index}>
+      <div className="list-wrapper" key={props.Index}>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
           <img src={props.Img} className="Pers-img" />
           <div id={props.Phone} className="dis-content none">
             <input
-              id={props.Phone}
-              type="Number"
-              value={mnvalue}
-              onChange={Target}
+              id={props.Index}
+              type="number"
+              onKeyUp={Target}
+              className='add-btn'
+              name="time-btn"
             />
-            <button onClick={Done}>Done</button>
-            <button onClick={repaid}>Cancel</button>
+            
+          <button className='done-btn' onClick={Done}>Done</button>
+            <button className='cancel-btn' onClick={repaid}>Cancel</button>
           </div>
         </div>
         <div className="list-wrap">
@@ -131,4 +148,5 @@ const List = (props) => {
     </div>
   );
 };
+
 export default List;

@@ -24,10 +24,11 @@ const Display = (props) => {
     }
   };
   // console.log(state)
-  function ncards(item) {
+  function ncards(item,index) {
     if (check(item.name) == true) {
       return (
         <List
+          Index = {index}
           Time={item.date}
           Img={item.pic}
           Name={item.name}
@@ -43,9 +44,9 @@ const Display = (props) => {
   function filter(item) {
     let expdate = moment(item.expdate);
     let presentdate = moment();
-    let diff = -(presentdate.diff(expdate, "days"));
+    let diff = -presentdate.diff(expdate, "days");
     console.log(diff);
-    if (!item.paydate || diff <=5) {
+    if (!item.paydate || diff <= 5) {
       return (
         <List
           Time={item.date}
@@ -56,7 +57,7 @@ const Display = (props) => {
           Age={item.age}
         />
       );
-    } 
+    }
   }
   function check(cardname) {
     var value = cardname.indexOf(props.card_item) > -1;
@@ -75,11 +76,7 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      <div
-       className='fil-div'
-      >
-        {props.Pic_data.map(filter)}
-      </div>
+      <div className="fil-div">{props.Pic_data.map(filter)}</div>
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
     </>
   );
