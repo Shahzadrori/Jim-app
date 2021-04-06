@@ -3,18 +3,21 @@ import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
-import { connect } from "react-redux";
-import { Add_Time } from "../Redux/Actinon";
+import { toast } from "react-toastify";
 const List = (props) => {
   const [style, setstyle] = useState({});
   const [num, setnum] = useState({
-    name:""
+    month: "",
+    amount: "",
+  });
+  const [stle, setstle] = useState({
+    display: "none",
   });
   useEffect(() => {
     Pay();
   }, []);
-  var data=[]
-  console.log(data)
+  var data = [];
+  console.log(data);
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
@@ -51,18 +54,25 @@ const List = (props) => {
       })
       .catch((err) => console.log(err));
   };
-  const Target =  (eve)=>{
-    const value = eve.target.value
-    const Name = eve.target.name
-    console.log(value)
-    setnum((allvalues)=>{
-      if(Name === 'time-btn'){
-         return{
-           name:value
-         }
+  const Target = (eve) => {
+    const value = eve.target.value;
+    const Name = eve.target.name;
+    console.log(value);
+    setnum((allvalues) => {
+      if (Name === "time-btn") {
+        return {
+          month: value,
+          amount: allvalues.amount,
+        };
+      } else if (Name === "amount") {
+        return {
+          month: allvalues.month,
+          amount: value,
+        };
       }
-    })
-}
+    });
+  };
+  console.log(num);
   async function set() {
     const db1 = await openDB("db", 1);
     await db1.put("store1", {
@@ -82,25 +92,39 @@ const List = (props) => {
     window.location.reload();
   }
   function repaid() {
-    var x = document.getElementById(props.Phone).classList.toggle("none")
+    document.getElementById(props.Phone).classList.toggle("none");
   }
-console.log(num.name)
+  console.log(num.name);
   const Done = async () => {
-    const db1 = await openDB("db", 1);
-    await db1.put("store1", {
-      id: Number(props.Id),
-      value: {
-        paydate: moment().format("DD-MM-YYYY"),
-        expdate: moment().add(Number(num.name), "month").format("DD-MM-YYYY"),
-        age: props.Age,
-        name: props.Name,
-        phone: props.Phone,
-        id: props.Id,
-        pic: props.Img,
-        date: props.Time,
-      },
-    });
-    window.location.reload();
+    let element = document.getElementById(props.Index).value;
+    let elements = document.getElementById(props.Unik).value;
+    if (
+      element === "" ||
+      element === null ||
+      elements === null ||
+      elements === ""
+    ) {
+      alert("Input Field should not be empty");
+    } else {
+      const db1 = await openDB("db", 1);
+      await db1.put("store1", {
+        id: Number(props.Id),
+        value: {
+          paydate: moment().format("DD-MM-YYYY"),
+          expdate: moment()
+            .add(Number(num.month), "month")
+            .format("DD-MM-YYYY"),
+          amount: Number(num.amount),
+          age: props.Age,
+          name: props.Name,
+          phone: props.Phone,
+          id: props.Id,
+          pic: props.Img,
+          date: props.Time,
+        },
+      });
+      window.location.reload();
+    }
   };
   return (
     <div className="list-main" key={props.Index}>
@@ -114,12 +138,24 @@ console.log(num.name)
               id={props.Index}
               type="number"
               onKeyUp={Target}
-              className='add-btn'
+              className="add-btn"
               name="time-btn"
+              placeholder="Enter Months"
             />
-            
-          <button className='done-btn' onClick={Done}>Done</button>
-            <button className='cancel-btn' onClick={repaid}>Cancel</button>
+            <button className="done-btn" onClick={Done}>
+              Done
+            </button>
+            <button className="cancel-btn" onClick={repaid}>
+              Cancel
+            </button>
+            <input
+              id={props.Unik}
+              type="number"
+              onKeyUp={Target}
+              className="amount"
+              name="amount"
+              placeholder="Enter Amount"
+            />
           </div>
         </div>
         <div className="list-wrap">

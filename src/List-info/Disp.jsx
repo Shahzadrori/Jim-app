@@ -28,6 +28,7 @@ const Display = (props) => {
     if (check(item.name) == true) {
       return (
         <List
+         Unik = {Math.random() * 1000}
           Index = {index}
           Time={item.date}
           Img={item.pic}

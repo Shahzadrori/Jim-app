@@ -9,11 +9,38 @@
 .fil-div{
   display: flex;
   margin: auto;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: #be0000;
   width: 1200px;
   min-width: 300px;
   overflow-x: scroll;
+}
+.fil-div .list-main {
+  margin-top: 30px;
+  border: 1px solid;
+  height: 435px;
+  width: 300px;
+  margin-left: 100px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: 2px 1px 5px black;
+  font-family: "Chango", cursive;
+}
+.fil-div .list-wrapper .content .Pers-img {
+  display: flex;
+  flex-shrink: 0;
+  width: 200px;
+  height: 150px;
+  margin-right: 20px;
+  margin-top: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 .disp-top {
   display: flex;
