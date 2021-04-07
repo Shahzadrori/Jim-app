@@ -6,16 +6,18 @@ import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import { idb } from "../Components/DB/Db";
 import moment from "moment";
+import { openDB } from "idb";
 const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
   useEffect(() => {
     dbi();
   }, []);
   const dbi = async () => {
-    let cursor = await (await idb.db1).transaction("store1").store.openCursor();
+    const db1 = openDB('db',1);
+    let cursor = await (await db1).transaction("store1").store.openCursor();
     while (cursor) {
+      await props.Pic_it(cursor.value.value);
       await props.get_data(cursor.value.value);
-     await props.Pic_it(cursor.value.value);
       cursor = await cursor.continue();
     }
   };
@@ -23,9 +25,10 @@ const Display = (props) => {
   function ncards(item, index) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
-    let diff = -presentdate.diff(expdate, "days");
+    let diff = -(presentdate.diff(expdate, "days"));
+    console.log(diff)
     if (check(item.name) == true) {
-      if (diff >  5) {
+      if (item.expdate !== null && diff > 5) {
       return (
         <List
           Unik={Math.random() * 1000}
@@ -38,9 +41,7 @@ const Display = (props) => {
           Age={item.age}
         />
       );
-    } else {
-      return null;
-    }
+    } 
     } else {
       return null;
     }
@@ -49,7 +50,7 @@ const Display = (props) => {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
     let diff = -presentdate.diff(expdate, "days");
-    if (diff <= 5) {
+    if (diff <= 5 || item.expdate == null) {
       if (check(item.name) == true) {
         return (
           <List
@@ -83,8 +84,8 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      <div className="fil-div">{props.Pic_data.map(filter)}</div>
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
+      <div className="fil-div">{props.Pic_data.map(filter)}</div>
     </>
   );
 };

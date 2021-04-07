@@ -4,18 +4,24 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { openDB } from "idb";
 import moment from "moment";
 const List = (props) => {
-  const [style, setstyle] = useState({});
+  const [style, setstyle] = useState({
+    backgroundColor: "#ff7a00",
+    height: "30px",
+    borderBottomLeftRadius: "20px",
+    borderBottomRightRadius: "20px",
+    marginTop: "6px",
+    paddingBottom: "7px",
+  });
   const [num, setnum] = useState({
     month: "",
     amount: "",
   });
-  const [stle, setstle] = useState({
-    display: "none",
-  });
+  const [stye,setsty]=useState({
+    color:"black"
+  })
   useEffect(() => {
     Pay();
   }, []);
-  var data = [];
   async function del() {
     window.location.reload();
     const db = await openDB("db", 1);
@@ -32,7 +38,7 @@ const List = (props) => {
         let diff = expdate.diff(presentdate, "days");
         if (diff == 0 || diff <= 5) {
           setstyle({
-            backgroundColor: "red",
+            backgroundColor: '#c70039',
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
@@ -40,6 +46,9 @@ const List = (props) => {
             paddingBottom: "7px",
           });
         } else if (diff >= 24) {
+          setsty({
+            display:'none'
+          })
           setstyle({
             backgroundColor: "green",
             height: "30px",
@@ -55,7 +64,6 @@ const List = (props) => {
   const Target = (eve) => {
     const value = eve.target.value;
     const Name = eve.target.name;
-    console.log(value);
     setnum((allvalues) => {
       if (Name === "time-btn") {
         return {
@@ -85,7 +93,7 @@ const List = (props) => {
         date: props.Time,
       },
     });
-
+    
     window.location.reload();
   }
   function repaid() {
@@ -94,14 +102,11 @@ const List = (props) => {
   const Done = async () => {
     let element = document.getElementById(props.Index).value;
     let elements = document.getElementById(props.Unik).value;
-    if (
-      element == "" 
-    ) {
+    if (element == "") {
       alert("Input Field should not be empty");
-    } else if(elements == "" ){
-      alert('Input Field should not be empty')
-    }
-    else {
+    } else if (elements == "") {
+      alert("Input Field should not be empty");
+    } else {
       const db1 = await openDB("db", 1);
       await db1.put("store1", {
         id: Number(props.Id),
@@ -122,7 +127,6 @@ const List = (props) => {
       window.location.reload();
     }
   };
-  console.log(num)
   return (
     <div className="list-main" key={props.Index}>
       <div className="list-wrapper" key={props.Index}>
@@ -170,7 +174,7 @@ const List = (props) => {
           </div>
         </div>
         <div id="warn" style={style}>
-          <button onClick={set} className="paid-btn">
+          <button onClick={set} style={stye} className="paid-btn">
             Paid
           </button>
           <button onClick={repaid} className="paid-btn">

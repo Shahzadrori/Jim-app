@@ -14,7 +14,9 @@ const Regis_form = (pare) => {
     age: "",
     pic: "",
     date:"",
+    expdate:""
   });
+
   function toasts() {
     toast.dark(`Jobs Done`, {
       position: "top-right",
@@ -73,6 +75,7 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:allvalues.date,
+          expdate:allvalues.expdate
         };
       } else if (Names === "id") {
         return {
@@ -82,6 +85,7 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:moment().format('DD-MM-YYYY'),
+         expdate:null
         };
       } else if (Names === "phone") {
         return {
@@ -91,6 +95,7 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:allvalues.date,
+          expdate:allvalues.expdate
         };
       } else if (Names === "age") {
         return {
@@ -100,6 +105,7 @@ const Regis_form = (pare) => {
           age: Values,
           pic: allvalues.pic,
           date:allvalues.date,
+          expdate:allvalues.expdate
         };
       } else if (Names === "pic") {
         let file = event.target.files;
@@ -114,6 +120,7 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           date:allvalues.date,
+          expdate:allvalues.expdate,
           pic: Info,
         };
       }
