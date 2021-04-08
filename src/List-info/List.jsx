@@ -16,9 +16,9 @@ const List = (props) => {
     month: "",
     amount: "",
   });
-  const [stye,setsty]=useState({
-    color:"black"
-  })
+  const [stye, setsty] = useState({
+    color: "black",
+  });
   useEffect(() => {
     Pay();
   }, []);
@@ -38,7 +38,7 @@ const List = (props) => {
         let diff = expdate.diff(presentdate, "days");
         if (diff == 0 || diff <= 5) {
           setstyle({
-            backgroundColor: '#c70039',
+            backgroundColor: "#c70039",
             height: "30px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
@@ -47,8 +47,8 @@ const List = (props) => {
           });
         } else if (diff >= 24) {
           setsty({
-            display:'none'
-          })
+            display: "none",
+          });
           setstyle({
             backgroundColor: "green",
             height: "30px",
@@ -93,13 +93,18 @@ const List = (props) => {
         date: props.Time,
       },
     });
-    
+
     window.location.reload();
   }
   function repaid() {
     document.getElementById(props.Phone).classList.toggle("none");
   }
   const Done = async () => {
+    const db1 = await openDB("db", 1);
+    await db1
+    .get("store1", Number(props.Id))
+    .then( async (result) => {
+      console.log(result)
     let element = document.getElementById(props.Index).value;
     let elements = document.getElementById(props.Unik).value;
     if (element == "") {
@@ -107,12 +112,11 @@ const List = (props) => {
     } else if (elements == "") {
       alert("Input Field should not be empty");
     } else {
-      const db1 = await openDB("db", 1);
-      await db1.put("store1", {
+     await  db1.put("store1", {
         id: Number(props.Id),
         value: {
-          paydate: moment().format("DD-MM-YYYY"),
-          expdate: moment()
+          paydate: result.value.paydate,
+          expdate: moment(result.expdate)
             .add(Number(num.month), "month")
             .format("DD-MM-YYYY"),
           amount: Number(num.amount),
@@ -126,6 +130,9 @@ const List = (props) => {
       });
       window.location.reload();
     }
+    
+    })
+    .catch((err) => console.log(err));
   };
   return (
     <div className="list-main" key={props.Index}>

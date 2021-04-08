@@ -13,35 +13,34 @@ const Display = (props) => {
     dbi();
   }, []);
   const dbi = async () => {
-    const db1 = openDB('db',1);
+    const db1 = openDB("db", 1);
     let cursor = await (await db1).transaction("store1").store.openCursor();
     while (cursor) {
       await props.Pic_it(cursor.value.value);
       await props.get_data(cursor.value.value);
       cursor = await cursor.continue();
     }
-  };
-
+  }
   function ncards(item, index) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
-    let diff = -(presentdate.diff(expdate, "days"));
-    console.log(diff)
+    let diff = -presentdate.diff(expdate, "days");
+    // console.log(diff);
     if (check(item.name) == true) {
       if (item.expdate !== null && diff > 5) {
-      return (
-        <List
-          Unik={Math.random() * 1000}
-          Index={index}
-          Time={item.date}
-          Img={item.pic}
-          Name={item.name}
-          Id={item.id}
-          Phone={item.phone}
-          Age={item.age}
-        />
-      );
-    } 
+        return (
+          <List
+            Unik={Math.random() * 1000}
+            Index={index}
+            Time={item.date}
+            Img={item.pic}
+            Name={item.name}
+            Id={item.id}
+            Phone={item.phone}
+            Age={item.age}
+          />
+        );
+      }
     } else {
       return null;
     }
