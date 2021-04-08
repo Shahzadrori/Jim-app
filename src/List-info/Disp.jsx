@@ -4,7 +4,6 @@ import "../style/List/Disp.css";
 import { connect } from "react-redux";
 import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
-import { idb } from "../Components/DB/Db";
 import moment from "moment";
 import { openDB } from "idb";
 const Display = (props) => {
@@ -83,8 +82,9 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      <div className="disp-main">{props.filte_data.map(ncards)}</div>
       <div className="fil-div">{props.Pic_data.map(filter)}</div>
+      <div className="disp-main">{props.filte_data.map(ncards)}</div>
+     
     </>
   );
 };

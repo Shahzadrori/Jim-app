@@ -9,6 +9,7 @@
   height: max-content;
   margin-top: -8px;
 }
+
 .add-btn{
   background-color:#aaaaaa;
   color: white;
@@ -153,6 +154,10 @@ h3 {
   -moz-transform: scale(1.03);
   -ms-transform: scale(1.03);
   -o-transform: scale(1.03);
+}
+
+#warn{
+  display: flex;
 }
 #warn .paid-btn {
   margin-right: 20px;

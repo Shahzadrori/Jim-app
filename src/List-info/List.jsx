@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/List/List.css";
 import DeleteIcon from "@material-ui/icons/Delete";
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import { openDB } from "idb";
 import moment from "moment";
 const List = (props) => {
@@ -18,6 +19,9 @@ const List = (props) => {
   });
   const [stye, setsty] = useState({
     color: "black",
+  });
+  const [stl, setstl] = useState({
+    display: "none",
   });
   useEffect(() => {
     Pay();
@@ -37,6 +41,9 @@ const List = (props) => {
         let presentdate = moment();
         let diff = expdate.diff(presentdate, "days");
         if (diff == 0 || diff <= 5) {
+          setstl({
+            display: "block",
+          });
           setstyle({
             backgroundColor: "#c70039",
             height: "30px",
@@ -46,6 +53,9 @@ const List = (props) => {
             paddingBottom: "7px",
           });
         } else if (diff >= 24) {
+          setstl({
+            display: "block",
+          });
           setsty({
             display: "none",
           });
@@ -93,7 +103,6 @@ const List = (props) => {
         date: props.Time,
       },
     });
-
     window.location.reload();
   }
   function repaid() {
@@ -102,37 +111,37 @@ const List = (props) => {
   const Done = async () => {
     const db1 = await openDB("db", 1);
     await db1
-    .get("store1", Number(props.Id))
-    .then( async (result) => {
-      console.log(result)
-    let element = document.getElementById(props.Index).value;
-    let elements = document.getElementById(props.Unik).value;
-    if (element == "") {
-      alert("Input Field should not be empty");
-    } else if (elements == "") {
-      alert("Input Field should not be empty");
-    } else {
-     await  db1.put("store1", {
-        id: Number(props.Id),
-        value: {
-          paydate: result.value.paydate,
-          expdate: moment(result.expdate)
-            .add(Number(num.month), "month")
-            .format("DD-MM-YYYY"),
-          amount: Number(num.amount),
-          age: props.Age,
-          name: props.Name,
-          phone: props.Phone,
-          id: props.Id,
-          pic: props.Img,
-          date: props.Time,
-        },
-      });
-      window.location.reload();
-    }
-    
-    })
-    .catch((err) => console.log(err));
+      .get("store1", Number(props.Id))
+      .then(async (result) => {
+        console.log(result);
+        let element = document.getElementById(props.Index).value;
+        let elements = document.getElementById(props.Unik).value;
+        if (element == "") {
+          alert("Input Field should not be empty");
+        } else if (elements == "") {
+          alert("Input Field should not be empty");
+        } else {
+          await db1.put("store1", {
+            id: Number(props.Id),
+            value: {
+              paydate: result.value.paydate,
+              expdate: moment(result.expdate)
+                .add(Number(num.month), "months")
+                .add(1, "month")
+                .format("DD-MM-YYYY"),
+              amount: Number(num.amount),
+              age: props.Age,
+              name: props.Name,
+              phone: props.Phone,
+              id: props.Id,
+              pic: props.Img,
+              date: props.Time,
+            },
+          });
+          window.location.reload();
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="list-main" key={props.Index}>
@@ -184,7 +193,12 @@ const List = (props) => {
           <button onClick={set} style={stye} className="paid-btn">
             Paid
           </button>
-          <button onClick={repaid} className="paid-btn">
+          <button
+            id="res-btn"
+            onClick={repaid}
+            style={stl}
+            className="paid-btn"
+          >
             Repaid
           </button>
         </div>
