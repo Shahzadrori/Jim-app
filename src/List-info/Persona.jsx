@@ -1,10 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../style/List/persona.css";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Button from '@material-ui/core/Button';
 const Persona = (props) => {
+    function back(){
+        window.location.href = '/list'
+    }
   return (
     <>
       <div className="persona_outer">
+      <Button onClick={back} variant="contained" className="back-btn">  <ArrowBackIosIcon /> Back</Button>
         <div className="persona_inner">
           <div className="persona_img">
             <img src={props.data[0].pic} />

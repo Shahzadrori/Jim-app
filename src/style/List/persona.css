@@ -9,6 +9,11 @@
     height: 100vh;
     background-image: linear-gradient(to right top, #020202, #1c1c1c, #303030, #454545, #5c5c5c);
 }
+.persona_outer .back-btn{
+    position: absolute;
+    left: 40px;
+    top: 100px;
+}
 .persona_img{
     color: white;
     display: flex;

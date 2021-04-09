@@ -6,6 +6,7 @@ import { Add_It, Get_It, Take_It, Get_Pic } from "../Redux/Actinon";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import { openDB } from "idb";
+import Edit from "./edit";
 const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
   useEffect(() => {

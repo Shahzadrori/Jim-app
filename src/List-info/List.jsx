@@ -130,7 +130,6 @@ const List = (props) => {
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
-        console.log(result.value.expdate);
         await db1.put("store1", {
           id: Number(props.Id),
           value: {
