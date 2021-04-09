@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import "../style/List/List.css";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import IconButton from "@material-ui/core/IconButton";
 import { openDB } from "idb";
 import moment from "moment";
+import Persona from "./Persona";
+import { connect } from "react-redux";
+import { Person_data } from "../Redux/Actinon";
+import history from "../history";
 const List = (props) => {
   const [style, setstyle] = useState({
     backgroundColor: "#ff7a00",
@@ -31,7 +37,6 @@ const List = (props) => {
     const db = await openDB("db", 1);
     return await db.delete("store1", Number(props.Id));
   }
-
   const Pay = async () => {
     const db1 = await openDB("db", 1);
     await db1
@@ -108,12 +113,22 @@ const List = (props) => {
   function repaid() {
     document.getElementById(props.Phone).classList.toggle("none");
   }
+  const person = async () => {
+    const db1 = await openDB("db", 1);
+    await db1
+      .get("store1", Number(props.Id))
+      .then(async (result) => {
+        props.pers(result.value);
+        history.push("/persona");
+      })
+      .catch((err) => console.log(err));
+  };
   const Done = async () => {
     const db1 = await openDB("db", 1);
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
-        console.log(result);
+        console.log(result.value.expdate)
         let element = document.getElementById(props.Index).value;
         let elements = document.getElementById(props.Unik).value;
         if (element == "") {
@@ -125,7 +140,7 @@ const List = (props) => {
             id: Number(props.Id),
             value: {
               paydate: result.value.paydate,
-              expdate: moment(result.expdate)
+              expdate: moment(result.value.expdate)
                 .add(Number(num.month), "months")
                 .add(1, "month")
                 .format("DD-MM-YYYY"),
@@ -201,10 +216,26 @@ const List = (props) => {
           >
             Repaid
           </button>
+          <button id="visit" onClick={person}>
+            Details
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default List;
+const mapstate = (state) => {
+  console.table(state);
+  return {
+    person_item: state.Ereducer,
+  };
+};
+const mapdispatch = (dispatch) => {
+  return {
+    pers: (pers_info) => {
+      dispatch(Person_data(pers_info));
+    },
+  };
+};
+export default connect(mapstate, mapdispatch)(List);

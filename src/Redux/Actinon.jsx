@@ -24,9 +24,9 @@ export const Get_Pic = (imgs) => {
     payload: imgs,
   };
 };
-export const Add_Time =(time)=>{
+export const Person_data =(info)=>{
   return{
     type: Time,
-    payload:time
+    payload:info
   }
 }
