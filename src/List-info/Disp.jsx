@@ -89,7 +89,6 @@ const Display = (props) => {
   );
 };
 const mapstate = (state) => {
-  console.table(state)
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,

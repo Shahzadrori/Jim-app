@@ -155,7 +155,9 @@ h3 {
   -ms-transform: scale(1.03);
   -o-transform: scale(1.03);
 }
-
+#warn #res-btn{
+  width: 100px;
+}
 #warn{
   display: flex;
 }

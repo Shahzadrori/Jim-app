@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.persona_outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right top, #020202, #1c1c1c, #303030, #454545, #5c5c5c);
+}
+.persona_img{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-right: 100px;
+    font-family: 'Lobster', cursive;
+}
+
+.persona_inner img{
+    width: 250px;
+    height: 150px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.persona_inner{
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHoPW9KJ1c5rvMxOppqtfklUalhmRNJbANg&usqp=CAU');
+     background-repeat: no-repeat;
+     background-size: cover;
+     border: 1px solid;
+     padding: 20px;
+     width: 800px;
+     height: 400px;
+     border-radius: 20px;
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+} 
+
+.persona_content{
+    color: aliceblue;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    font-family: 'Train One', cursive;
+    margin-top: 20px;
+}
+.persona_content .persona_txt{
+    border-right: 4px solid;
+    padding-right: 30px;
+}
+.persona_content .persona_txt_value{
+    padding-left: 30px;
+}

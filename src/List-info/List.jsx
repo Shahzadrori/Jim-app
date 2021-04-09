@@ -27,7 +27,7 @@ const List = (props) => {
     color: "black",
   });
   const [stl, setstl] = useState({
-    display: "none",
+    display: "block",
   });
   useEffect(() => {
     Pay();
@@ -59,7 +59,7 @@ const List = (props) => {
           });
         } else if (diff >= 24) {
           setstl({
-            display: "block",
+            display: "none",
           });
           setsty({
             display: "none",
@@ -100,12 +100,13 @@ const List = (props) => {
       value: {
         paydate: moment().format("DD-MM-YYYY"),
         expdate: moment().add(1, "month").format("DD-MM-YYYY"),
+        amount: 25000,
+        date: props.Time,
         age: props.Age,
         name: props.Name,
         phone: props.Phone,
         id: props.Id,
         pic: props.Img,
-        date: props.Time,
       },
     });
     window.location.reload();
@@ -123,38 +124,30 @@ const List = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
   const Done = async () => {
     const db1 = await openDB("db", 1);
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
-        console.log(result.value.expdate)
-        let element = document.getElementById(props.Index).value;
-        let elements = document.getElementById(props.Unik).value;
-        if (element == "") {
-          alert("Input Field should not be empty");
-        } else if (elements == "") {
-          alert("Input Field should not be empty");
-        } else {
-          await db1.put("store1", {
-            id: Number(props.Id),
-            value: {
-              paydate: result.value.paydate,
-              expdate: moment(result.value.expdate)
-                .add(Number(num.month), "months")
-                .add(1, "month")
-                .format("DD-MM-YYYY"),
-              amount: Number(num.amount),
-              age: props.Age,
-              name: props.Name,
-              phone: props.Phone,
-              id: props.Id,
-              pic: props.Img,
-              date: props.Time,
-            },
-          });
-          window.location.reload();
-        }
+        console.log(result.value.expdate);
+        await db1.put("store1", {
+          id: Number(props.Id),
+          value: {
+            paydate: moment().format("DD-MM-YYYY"),
+            expdate: moment()
+              .add(Number(num.month), "months")
+              .format("DD-MM-YYYY"),
+            date: props.Time,
+            amount: Number(num.amount),
+            age: props.Age,
+            name: props.Name,
+            phone: props.Phone,
+            id: props.Id,
+            pic: props.Img,
+          },
+        });
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -214,9 +207,9 @@ const List = (props) => {
             style={stl}
             className="paid-btn"
           >
-            Repaid
+            Advance
           </button>
-          <button id="visit" onClick={person}>
+          <button className="paid-btn" onClick={person}>
             Details
           </button>
         </div>
