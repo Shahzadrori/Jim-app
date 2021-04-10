@@ -1,6 +1,10 @@
-import React from "react";
+import React, {  useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "../style/Regis.css";
+import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import '../style/Regis.css'
+import '../style/List/Edit.css'
+import moment from 'moment'
 const Edit = (props) => {
     const [inp_val, setinp_val] = useState({
         name: "",
@@ -11,9 +15,10 @@ const Edit = (props) => {
         date:"",
         expdate:""
       });
-    const Target = (eve)=>{
-     let value = eve.target.value;
-     let Name = eve.target.name;
+      let Info = [];
+    const Target = (event)=>{
+     let Values = event.target.value;
+     let Names = event.target.name;
      setinp_val((allvalues) => {
         if (Names === "names") {
           return {
@@ -78,14 +83,14 @@ const Edit = (props) => {
 
     <>
       <div className='edit-outer'>
-      <form onSubmit={(e)=> e.preventDefault()}>
-      <div className="inner_regis">
+      <form className='form-container' onSubmit={(e)=> e.preventDefault()}>
+      <div className="inner_edit">
           <h1>Edit</h1>
           <label>Name :</label>
           <input
             name="names"
-            // value={props.data[0].name}
-            // onChange={Target_val}
+            value={inp_val.name}
+            onChange={Target}
             id="names"
             type="text"
             placeholder={props.data[0].name}
@@ -93,8 +98,8 @@ const Edit = (props) => {
           <label>ID :</label>
           <input
             name="id"
-            // value={inp_val.id}
-            // onChange={Target_val}
+            value={inp_val.id}
+            onChange={Target}
             id="id"
             type="Number"
             placeholder={props.data[0].id}
@@ -102,8 +107,8 @@ const Edit = (props) => {
           <label>Phone :</label>
           <input
             name="phone"
-            // value={inp_val.phone}
-            // onChange={Target_val}
+            value={inp_val.phone}
+            onChange={Target}
             id="phone"
             type="Number"
             placeholder={props.data[0].phone}
@@ -111,8 +116,8 @@ const Edit = (props) => {
           <label>Age :</label>
           <input
             name="age"
-            // value={inp_val.age}
-            // onChange={Target_val}
+            value={inp_val.age}
+            onChange={Target}
             id="age"
             type="text"
             placeholder={props.data[0].age}
@@ -121,7 +126,7 @@ const Edit = (props) => {
           <input
             type="file"
             name="pic"
-            // onChange={Target_val}
+            onChange={Target}
             id="pic"
           />
           <button>Submit</button>

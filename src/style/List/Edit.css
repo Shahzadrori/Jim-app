@@ -1,4 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap");
+
 .edit-outer{
-    background-color: aqua;
+    /* background-color: aqua; */
+    /* background-image: url('https://i.pinimg.com/236x/77/b6/ae/77b6aee011d6fd769f209e35a6b8c085.jpg'); */
+    background-image: url('./191545.jpg');
     width: 100%;
+    height: 93.6vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.edit-outer .form-container{
+    margin-bottom: 100px;
+}
+.edit-outer .form-container .inner_edit{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+    width: 300px;
+    height: 535px;
+    padding: 10px;
+    /* margin-bottom: 170px; */
+    /* margin-left: 150px; */
+    margin-top: 90px;
+    padding-right: 20px;
+}
+.edit-outer  .form-container .inner_edit h1 {
+    text-align: center;
+    color: #12ebd8;
+    margin-top: 0px;
+  }
+  .edit-outer  .form-container .inner_edit {
+    font-family: "Rubik", sans-serif;
+  }
+  .edit-outer  .form-container .inner_edit label {
+    font-size: 1.2em;
+    font-family: "Open Sans", sans-serif;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: grey;
+  }
+  .edit-outer  .form-container .inner_edit input {
+    padding: 9px;
+    padding-left: 20px;
+    margin-left: 30px;
+    border: none;
+    outline: none;
+    background-color: #12eb25;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+  
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .edit-outer  .form-container .inner_edit input[type="text"] {
+    font-size: 1em;
+  }
+  .edit-outer  .form-container .inner_edit input[type="Number"] {
+    font-size: 1em;
+  }
+  .edit-outer  .form-container .inner_edit input:focus {
+    background-color: #12eb25;
+    border-bottom: 3px solid yellow;
+    transition: border 0.3s linear;
+    -webkit-transition: border 0.3s linear;
+    -moz-transition: border 0.3s linear;
+    -ms-transition: border 0.3s linear;
+    -o-transition: border 0.3s linear;
+  }
+  .edit-outer  .form-container .inner_edit input:hover {
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
+  }
+  .edit-outer  .form-container .inner_edit input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .edit-outer  .form-container .inner_edit input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .edit-outer  .form-container .inner_edit input::placeholder {
+    color: grey;
+  }
+  .edit-outer  .form-container .inner_edit button {
+    width: 100px;
+    margin: auto;
+    padding: 8px;
+    background-color: #11698e;
+    color: white;
+    font-size: 15px;
+    font-weight: 520;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+     margin-bottom: -1px;
+    box-shadow: 2px 1px 6px black;
+  }
+  .edit-outer  .form-container .inner_edit button:hover {
+    background-color: #03506f;
+    color: white;
+  }
+  .edit-outer  .form-container .inner_edit button:active {
+    background-color: #00587a;
+  }
+  /* .img_regis {
+    color: #f4f9f4;
+    margin-left: 350px;
+  }
+  .img_regis h2 {
+    font-family: "Dancing Script", cursive;
+  }
+  .img_regis h1 {
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  input[type="file"]::file-selector-button {
+    display: none; */

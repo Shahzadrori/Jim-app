@@ -18,9 +18,9 @@ function Contact() {
               <h5>########</h5>
             </div>
           </div>
-          <div className="img">
+          {/* <div className="img">
             <img src="https://i.pinimg.com/564x/01/17/0f/01170fb1427e32b05ceff61bbf30f10b.jpg" />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
