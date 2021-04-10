@@ -31,6 +31,9 @@
   flex-direction: row;
   align-items: center;
 }
+button{
+  cursor: pointer;
+}
 /* stying the text div */
 .text {
   display: flex;

@@ -135,6 +135,7 @@ h3 {
 }
 
 .list-wrapper .btn-del {
+  cursor: pointer;
   color: black;
   padding: 3px;
   background-color: white;
@@ -182,4 +183,7 @@ h3 {
 #warn .paid-btn:active {
   background-color: yellowgreen;
   color: white;
+}
+button{
+  cursor: pointer;
 }
