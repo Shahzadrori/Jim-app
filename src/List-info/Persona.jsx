@@ -22,7 +22,7 @@ const Persona = (props) => {
         <div className="persona_inner">
           <div className="persona_img">
             <img src={props.data[0].pic} />
-            <h1>Jamshaidlllll</h1>
+            <h1>Talha Asif</h1>
           </div>
           <div className="persona_content">
             <div className="persona_txt">
