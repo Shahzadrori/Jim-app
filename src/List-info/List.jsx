@@ -211,6 +211,16 @@ const List = (props) => {
           <button className="paid-btn" onClick={person}>
             Details
           </button>
+          <button className='paid-btn'onClick={ async()=>{
+             const db1 = await openDB("db", 1);
+           await db1
+          .get("store1", Number(props.Id))
+          .then(async (result) => {
+          props.pers(result.value);
+          history.push("/edit");
+      })
+      .catch((err) => console.log(err));
+          }}>Edit</button>
         </div>
       </div>
     </div>
@@ -218,7 +228,6 @@ const List = (props) => {
 };
 
 const mapstate = (state) => {
-  console.table(state);
   return {
     person_item: state.Ereducer,
   };
