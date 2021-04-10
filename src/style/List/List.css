@@ -70,7 +70,14 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
+/* .list-wrapper .img-div{
+  background-image: url('./4779573.jpg');
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+} */
 .list-main {
+  word-wrap: break-word;
   margin-top: 30px;
   border: 1px solid;
   height: 435px;

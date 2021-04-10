@@ -1,137 +1,186 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import '../style/List/Edit.css'
-import moment from 'moment'
+import "../style/List/Edit.css";
+import { openDB } from "idb";
 const Edit = (props) => {
-    const [inp_val, setinp_val] = useState({
-        name: "",
-        id: "",
-        phone: "",
-        age: "",
-        pic: "",
-        date:"",
-        expdate:""
-      });
-      let Info = [];
-    const Target = (event)=>{
-     let Values = event.target.value;
-     let Names = event.target.name;
-     setinp_val((allvalues) => {
-        if (Names === "names") {
-          return {
-            name: Values,
-            id: allvalues.id,
-            phone: allvalues.phone,
-            age: allvalues.age,
-            pic: allvalues.pic,
-            date:allvalues.date,
-            expdate:allvalues.expdate
-          };
-        } else if (Names === "id") {
-          return {
-            name: allvalues.name,
-            id: Values,
-            phone: allvalues.phone,
-            age: allvalues.age,
-            pic: allvalues.pic,
-            date:moment().format('DD-MM-YYYY'),
-           expdate:null
-          };
-        } else if (Names === "phone") {
-          return {
-            name: allvalues.name,
-            id: allvalues.id,
-            phone: Values,
-            age: allvalues.age,
-            pic: allvalues.pic,
-            date:allvalues.date,
-            expdate:allvalues.expdate
-          };
-        } else if (Names === "age") {
-          return {
-            name: allvalues.name,
-            id: allvalues.id,
-            phone: allvalues.phone,
-            age: Values,
-            pic: allvalues.pic,
-            date:allvalues.date,
-            expdate:allvalues.expdate
-          };
-        } else if (Names === "pic") {
-          let file = event.target.files;
-          let reader = new FileReader();
-          reader.readAsDataURL(file[0]);
-          reader.onload = (e) => {
+  const [inp_val, setinp_val] = useState({
+    name: "",
+    id: "",
+    phone: "",
+    age: "",
+    pic: "",
+    date: "",
+    expdate: "",
+  });
+  let Info = [];
+  let video = [];
+  const Target = (event) => {
+    let Values = event.target.value;
+    let Names = event.target.name;
+    setinp_val((allvalues) => {
+      if (Names === "names") {
+        return {
+          name: Values,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          pic: allvalues.pic,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+        };
+      } else if (Names === "id") {
+        let file = event.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = (e) => {
+          video.push(e.target.result);
+        };
+        return {
+          name: allvalues.name,
+          id: video,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+          pic: allvalues.pic,
+        };
+      } else if (Names === "phone") {
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: Values,
+          age: allvalues.age,
+          pic: allvalues.pic,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+        };
+      } else if (Names === "age") {
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: Values,
+          pic: allvalues.pic,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+        };
+      } else if (Names === "pic") {
+        let file = event.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = (e) => {
           Info.push(e.target.result);
-          };
-          return {
-            name: allvalues.name,
-            id: allvalues.id,
-            phone: allvalues.phone,
-            age: allvalues.age,
-            date:allvalues.date,
-            expdate:allvalues.expdate,
-            pic: Info,
-          };
-        }
-      });
+        };
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+          pic: Info,
+        };
+      }
+    });
+  };
+  const Submit = async () => {
+    var names = document.getElementById("names").value;
+    var phone = document.getElementById("phone").value;
+    var age = document.getElementById("age").value;
+    if (names === "" || names === null) {
+     alert("Name field should not be empty");
+    // } else if (names.length === 4 || names.length < 4) {
+    //  alert("Name field should atleast contain 4 digits");
+    // } else if (Number(names)) {
+    //  alert("Name shoul contain alphabet letters");
+    // } else if (phone.length !== 11) {
+    //  alert("Phone Number should contain 11 digits");
+    // } else if (age < 16) {
+    //  alert("Age should be above sixteen");
+    // } else if (
+    //   document.getElementById("pic").value == "" ||
+    //   document.getElementById("pic").value == null
+    // ) {
+    //   alert("Image field should not be empty");
+    } else {
+      const db1 = await openDB("db", 1);
+      await db1
+        .get("store1", Number(props.data[0].id))
+        .then(async (result) => {
+          console.log(result);
+          await db1.put("store1", {
+            id: Number(props.data[0].id),
+            value: {
+              paydate: props.data[0].paydate,
+              expdate: props.data[0].expdate,
+              date: props.data[0].date,
+              amount: props.data[0].amount,
+              age: inp_val.age,
+              name: inp_val.name,
+              phone: inp_val.phone,
+              id: props.data[0].id,
+              pic: inp_val.pic,
+              vid: inp_val.id,
+            },
+          });
+          setinp_val({
+            name: "",
+            id: "",
+            phone: "",
+            age: "",
+            pic: "",
+            date: "",
+            expdate: "",
+          })
+            window.location.href = '/list'
+        })
+        .catch((err) => console.log(err));
     }
+  };
   return (
-
     <>
-      <div className='edit-outer'>
-      <form className='form-container' onSubmit={(e)=> e.preventDefault()}>
-      <div className="inner_edit">
-          <h1>Edit</h1>
-          <label>Name :</label>
-          <input
-            name="names"
-            value={inp_val.name}
-            onChange={Target}
-            id="names"
-            type="text"
-            placeholder={props.data[0].name}
-          />
-          <label>ID :</label>
-          <input
-            name="id"
-            value={inp_val.id}
-            onChange={Target}
-            id="id"
-            type="Number"
-            placeholder={props.data[0].id}
-          />
-          <label>Phone :</label>
-          <input
-            name="phone"
-            value={inp_val.phone}
-            onChange={Target}
-            id="phone"
-            type="Number"
-            placeholder={props.data[0].phone}
-          />
-          <label>Age :</label>
-          <input
-            name="age"
-            value={inp_val.age}
-            onChange={Target}
-            id="age"
-            type="text"
-            placeholder={props.data[0].age}
-          />
-          <label>Photo :</label>
-          <input
-            type="file"
-            name="pic"
-            onChange={Target}
-            id="pic"
-          />
-          <button>Submit</button>
-        </div>
-      </form>
+      <div className="edit-outer">
+        <form className="form-container" onSubmit={(e) => e.preventDefault()}>
+          <div className="inner_edit">
+            <h1>Edit</h1>
+            <label>Name :</label>
+            <input
+              name="names"
+              value={inp_val.name}
+              onChange={Target}
+              id="names"
+              type="text"
+              placeholder={props.data[0].name}
+            />
+
+            <label>Phone :</label>
+            <input
+              name="phone"
+              value={inp_val.phone}
+              onChange={Target}
+              id="phone"
+              type="number"
+              placeholder={props.data[0].phone}
+            />
+            <label>Age :</label>
+            <input
+              name="age"
+              value={inp_val.age}
+              onChange={Target}
+              id="age"
+              type="text"
+              placeholder={props.data[0].age}
+            />
+            <label>Video :</label>
+            <input name="id" onChange={Target} id="id" type="file" />
+            <label>Photo :</label>
+            <input type="file" name="pic" onChange={Target} id="pic" />
+            <button onClick={Submit}>Submit</button>
+          </div>
+        </form>
       </div>
     </>
   );

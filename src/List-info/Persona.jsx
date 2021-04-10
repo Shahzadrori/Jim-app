@@ -7,6 +7,14 @@ const Persona = (props) => {
     function back(){
         window.location.href = '/list'
     }
+    const displ=()=>{
+      if(props.data[0].vid){
+          
+        return(
+         <video className='video' style={{marginLeft:'200px'}} width="400px" controls>
+            <source src={props.data[0].vid} type="video/mp4" />
+          </video>)}
+    }
   return (
     <>
       <div className="persona_outer">
@@ -33,11 +41,11 @@ const Persona = (props) => {
               <p>{props.data[0].paydate}</p>
               <p> {props.data[0].expdate}</p>
             </div>
-            {/* <video style={{marginLeft:'200px'}} width="400px" controls>
-              <source src={props.data[0].pic} type="video/mp4" />
-            </video> */}
+         
+            
           </div>
         </div>
+        {displ()}
       </div>
     </>
   );

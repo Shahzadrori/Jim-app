@@ -3,16 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .persona_outer{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    height: 93.6vh;
     background-image: linear-gradient(to right top, #020202, #1c1c1c, #303030, #454545, #5c5c5c);
+}
+.persona_outer .video{
+    margin-right: 100px;
+    border: none;
+    outline: none;
 }
 .persona_outer .back-btn{
     position: absolute;
     left: 40px;
-    top: 100px;
+    top: 50px;
 }
 .persona_img{
     color: white;
@@ -35,7 +40,6 @@
 .persona_inner{
      display: flex;
      flex-direction: column;
-     justify-content: flex-start;
      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReHoPW9KJ1c5rvMxOppqtfklUalhmRNJbANg&usqp=CAU');
      background-repeat: no-repeat;
      background-size: cover;
@@ -43,6 +47,7 @@
      padding: 20px;
      width: 800px;
      height: 400px;
+     margin-left: 100px;
      border-radius: 20px;
      -webkit-border-radius: 20px;
      -moz-border-radius: 20px;

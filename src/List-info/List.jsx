@@ -29,6 +29,9 @@ const List = (props) => {
   const [stl, setstl] = useState({
     display: "block",
   });
+  const [stle,setstle] = useState({
+    display:'none'
+  })
   useEffect(() => {
     Pay();
   }, []);
@@ -58,6 +61,9 @@ const List = (props) => {
             paddingBottom: "7px",
           });
         } else if (diff >= 24) {
+          setstle({
+            display:'block'
+          })
           setstl({
             display: "none",
           });
@@ -150,10 +156,24 @@ const List = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  const Edit = async () => {
+    const db1 = await openDB("db", 1);
+    await db1
+      .get("store1", Number(props.Id))
+      .then(async (result) => {
+        props.pers(result.value);
+        history.push("/edit");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="list-main" key={props.Index}>
       <div className="list-wrapper" key={props.Index}>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
+       <div className='img-div'>
+        <img src=
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU"
+        />
+        </div>
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
           <img src={props.Img} className="Pers-img" />
@@ -211,16 +231,9 @@ const List = (props) => {
           <button className="paid-btn" onClick={person}>
             Details
           </button>
-          <button className='paid-btn'onClick={ async()=>{
-             const db1 = await openDB("db", 1);
-           await db1
-          .get("store1", Number(props.Id))
-          .then(async (result) => {
-          props.pers(result.value);
-          history.push("/edit");
-      })
-      .catch((err) => console.log(err));
-          }}>Edit</button>
+          <button style={stle} className="paid-btn" onClick={Edit}>
+            Edit
+          </button>
         </div>
       </div>
     </div>

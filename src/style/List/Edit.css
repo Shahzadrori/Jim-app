@@ -44,7 +44,7 @@
     font-family: "Open Sans", sans-serif;
     padding-left: 20px;
     margin-bottom: 10px;
-    color: grey;
+    color:whitesmoke;
   }
   .edit-outer  .form-container .inner_edit input {
     padding: 9px;
@@ -113,6 +113,7 @@
     -o-border-radius: 10px;
      margin-bottom: -1px;
     box-shadow: 2px 1px 6px black;
+    margin-bottom: 30px;
   }
   .edit-outer  .form-container .inner_edit button:hover {
     background-color: #03506f;
