@@ -10,6 +10,10 @@ import Persona from "./Persona";
 import { connect } from "react-redux";
 import { Person_data } from "../Redux/Actinon";
 import history from "../history";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+// const req =  require("react-bootstrap/ModalHeader");
+import 'react-bootstrap/ModalHeader'
 const List = (props) => {
   const [style, setstyle] = useState({
     backgroundColor: "#ff7a00",
@@ -32,16 +36,18 @@ const List = (props) => {
   const [stle,setstle] = useState({
     display:'none'
   })
+  const [show, setShow] = useState(false);
   useEffect(() => {
     Pay();
   }, []);
   async function del() {
     window.location.reload();
-    const db = await openDB("db", 1);
+    setShow(false);
+    const db = await openDB("db-data", 1);
     return await db.delete("store1", Number(props.Id));
   }
   const Pay = async () => {
-    const db1 = await openDB("db", 1);
+    const db1 = await openDB("db-data", 1);
     await db1
       .get("store1", Number(props.Id))
       .then((result) => {
@@ -100,7 +106,7 @@ const List = (props) => {
     });
   };
   async function set() {
-    const db1 = await openDB("db", 1);
+    const db1 = await openDB("db-data", 1);
     await db1.put("store1", {
       id: Number(props.Id),
       value: {
@@ -121,7 +127,7 @@ const List = (props) => {
     document.getElementById(props.Phone).classList.toggle("none");
   }
   const person = async () => {
-    const db1 = await openDB("db", 1);
+    const db1 = await openDB("db-data", 1);
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
@@ -132,7 +138,7 @@ const List = (props) => {
   };
 
   const Done = async () => {
-    const db1 = await openDB("db", 1);
+    const db1 = await openDB("db-data", 1);
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
@@ -157,7 +163,7 @@ const List = (props) => {
       .catch((err) => console.log(err));
   };
   const Edit = async () => {
-    const db1 = await openDB("db", 1);
+    const db1 = await openDB("db-data", 1);
     await db1
       .get("store1", Number(props.Id))
       .then(async (result) => {
@@ -166,6 +172,36 @@ const List = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  function Example() {
+   
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
+    return (
+      <>
+      {/* <div className='btn-del'> */}
+        <Button variant="primary" onClick={handleShow}>
+          <DeleteIcon/>
+        </Button>
+  
+        <Modal show={show} onHide={handleClose} animation={false}>
+          <Modal.Header closeButton>
+            <Modal.Title>Sure! You want to delete it</Modal.Title>
+          </Modal.Header>
+          {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={del}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        {/* </div> */}
+      </>
+    );
+  }
   return (
     <div className="list-main" key={props.Index}>
       <div className="list-wrapper" key={props.Index}>
@@ -176,6 +212,7 @@ const List = (props) => {
         </div>
         <div className="content">
           <DeleteIcon id={props.Id} className="btn-del" onClick={del} />
+          {/* {Example()} */}
           <img src={props.Img} className="Pers-img" />
           <div id={props.Phone} className="dis-content none">
             <input

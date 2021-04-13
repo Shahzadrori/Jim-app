@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import "../style/List/Edit.css";
 import { openDB } from "idb";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Button from '@material-ui/core/Button'
 const Edit = (props) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -17,6 +19,9 @@ const Edit = (props) => {
   });
   let Info = [];
   let video = [];
+  function back(){
+    window.location.href = '/list'
+}
   const Target = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
@@ -106,7 +111,7 @@ const Edit = (props) => {
     // ) {
     //   alert("Image field should not be empty");
     } else {
-      const db1 = await openDB("db", 1);
+      const db1 = await openDB("db-data", 1);
       await db1
         .get("store1", Number(props.data[0].id))
         .then(async (result) => {
@@ -143,7 +148,15 @@ const Edit = (props) => {
   return (
     <>
       <div className="edit-outer">
-        <form className="form-container" onSubmit={(e) => e.preventDefault()}>
+      
+     <Button onClick={back} style={{
+       marginTop:'-500px',
+      position:'absolute',
+       marginLeft:'-1000px'
+     }} variant="contained" className="back-btn">  <ArrowBackIosIcon /> Back</Button>
+        <form className="form-container" onSubmit={(e) => e.preventDefault()} style={{
+          position:'relative'
+        }}>
           <div className="inner_edit">
             <h1>Edit</h1>
             <label>Name :</label>

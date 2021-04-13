@@ -8,18 +8,22 @@ import moment from "moment";
 import { openDB } from "idb";
 const Display = (props) => {
   const [inp_Data, setinp_Data] = useState();
+  const [flag, setflag] = useState(false);
   useEffect(() => {
-    dbi();
+    if (localStorage.getItem("formdata")) {
+      dbi();
+    }
   }, []);
   const dbi = async () => {
-    const db1 = openDB("db", 1);
+    const db1 = openDB("db-data", 1);
     let cursor = await (await db1).transaction("store1").store.openCursor();
     while (cursor) {
+      await setflag(true);
       await props.Pic_it(cursor.value.value);
       await props.get_data(cursor.value.value);
       cursor = await cursor.continue();
     }
-  }
+  };
   function ncards(item, index) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
@@ -51,18 +55,28 @@ const Display = (props) => {
     if (diff <= 5 || item.expdate == null) {
       if (check(item.name) == true) {
         return (
-          <List
-            Time={item.date}
-            Img={item.pic}
-            Name={item.name}
-            Id={item.id}
-            Phone={item.phone}
-            Age={item.age}
-          />
+          <>
+            <List
+              Time={item.date}
+              Img={item.pic}
+              Name={item.name}
+              Id={item.id}
+              Phone={item.phone}
+              Age={item.age}
+            />
+            {/* <div className="fil-div">{props.Pic_data.map(filter)}</div> */}
+          </>
         );
       }
     } else {
       return null;
+    }
+    if (diff <= 5 || item.expdate == null) {
+
+      return(
+             <div className="fil-div">{props.Pic_data.map(filter)}</div> 
+       
+      )
     }
   }
   function check(cardname) {
@@ -72,6 +86,12 @@ const Display = (props) => {
   function get_it() {
     props.add_it(inp_Data);
   }
+  function Disple() {
+    if (flag === true) {
+      return <div className="fil-div">{props.Pic_data.map(filter)}</div>;
+    }
+  }
+  console.log(props.filte_data);
   return (
     <>
       <div className="disp-top">
@@ -82,13 +102,14 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
+      {/* {Disple()} */}
       <div className="fil-div">{props.Pic_data.map(filter)}</div>
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
-     
     </>
   );
 };
 const mapstate = (state) => {
+  console.log(state);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,

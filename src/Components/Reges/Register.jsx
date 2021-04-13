@@ -52,6 +52,7 @@ const Regis_form = (pare) => {
     //   toast.error('Image field should not be empty')
     }
     else {
+      localStorage.setItem("formdata",true);
       toasts();
       Database(inp_val);
       setinp_val({
@@ -61,6 +62,7 @@ const Regis_form = (pare) => {
         age: "",
       });
       document.getElementById("pic").value = "";
+
     }
   };
   const Target_val = (event) => {
@@ -85,7 +87,7 @@ const Regis_form = (pare) => {
           age: allvalues.age,
           pic: allvalues.pic,
           date:moment().format('DD-MM-YYYY'),
-         expdate:null
+          expdate:null
         };
       } else if (Names === "phone") {
         return {

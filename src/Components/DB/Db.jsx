@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 export async function Database(regis) {
-  const db1 = await openDB("db", 1, {
+  const db1 = await openDB("db-data", 1, {
     upgrade(db) {
       db.createObjectStore("store1", {
         keyPath: "id",
