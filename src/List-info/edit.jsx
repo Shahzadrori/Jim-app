@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "../style/Regis.css";
+// import "../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import "../style/List/Edit.css";
@@ -157,8 +157,10 @@ const Edit = (props) => {
         <form className="form-container" onSubmit={(e) => e.preventDefault()} style={{
           position:'relative'
         }}>
+           
           <div className="inner_edit">
-            <h1>Edit</h1>
+         
+          <h1>Edit</h1>
             <label>Name :</label>
             <input
               name="names"
@@ -187,10 +189,16 @@ const Edit = (props) => {
               type="text"
               placeholder={props.data[0].age}
             />
-            <label>Video :</label>
-            <input name="id" onChange={Target} id="id" type="file" />
+            {/* <label>Video :</label>
+            <input name="id" onChange={Target} id="id" type="file" /> */}
+            
             <label>Photo :</label>
             <input type="file" name="pic" onChange={Target} id="pic" />
+            <label>Height :</label>
+            <input type="text" name="height" onChange={Target} id="height" placeholder='Enter Height' />
+            <label>Weight :</label>
+            <input type="text" name="weight" onChange={Target} id="weight" placeholder='Enter Weight' />
+        
             <button onClick={Submit}>Submit</button>
           </div>
         </form>

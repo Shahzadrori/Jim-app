@@ -130,18 +130,22 @@ h3 {
   margin-top: 5px;
   font-family: "Oswald", sans-serif;
 }
-.list-wrapper .warn {
+/* .list-wrapper .warn {
   display: flex;
   align-items: center;
   background-color: red;
+  padding: 10px;
   width: 100%;
   height: 30px;
   padding-top: 10px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+} */
+.btn-del{
+  margin-left: 10px;
 }
-
-.list-wrapper .btn-del {
+/* 
+ .btn-del {
   cursor: pointer;
   color: black;
   padding: 3px;
@@ -151,8 +155,8 @@ h3 {
   -moz-border-radius: 20%;
   -ms-border-radius: 20%;
   -o-border-radius: 20%;
-}
-.list-wrapper .btn-del:hover {
+} */
+ .btn-del:active {
   color: red;
 }
 .list-wrap .list-txt{
@@ -160,6 +164,19 @@ h3 {
   font-size: 5px;
   /* background-color: #aaaaaa; */
   margin-top: 50px;
+}
+.dels-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #be0000;
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 35px;
+  background-color: #f8b500;
+  margin-right:10px;
+  margin-top: 20px;
 }
 .list-wrap .list-cont{
   font-family: sans-serif;
@@ -188,28 +205,31 @@ h3 {
 }
 #warn{
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 4px;
+  padding: 6px;
+  border-bottom-left-radius: 20px ;
+  border-bottom-right-radius: 20px ;
 }
 #warn .paid-btn {
-  margin-right: 20px;
-  padding: 4px;
-  width: 50px;
   border: none;
-  outline: none;
-  background-color: #f8f1f1;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  margin-left: 20px;
-  margin-top: 7px;
+  cursor: pointer;
+  color: black;
+  padding-left:15px ;
+  padding-right:13px ;
+  background-color: white;
+  border-radius: 20%;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+  -ms-border-radius: 20%;
+  -o-border-radius: 20%;
 }
 #warn .paid-btn:hover {
   background-color: #c7cfb7;
 }
 #warn .paid-btn:active {
   background-color: yellowgreen;
-  color: white;
 }
 button{
   cursor: pointer;

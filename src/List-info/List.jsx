@@ -13,15 +13,15 @@ import history from "../history";
 import { Modal } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 // const req =  require("react-bootstrap/ModalHeader");
-import 'react-bootstrap/ModalHeader'
+import "react-bootstrap/ModalHeader";
 const List = (props) => {
   const [style, setstyle] = useState({
-    backgroundColor: "#ff7a00",
-    height: "30px",
-    borderBottomLeftRadius: "20px",
-    borderBottomRightRadius: "20px",
-    marginTop: "6px",
-    paddingBottom: "7px",
+    // backgroundColor: "#ff7a00",
+    // height: "30px",
+    // borderBottomLeftRadius: "20px",
+    // borderBottomRightRadius: "20px",
+    // marginTop: "6px",
+    // paddingBottom: "7px",
   });
   const [num, setnum] = useState({
     month: "",
@@ -33,9 +33,9 @@ const List = (props) => {
   const [stl, setstl] = useState({
     display: "block",
   });
-  const [stle,setstle] = useState({
-    display:'none'
-  })
+  const [stle, setstle] = useState({
+    display: "none",
+  });
   const [show, setShow] = useState(false);
   useEffect(() => {
     Pay();
@@ -60,16 +60,16 @@ const List = (props) => {
           });
           setstyle({
             backgroundColor: "#c70039",
-            height: "30px",
+            height: "35px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
-            marginTop: "6px",
             paddingBottom: "7px",
+            marginTop: "6px",
           });
         } else if (diff >= 24) {
           setstle({
-            display:'block'
-          })
+            display: "block",
+          });
           setstl({
             display: "none",
           });
@@ -78,7 +78,7 @@ const List = (props) => {
           });
           setstyle({
             backgroundColor: "green",
-            height: "30px",
+            height: "35px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
             paddingBottom: "7px",
@@ -173,22 +173,19 @@ const List = (props) => {
       .catch((err) => console.log(err));
   };
   function Example() {
-   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
+
     return (
       <>
-      {/* <div className='btn-del'> */}
-        <Button variant="primary" onClick={handleShow}>
-          <DeleteIcon/>
+        <Button className="dels-btn" variant="primary" onClick={handleShow}>
+          <DeleteIcon />
         </Button>
-  
+
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>
             <Modal.Title>Sure! You want to delete it</Modal.Title>
           </Modal.Header>
-          {/* <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body> */}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
@@ -198,17 +195,14 @@ const List = (props) => {
             </Button>
           </Modal.Footer>
         </Modal>
-        {/* </div> */}
       </>
     );
   }
   return (
     <div className="list-main" key={props.Index}>
       <div className="list-wrapper" key={props.Index}>
-       <div className='img-div'>
-        <img src=
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU"
-        />
+        <div className="img-div">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
         </div>
         <div className="content">
           {/* <DeleteIcon id={props.Id} className="btn-del" onClick={del} /> */}
