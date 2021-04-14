@@ -64,7 +64,6 @@ const Display = (props) => {
               Phone={item.phone}
               Age={item.age}
             />
-            {/* <div className="fil-div">{props.Pic_data.map(filter)}</div> */}
           </>
         );
       }
@@ -85,7 +84,6 @@ const Display = (props) => {
       return <div className="fil-div">{props.Pic_data.map(filter)}</div>;
     }
   }
-  console.log(props.filte_data);
   return (
     <>
       <div className="disp-top">
@@ -96,8 +94,8 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      {/* {Disple()} */}
-      <div className="fil-div">{props.Pic_data.map(filter)}</div>
+      {Disple()}
+      {/* <div className="fil-div">{props.Pic_data.map(filter)}</div> */}
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
     </>
   );

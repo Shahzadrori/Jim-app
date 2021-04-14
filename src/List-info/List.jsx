@@ -59,7 +59,7 @@ const List = (props) => {
             display: "block",
           });
           setstyle({
-            backgroundColor: "#c70039",
+            backgroundColor: "red",
             height: "35px",
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
@@ -190,8 +190,10 @@ const List = (props) => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={del}>
+            <Button variant="primary" onClick={handleClose}>
+            <div onClick={del}>
               Delete
+              </div>
             </Button>
           </Modal.Footer>
         </Modal>
@@ -209,13 +211,14 @@ const List = (props) => {
           {Example()}
           <img src={props.Img} className="Pers-img" />
           <div id={props.Phone} className="dis-content none">
+          <div className='advance-div'>
             <input
               id={props.Index}
               type="number"
               onKeyUp={Target}
               className="add-btn"
               name="time-btn"
-              placeholder="Enter Months"
+              placeholder="Months"
             />
             <button className="done-btn" onClick={Done}>
               Done
@@ -223,6 +226,7 @@ const List = (props) => {
             <button className="cancel-btn" onClick={repaid}>
               Cancel
             </button>
+           
             <input
               id={props.Unik}
               type="number"
@@ -231,6 +235,7 @@ const List = (props) => {
               name="amount"
               placeholder="Enter Amount"
             />
+          </div>
           </div>
         </div>
         <div className="list-wrap">

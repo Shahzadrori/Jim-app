@@ -5,23 +5,25 @@ import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import "../style/List/Edit.css";
 import { openDB } from "idb";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import Button from '@material-ui/core/Button'
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import Button from "@material-ui/core/Button";
 const Edit = (props) => {
   const [inp_val, setinp_val] = useState({
     name: "",
-    id: "",
+    // id: "",
     phone: "",
     age: "",
     pic: "",
     date: "",
     expdate: "",
+    weight:'',
+    height:''
   });
   let Info = [];
-  let video = [];
-  function back(){
-    window.location.href = '/list'
-}
+  // let video = [];
+  function back() {
+    window.location.href = "/list";
+  }
   const Target = (event) => {
     let Values = event.target.value;
     let Names = event.target.name;
@@ -35,24 +37,29 @@ const Edit = (props) => {
           pic: allvalues.pic,
           date: allvalues.date,
           expdate: allvalues.expdate,
+          height:allvalues.height,
+          weight:allvalues.weight
         };
-      } else if (Names === "id") {
-        let file = event.target.files;
-        let reader = new FileReader();
-        reader.readAsDataURL(file[0]);
-        reader.onload = (e) => {
-          video.push(e.target.result);
-        };
-        return {
-          name: allvalues.name,
-          id: video,
-          phone: allvalues.phone,
-          age: allvalues.age,
-          date: allvalues.date,
-          expdate: allvalues.expdate,
-          pic: allvalues.pic,
-        };
-      } else if (Names === "phone") {
+      } 
+      // else if (Names === "id") {
+      //   let file = event.target.files;
+      //   let reader = new FileReader();
+      //   reader.readAsDataURL(file[0]);
+      //   reader.onload = (e) => {
+      //     video.push(e.target.result);
+      //   };
+      //   return {
+      //     name: allvalues.name,
+      //     id: video,
+      //     phone: allvalues.phone,
+      //     age: allvalues.age,
+      //     date: allvalues.date,
+      //     expdate: allvalues.expdate,
+      //     pic: allvalues.pic,
+          
+      //   };
+      // } 
+      else if (Names === "phone") {
         return {
           name: allvalues.name,
           id: allvalues.id,
@@ -61,6 +68,9 @@ const Edit = (props) => {
           pic: allvalues.pic,
           date: allvalues.date,
           expdate: allvalues.expdate,
+          expdate: allvalues.expdate,
+          height:allvalues.height,
+          weight:allvalues.weight
         };
       } else if (Names === "age") {
         return {
@@ -71,6 +81,8 @@ const Edit = (props) => {
           pic: allvalues.pic,
           date: allvalues.date,
           expdate: allvalues.expdate,
+          height:allvalues.height,
+          weight:allvalues.weight
         };
       } else if (Names === "pic") {
         let file = event.target.files;
@@ -86,7 +98,33 @@ const Edit = (props) => {
           age: allvalues.age,
           date: allvalues.date,
           expdate: allvalues.expdate,
+          height:allvalues.height,
+          weight:allvalues.weight,
           pic: Info,
+        };
+      }else if(Names === 'height'){
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+          height:Values,
+          weight:allvalues.weight,
+          pic: allvalues.pic,
+        };
+      }else if(Names ===  'weight'){
+        return {
+          name: allvalues.name,
+          id: allvalues.id,
+          phone: allvalues.phone,
+          age: allvalues.age,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
+          height:allvalues.height,
+          weight:Values,
+          pic: allvalues.pic,
         };
       }
     });
@@ -96,20 +134,20 @@ const Edit = (props) => {
     var phone = document.getElementById("phone").value;
     var age = document.getElementById("age").value;
     if (names === "" || names === null) {
-     alert("Name field should not be empty");
-    // } else if (names.length === 4 || names.length < 4) {
-    //  alert("Name field should atleast contain 4 digits");
-    // } else if (Number(names)) {
-    //  alert("Name shoul contain alphabet letters");
-    // } else if (phone.length !== 11) {
-    //  alert("Phone Number should contain 11 digits");
-    // } else if (age < 16) {
-    //  alert("Age should be above sixteen");
-    // } else if (
-    //   document.getElementById("pic").value == "" ||
-    //   document.getElementById("pic").value == null
-    // ) {
-    //   alert("Image field should not be empty");
+      alert("Name field should not be empty");
+      // } else if (names.length === 4 || names.length < 4) {
+      //  alert("Name field should atleast contain 4 digits");
+      // } else if (Number(names)) {
+      //  alert("Name shoul contain alphabet letters");
+      // } else if (phone.length !== 11) {
+      //  alert("Phone Number should contain 11 digits");
+      // } else if (age < 16) {
+      //  alert("Age should be above sixteen");
+      // } else if (
+      //   document.getElementById("pic").value == "" ||
+      //   document.getElementById("pic").value == null
+      // ) {
+      //   alert("Image field should not be empty");
     } else {
       const db1 = await openDB("db-data", 1);
       await db1
@@ -128,19 +166,20 @@ const Edit = (props) => {
               phone: inp_val.phone,
               id: props.data[0].id,
               pic: inp_val.pic,
-              vid: inp_val.id,
+              // vid: inp_val.id,
+              height:inp_val.height,
+              weight:inp_val.weight
             },
           });
           setinp_val({
             name: "",
-            id: "",
             phone: "",
             age: "",
             pic: "",
-            date: "",
-            expdate: "",
-          })
-            window.location.href = '/list'
+            height:'',
+            weight:''
+          });
+          window.location.href = "/list";
         })
         .catch((err) => console.log(err));
     }
@@ -148,19 +187,27 @@ const Edit = (props) => {
   return (
     <>
       <div className="edit-outer">
-      
-     <Button onClick={back} style={{
-       marginTop:'-500px',
-      position:'absolute',
-       marginLeft:'-1000px'
-     }} variant="contained" className="back-btn">  <ArrowBackIosIcon /> Back</Button>
-        <form className="form-container" onSubmit={(e) => e.preventDefault()} style={{
-          position:'relative'
-        }}>
-           
+        <Button
+          onClick={back}
+          style={{
+            marginTop: "-500px",
+            position: "absolute",
+            marginLeft: "-1000px",
+          }}
+          variant="contained"
+          className="back-btn"
+        >
+          <ArrowBackIosIcon /> Back
+        </Button>
+        <form
+          className="form-container"
+          onSubmit={(e) => e.preventDefault()}
+          style={{
+            position: "relative",
+          }}
+        >
           <div className="inner_edit">
-         
-          <h1>Edit</h1>
+            <h1>Edit</h1>
             <label>Name :</label>
             <input
               name="names"
@@ -189,16 +236,26 @@ const Edit = (props) => {
               type="text"
               placeholder={props.data[0].age}
             />
-            {/* <label>Video :</label>
-            <input name="id" onChange={Target} id="id" type="file" /> */}
-            
             <label>Photo :</label>
             <input type="file" name="pic" onChange={Target} id="pic" />
             <label>Height :</label>
-            <input type="text" name="height" onChange={Target} id="height" placeholder='Enter Height' />
+            <input
+              type="text"
+              name="height"
+              value={inp_val.height}
+              onChange={Target}
+              id="height"
+              placeholder="Enter Height in feets"
+            />
             <label>Weight :</label>
-            <input type="text" name="weight" onChange={Target} id="weight" placeholder='Enter Weight' />
-        
+            <input
+              type="text"
+              name="weight"
+              value={inp_val.weight}
+              onChange={Target}
+              id="weight"
+              placeholder="Enter Weight in kgs"
+            />
             <button onClick={Submit}>Submit</button>
           </div>
         </form>

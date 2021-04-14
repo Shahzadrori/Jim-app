@@ -7,13 +7,29 @@ const Persona = (props) => {
     function back(){
         window.location.href = '/list'
     }
-    const displ=()=>{
-      if(props.data[0].vid){
-          
+    const height=()=>{
+      if(props.data[0].height){
         return(
-         <video className='video' style={{marginLeft:'200px'}} width="400px" controls>
-            <source src={props.data[0].vid} type="video/mp4" />
-          </video>)}
+        //  <video className='video' style={{marginLeft:'200px'}} width="400px" controls>
+        //     <source src={props.data[0].vid} type="video/mp4" />
+          // </video>
+          <h5
+          style={{
+            marginLeft:"100px"
+          }}
+          >Height :{props.data[0].height}</h5>
+          )}
+    }
+    const weight =()=>{
+      if(props.data[0].weight){
+        return(
+          <h5
+          style={{
+            marginLeft:"100px"
+          }}
+          >Weight : {props.data[0].weight}</h5>
+        )
+      }
     }
   return (
     <>
@@ -22,7 +38,7 @@ const Persona = (props) => {
         <div className="persona_inner">
           <div className="persona_img">
             <img src={props.data[0].pic} />
-            <h1>Talha Asif</h1>
+            <h1>{props.data[0].name}</h1>
           </div>
           <div className="persona_content">
             <div className="persona_txt">
@@ -41,11 +57,13 @@ const Persona = (props) => {
               <p>{props.data[0].paydate}</p>
               <p> {props.data[0].expdate}</p>
             </div>
-         
-            
+            <div>
+            {height()}<br/>
+            {weight()}
+            </div>
           </div>
         </div>
-        {displ()}
+   
       </div>
     </>
   );

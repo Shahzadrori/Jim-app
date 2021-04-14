@@ -9,31 +9,35 @@
   height: max-content;
   margin-top: -8px;
 }
-
+.advance-div{
+  /* background-color: #be0000; */
+  width: 250px;
+}
 .add-btn{
   background-color:#aaaaaa;
   color: white;
-  width: 100px;
+  width:100px;
   height: 20px;
-  margin-top: 3px;
-  margin-right: 25px;
-  padding: 3px;
-  padding-left: 4px;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 13px;
+  padding-left: 14px;
   border: none;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 10px;
   outline: none;
   text-align: center;
 }
+
 .amount{
   background-color:#aaaaaa;
   color: white;
-  /* width: 100px; */
+  width: 225px;
   height: 20px;
-  margin-top: 3px;
-  margin-right: 25px;
-  padding: 3px;
-  padding-left: 4px;
+  margin-top:10px;
+  margin-left: 20px;
+  padding: 13px;
+  /* padding-left: 4px; */
   border: none;
   border-top-left-radius: 20px;
   border-bottom-right-radius: 10px;
@@ -41,11 +45,14 @@
   text-align: center;
 }
 .done-btn{
-  height: 20px;
-  margin-bottom: -20px;
+  height: 28px;
+  margin-left: 10px;
+  /* padding: 5px; */
+  /* margin-bottom: -20px; */
 }
 .cancel-btn{
-  height: 20px;
+  height: 28px;
+  margin-left: 10px;
 }
 .dis-content button {
   background-color: #aaaaaa;
@@ -59,11 +66,11 @@
 }
 .dis-content button:hover{
   background-color: #e3e3e3;
-  color: green;
+  /* color: green; */
 }
 .dis-content button:active{
   background-color: #bbbbbb ;
-  color: greenyellow;
+  /* color: greenyellow; */
 }
 .list-main img {
   width: 100%;
@@ -187,6 +194,7 @@ h3 {
 .list-wrap .list-txt h4{
   padding-top: 16px;
   padding-left: 20px;
+  
 }
 .list-wrap .list-cont h4{
   padding-top: 16px;
@@ -207,8 +215,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 4px;
-  padding: 6px;
+  padding: 7px;
+  background-color: #ff7a00;
   border-bottom-left-radius: 20px ;
   border-bottom-right-radius: 20px ;
 }
