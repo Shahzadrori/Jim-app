@@ -44,9 +44,15 @@ const Display = (props) => {
           />
         );
       }
-    } else {
-      return null;
-    }
+    } else 
+    // if( check(item.name) == true){
+      if (item.expdate !== null) {
+        return (
+          <div className="fil-div">{props.Pic_data.map(filter)}</div>
+        );
+      }
+      // return null;
+    // }
   }
   function filter(item) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
@@ -72,6 +78,7 @@ const Display = (props) => {
     }
     
   }
+ 
   function check(cardname) {
     var value = cardname.indexOf(props.card_item) > -1;
     return value;
@@ -80,7 +87,7 @@ const Display = (props) => {
     props.add_it(inp_Data);
   }
   function Disple() {
-    if (flag === true) {
+    if (flag) {
       return <div className="fil-div">{props.Pic_data.map(filter)}</div>;
     }
   }
@@ -94,8 +101,7 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      {Disple()}
-      {/* <div className="fil-div">{props.Pic_data.map(filter)}</div> */}
+      {/* {Disple()} */}
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
     </>
   );

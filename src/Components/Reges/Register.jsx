@@ -1,11 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "../../style/Regis.css";
 import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
-import {  Get_Pic, Take_It } from "../../Redux/Actinon";
+import { Get_Pic, Take_It } from "../../Redux/Actinon";
 import { Database } from "../DB/Db";
-import moment from 'moment'
+import moment from "moment";
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -13,8 +13,8 @@ const Regis_form = (pare) => {
     phone: "",
     age: "",
     pic: "",
-    date:"",
-    expdate:""
+    date: "",
+    expdate: "",
   });
 
   function toasts() {
@@ -37,22 +37,24 @@ const Regis_form = (pare) => {
     var age = document.getElementById("age").value;
 
     if (names === "" || names === null) {
-    //   toast.error("Name field should not be empty");
-    //   } else if (names.length === 4 || names.length < 4) {
-    //     toast.error("Name field should atleast contain 4 digits");
-    //   } else if (Number(names)) {
-    //     toast.error("Name shoul contain alphabet letters");
-    //   } else if (id.length !== 13) {
-    //     toast.error("ID Number should contain 13 digits");
-    //   } else if (phone.length !== 11) {
-    //     toast.error("Phone Number should contain 11 digits");
-    //   } else if (age < 16) {
-    //     toast.error("Age should be above sixteen");
-    // } else if(document.getElementById("pic").value == '' || document.getElementById("pic").value == null){
-    //   toast.error('Image field should not be empty')
-    }
-    else {
-      localStorage.setItem("formdata",true);
+      toast.error("Name field should not be empty");
+    } else if ( names.length < 3) {
+      toast.error("Name field should atleast contain 4 digits");
+    } else if (Number(names)) {
+      toast.error("Name shoul contain alphabet letters");
+    } else if (id.length !== 13) {
+      toast.error("ID Number should contain 13 digits");
+    } else if (phone.length !== 11) {
+      toast.error("Phone Number should contain 11 digits");
+    } else if (age < 16) {
+      toast.error("Age should be above sixteen");
+    } else if (
+      document.getElementById("pic").value == "" ||
+      document.getElementById("pic").value == null
+    ) {
+      toast.error("Image field should not be empty");
+    } else {
+      localStorage.setItem("formdata", true);
       toasts();
       Database(inp_val);
       setinp_val({
@@ -62,7 +64,6 @@ const Regis_form = (pare) => {
         age: "",
       });
       document.getElementById("pic").value = "";
-
     }
   };
   const Target_val = (event) => {
@@ -76,8 +77,8 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:allvalues.date,
-          expdate:allvalues.expdate
+          date: allvalues.date,
+          expdate: allvalues.expdate,
         };
       } else if (Names === "id") {
         return {
@@ -86,8 +87,8 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:moment().format('DD-MM-YYYY'),
-          expdate:null
+          date: moment().format("DD-MM-YYYY"),
+          expdate: null,
         };
       } else if (Names === "phone") {
         return {
@@ -96,8 +97,8 @@ const Regis_form = (pare) => {
           phone: Values,
           age: allvalues.age,
           pic: allvalues.pic,
-          date:allvalues.date,
-          expdate:allvalues.expdate
+          date: allvalues.date,
+          expdate: allvalues.expdate,
         };
       } else if (Names === "age") {
         return {
@@ -106,23 +107,23 @@ const Regis_form = (pare) => {
           phone: allvalues.phone,
           age: Values,
           pic: allvalues.pic,
-          date:allvalues.date,
-          expdate:allvalues.expdate
+          date: allvalues.date,
+          expdate: allvalues.expdate,
         };
       } else if (Names === "pic") {
         let file = event.target.files;
         let reader = new FileReader();
         reader.readAsDataURL(file[0]);
         reader.onload = (e) => {
-        Info.push(e.target.result);
+          Info.push(e.target.result);
         };
         return {
           name: allvalues.name,
           id: allvalues.id,
           phone: allvalues.phone,
           age: allvalues.age,
-          date:allvalues.date,
-          expdate:allvalues.expdate,
+          date: allvalues.date,
+          expdate: allvalues.expdate,
           pic: Info,
         };
       }
@@ -149,6 +150,7 @@ const Regis_form = (pare) => {
           <input
             name="names"
             value={inp_val.name}
+            required
             onChange={Target_val}
             id="names"
             type="text"
@@ -158,6 +160,7 @@ const Regis_form = (pare) => {
           <input
             name="id"
             value={inp_val.id}
+            required
             onChange={Target_val}
             id="id"
             type="Number"
@@ -168,6 +171,7 @@ const Regis_form = (pare) => {
             name="phone"
             value={inp_val.phone}
             onChange={Target_val}
+            required
             id="phone"
             type="Number"
             placeholder="Enter Your Phone Number"
@@ -177,6 +181,7 @@ const Regis_form = (pare) => {
             name="age"
             value={inp_val.age}
             onChange={Target_val}
+            required
             id="age"
             type="text"
             placeholder="Enter Your Age in Numbers"
@@ -185,10 +190,13 @@ const Regis_form = (pare) => {
           <input
             type="file"
             name="pic"
+            required
             onChange={Target_val}
             id="pic"
           />
-          <button onClick={Submit}>Submit</button>
+          <button type="submit" onClick={Submit}>
+            Submit
+          </button>
         </div>
         <div className="img_regis">
           <h1>Muhammad Ali </h1>

@@ -16,12 +16,12 @@ import { Button } from "react-bootstrap";
 import "react-bootstrap/ModalHeader";
 const List = (props) => {
   const [style, setstyle] = useState({
-    // backgroundColor: "#ff7a00",
-    // height: "30px",
-    // borderBottomLeftRadius: "20px",
-    // borderBottomRightRadius: "20px",
+    backgroundColor: "#ff7a00",
+    height: "35px",
+    borderBottomLeftRadius: "20px",
+    borderBottomRightRadius: "20px",
     // marginTop: "6px",
-    // paddingBottom: "7px",
+    paddingBottom: "7px",
   });
   const [num, setnum] = useState({
     month: "",
@@ -175,7 +175,6 @@ const List = (props) => {
   function Example() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     return (
       <>
         <Button className="dels-btn" variant="primary" onClick={handleShow}>
@@ -191,9 +190,7 @@ const List = (props) => {
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
-            <div onClick={del}>
-              Delete
-              </div>
+              <div onClick={del}>Delete</div>
             </Button>
           </Modal.Footer>
         </Modal>
@@ -207,35 +204,34 @@ const List = (props) => {
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
         </div>
         <div className="content">
-          {/* <DeleteIcon id={props.Id} className="btn-del" onClick={del} /> */}
           {Example()}
           <img src={props.Img} className="Pers-img" />
           <div id={props.Phone} className="dis-content none">
-          <div className='advance-div'>
-            <input
-              id={props.Index}
-              type="number"
-              onKeyUp={Target}
-              className="add-btn"
-              name="time-btn"
-              placeholder="Months"
-            />
-            <button className="done-btn" onClick={Done}>
-              Done
-            </button>
-            <button className="cancel-btn" onClick={repaid}>
-              Cancel
-            </button>
-           
-            <input
-              id={props.Unik}
-              type="number"
-              onKeyUp={Target}
-              className="amount"
-              name="amount"
-              placeholder="Enter Amount"
-            />
-          </div>
+            <div className="advance-div">
+              <input
+                id={props.Index}
+                type="number"
+                onKeyUp={Target}
+                className="add-btn"
+                name="time-btn"
+                placeholder="Months"
+              />
+              <button className="done-btn" onClick={Done}>
+                Done
+              </button>
+              <button className="cancel-btn" onClick={repaid}>
+                Cancel
+              </button>
+
+              <input
+                id={props.Unik}
+                type="number"
+                onKeyUp={Target}
+                className="amount"
+                name="amount"
+                placeholder="Enter Amount"
+              />
+            </div>
           </div>
         </div>
         <div className="list-wrap">

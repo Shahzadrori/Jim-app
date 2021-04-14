@@ -9,13 +9,11 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Button from "@material-ui/core/Button";
 const Edit = (props) => {
   const [inp_val, setinp_val] = useState({
-    name: "",
+    name: props.data[0].name,
     // id: "",
-    phone: "",
-    age: "",
-    pic: "",
-    date: "",
-    expdate: "",
+    phone: props.data[0].phone,
+    age: props.data[0].age,
+    pic: props.data[0].pic,
     weight:'',
     height:''
   });
@@ -237,7 +235,7 @@ const Edit = (props) => {
               placeholder={props.data[0].age}
             />
             <label>Photo :</label>
-            <input type="file" name="pic" onChange={Target} id="pic" />
+            <input type="file" name="pic" onChange={Target}  id="pic" />
             <label>Height :</label>
             <input
               type="text"
