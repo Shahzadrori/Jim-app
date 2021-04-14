@@ -67,7 +67,7 @@ button{
   background-image: linear-gradient(to left bottom, #a3a3a3, #7c7d7e, #565959, #343736, #171815);
 }
 .disp-top input {
-  padding: 9px;
+  padding: 5px;
   width: 300px;
   border: none;
   outline: none;

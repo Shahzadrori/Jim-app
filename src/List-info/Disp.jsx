@@ -71,13 +71,7 @@ const Display = (props) => {
     } else {
       return null;
     }
-    if (diff <= 5 || item.expdate == null) {
-
-      return(
-             <div className="fil-div">{props.Pic_data.map(filter)}</div> 
-       
-      )
-    }
+    
   }
   function check(cardname) {
     var value = cardname.indexOf(props.card_item) > -1;

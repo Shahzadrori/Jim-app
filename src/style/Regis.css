@@ -39,13 +39,14 @@
 }
 .inner_regis label {
   font-size: 1.2em;
-  padding: 15px 0px 5px 0px;
+  padding-top:15px;
   font-family: "Open Sans", sans-serif;
   padding-left: 20px;
   color: white;
 }
 .inner_regis input {
-  padding: 9px;
+  font-family: sans-serif;
+  padding: 5px;
   padding-left: 20px;
   margin-left: 30px;
   border: none;
@@ -57,8 +58,8 @@
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 
-  font-size: 15px;
-  font-weight: 400;
+  /* font-size: 15px; */
+  /* font-weight: 400; */
 }
 .inner_regis input[type="text"] {
   font-size: 1em;
