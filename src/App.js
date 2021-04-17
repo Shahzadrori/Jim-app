@@ -6,7 +6,7 @@ import Error_msg from "./Components/Navcomponents/error-msg";
 import Nav from "./Components/Navcomponents/Navbar";
 import Regis_form from "./Components/Reges/Register";
 import Display from "./List-info/Disp";
-import Edit from "./List-info/Edit";
+import Edit from "./List-info/edit";
 import Persona from "./List-info/Persona";
 import "./style/App.css";
 
