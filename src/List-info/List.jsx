@@ -127,6 +127,10 @@ const List = (props) => {
   }
   function repaid() {
     document.getElementById(props.Phone).classList.toggle("none");
+    setnum({
+      month:"",
+      amount:""
+    })
   }
   const person = async () => {
     const db1 = await openDB("db-data", 1);
@@ -222,10 +226,11 @@ const List = (props) => {
               <input
                 id={props.Index}
                 type="number"
-                onKeyUp={Target}
+                onChange={Target}
                 className="add-btn"
                 name="time-btn"
                 placeholder="Months"
+                value={num.month}
               />
               <button className="done-btn" onClick={Done}>
                 Done
@@ -237,10 +242,11 @@ const List = (props) => {
               <input
                 id={props.Unik}
                 type="number"
-                onKeyUp={Target}
+                onChange={Target}
                 className="amount"
                 name="amount"
                 placeholder="Enter Amount"
+                value={num.amount}
               />
             </div>
           </div>

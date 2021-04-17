@@ -69,7 +69,8 @@ button{
   position: sticky;
   top: 50px;
   /* background-image: linear-gradient(to left bottom, #a3a3a3, #7c7d7e, #565959, #343736, #171815); */
-  background-image: linear-gradient(to right top, #aaa2a2, #a19a9a, #979393, #8e8b8b, #858484);
+  /* background-image: linear-gradient(to right top, #aaa2a2, #a19a9a, #979393, #8e8b8b, #858484); */
+  background-image: linear-gradient(to right top, #aaa2a2, #beb8ba, #d3d0d2, #e8e7e8, #ffffff);
 }
 .disp-top input {
   padding: 5px;
