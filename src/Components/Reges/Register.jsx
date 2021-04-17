@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { Get_Pic, Take_It } from "../../Redux/Actinon";
 import { Database } from "../DB/Db";
 import moment from "moment";
+import history from "../../history";
 const Regis_form = (pare) => {
   const [inp_val, setinp_val] = useState({
     name: "",
@@ -38,22 +39,22 @@ const Regis_form = (pare) => {
 
     if (names === "" || names === null) {
       toast.error("Name field should not be empty");
-    } else if ( names.length < 3) {
-      toast.error("Name field should atleast contain 4 digits");
-    } else if (Number(names)) {
-      toast.error("Name shoul contain alphabet letters");
-    } else if (id.length !== 13) {
-      toast.error("ID Number should contain 13 digits");
-    } else if (phone.length !== 11) {
-      toast.error("Phone Number should contain 11 digits");
-    } else if (age < 16) {
-      toast.error("Age should be above sixteen");
-    } else if (
-      document.getElementById("pic").value == "" ||
-      document.getElementById("pic").value == null
-    ) {
-      toast.error("Image field should not be empty");
-    } else {
+    // } else if ( names.length < 3) {
+    //   toast.error("Name field should atleast contain 3 digits");
+    // } else if (Number(names)) {
+    //   toast.error("Name shoul contain alphabet letters");
+    // } else if (id.length !== 13) {
+    //   toast.error("ID Number should contain 13 digits");
+    // } else if (phone.length !== 11) {
+    //   toast.error("Phone Number should contain 11 digits");
+    // } else if (age < 16) {
+    //   toast.error("Age should be above sixteen");
+    // } else if (
+    //   document.getElementById("pic").value == "" ||
+    //   document.getElementById("pic").value == null
+    // ) {
+    //   toast.error("Image field should not be empty");
+    } else if(true){
       localStorage.setItem("formdata", true);
       toasts();
       Database(inp_val);
@@ -64,6 +65,7 @@ const Regis_form = (pare) => {
         age: "",
       });
       document.getElementById("pic").value = "";
+      history.push("/list");
     }
   };
   const Target_val = (event) => {
@@ -143,7 +145,10 @@ const Regis_form = (pare) => {
         draggable
         pauseOnHover
       />
+
       <div className="main_regis">
+      <div className='regis-disp'>
+       <div className='cont_regis'>
         <div className="inner_regis">
           <h1>Login</h1>
           <label>Name :</label>
@@ -198,16 +203,19 @@ const Regis_form = (pare) => {
             Submit
           </button>
         </div>
+        </div>
+        </div>
         <div className="img_regis">
-          <h1>Muhammad Ali </h1>
+          <h1>Wise Saying :</h1>
           <h2>
             <q>
-              DON'T COUNT THE DAYS;
+              HARD WORK BEATS TALENT
               <br />
-              MAKE THE DAYS COUNT
+              WHEN TALENT  DOESN'T  WORK HARD
             </q>
           </h2>
         </div>
+        
       </div>
     </>
   );

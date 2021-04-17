@@ -18,10 +18,11 @@ const List = (props) => {
   const [style, setstyle] = useState({
     backgroundColor: "#ff7a00",
     height: "35px",
-    borderBottomLeftRadius: "20px",
-    borderBottomRightRadius: "20px",
+    // borderBottomLeftRadius: "20px",
+    // borderBottomRightRadius: "20px",
     // marginTop: "6px",
     paddingBottom: "7px",
+    marginBottom:'100px'
   });
   const [num, setnum] = useState({
     month: "",
@@ -61,8 +62,8 @@ const List = (props) => {
           setstyle({
             backgroundColor: "red",
             height: "35px",
-            borderBottomLeftRadius: "20px",
-            borderBottomRightRadius: "20px",
+            // borderBottomLeftRadius: "20px",
+            // borderBottomRightRadius: "20px",
             paddingBottom: "7px",
             marginTop: "6px",
           });
@@ -79,10 +80,11 @@ const List = (props) => {
           setstyle({
             backgroundColor: "green",
             height: "35px",
-            borderBottomLeftRadius: "20px",
-            borderBottomRightRadius: "20px",
+            // borderBottomLeftRadius: "20px",
+            // borderBottomRightRadius: "20px",
             paddingBottom: "7px",
             marginTop: "6px",
+            marginBottom:'100px'
           });
         }
       })
@@ -112,7 +114,7 @@ const List = (props) => {
       value: {
         paydate: moment().format("DD-MM-YYYY"),
         expdate: moment().add(1, "month").format("DD-MM-YYYY"),
-        amount: 25000,
+        amount: 2500,
         date: props.Time,
         age: props.Age,
         name: props.Name,
@@ -198,16 +200,25 @@ const List = (props) => {
     );
   }
   return (
-    <div className="list-main" key={props.Index}>
-      <div className="list-wrapper" key={props.Index}>
-        <div className="img-div">
+    <div className="list-main" key={props.Index} >
+      <div className="list-wrapper" key={props.Index} >
+        {/* <div className="img-div">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
-        </div>
+        </div> */}
         <div className="content">
           {Example()}
-          <img src={props.Img} className="Pers-img" />
+          <img
+            src={props.Img}
+            style={{
+              width: "200px",
+              height: "190px",
+              marginRight: "20px",
+              marginTop: "220px",
+            }}
+            className="Pers-img"
+          />
           <div id={props.Phone} className="dis-content none">
-            <div className="advance-div">
+            <div id={props.Phone} className="advance-div">
               <input
                 id={props.Index}
                 type="number"
@@ -248,7 +259,7 @@ const List = (props) => {
             <h4>{props.Age}</h4>
           </div>
         </div>
-        <div id="warn" style={style}>
+        <div id="warn" >
           <button onClick={set} style={stye} className="paid-btn">
             Paid
           </button>

@@ -101,7 +101,7 @@ const Display = (props) => {
           onKeyUp={get_it}
         />
       </div>
-      {/* {Disple()} */}
+      {Disple()}
       <div className="disp-main">{props.filte_data.map(ncards)}</div>
     </>
   );

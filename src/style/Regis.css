@@ -2,12 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 .main_regis {
   width: 100%;
   height: 94vh;
   /* background-image: linear-gradient(to left bottom, #6f7170, #636564, #575a59, #4c4f4e, #414443); */
-  background-image: url('./38150.jpg');
+  background-image: url('./pexels-ivan-samkov-4164756.jpg');
+  /* background-image: url('./daniel-apodaca-WdoQio6HPVA-unsplash\ \(2\).jpg'); */
+  /* background-image: url('./total-shape-Drq07X98BqM-unsplash.jpg'); */
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
@@ -24,25 +26,26 @@
   width: 350px;
   height: 535px;
   padding: 10px;
-  margin-bottom: 170px;
-  margin-left: 150px;
-  margin-top: 170px;
+  /* margin-bottom: 270px; */
+  /* margin-left: 150px; */
+  /* margin-top: 320px; */
   padding-right: 20px;
+  font-family: "Rubik", sans-serif;
 }
 .inner_regis h1 {
   text-align: center;
   color: #12ebd8;
   margin-top: 5px;
 }
-.inner_regis {
+/* .inner_regis {
   font-family: "Rubik", sans-serif;
-}
+
+} */
 .inner_regis label {
   font-size: 1.2em;
   padding-top:15px;
   font-family: "Open Sans", sans-serif;
   padding-left: 20px;
-  color: white;
 }
 .inner_regis input {
   font-family: sans-serif;
@@ -69,7 +72,7 @@
 }
 .inner_regis input:focus {
   background-color: #12eb25;
-  border-bottom: 3px solid yellow;
+  border-bottom: 3px solid #206a5d;
   transition: border 0.3s linear;
   -webkit-transition: border 0.3s linear;
   -moz-transition: border 0.3s linear;
@@ -121,15 +124,41 @@ input::-webkit-inner-spin-button {
   background-color: #00587a;
 }
 .img_regis {
-  color: #f4f9f4;
+  background-color: rgba(255, 255, 255, 0.8);
+  /*color: #f4f9f4;
+  font-family: 'Zen Dots', cursive;*/
+  color: #aaaaaa;
   margin-left: 350px;
+  /* font-family: sans-serif; */
+  padding: 15px;
+  margin-right:20px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 .img_regis h2 {
   font-family: "Dancing Script", cursive;
 }
 .img_regis h1 {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Rubik", sans-serif;
+
 }
 input[type="file"]::file-selector-button {
   display: none;
+}
+.cont_regis{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(255, 255, 255, 0.6);
+  width: 390px;
+  height: 560px;
+  border-radius: 10px;
+  margin-left: 100px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }

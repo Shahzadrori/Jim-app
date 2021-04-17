@@ -13,33 +13,31 @@ button{
   display: flex;
   flex-direction: row;
   margin: 100px auto;
-
   margin-bottom: 50px;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to right top, #b5072d, #c63129, #d54e23, #e2691b, #eb8312);
   width: 1000px;
   height: 500px;
-  border-radius: 20px;
   overflow-x: scroll;
   overflow-y: hidden;
-  -webkit-border-radius: 20px;
+  /* -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -o-border-radius: 20px; */
 }
 .fil-div .list-main {
   margin-top: 30px;
-  border: 1px solid;
+  /* border: 1px solid; */
   height: 435px;
   width: 300px;
   margin: 50px;
-  border-radius: 20px;
+  /* border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  box-shadow: 2px 1px 5px black;
+  -o-border-radius: 20px; */
+  box-shadow: 1px 1px 10px black;
   font-family: "Chango", cursive;
 }
 .fil-div .list-wrapper .content .Pers-img {
@@ -49,14 +47,20 @@ button{
   height: 150px;
   margin-right: 20px;
   margin-top: 30px;
-  border-radius: 20px;
+  /* border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  -o-border-radius: 20px; */
 }
 .fil-div .list-wrapper .content{
   width: 300px;
+}
+.fil-div #warn{
+  background-color: #b5072d;
+}
+.fil-div .dels-btn{
+  background-color: burlywood;
 }
 .disp-top {
   display: flex;
