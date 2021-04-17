@@ -1,20 +1,30 @@
 .main-contact {
-  color: whitesmoke;
+  color: black;
   width: 100%;
   height: 95vh;
   height: max-content;
-  background-image: url('./807267.jpg');
+  background-image: url('./anastase-maragos-HyvE5SiKMUs-unsplash.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 }
 .inner-contact {
   width: 100%;
-
   height: 93.6vh;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.inner-content{
+  word-wrap: break-word;
+  background-color: #d8e3e7;
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 button{
   cursor: pointer;
