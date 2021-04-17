@@ -10,7 +10,8 @@
     /* background-image: linear-gradient(to right top, #aaa2a2, #9c9494, #8e8787, #807979, #736c6c); */
     /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo3KhPhRoNcxCUWYuQzPoJEhsjN3ASa4XT_Q&usqp=CAU'); */
     /* background-color: #f9f3f3; */
-    background-image: linear-gradient(to right top, #aaa2a2, #b8b2b3, #c5c2c4, #d4d3d4, #e3e3e3);
+    /* background-image: linear-gradient(to right top, #aaa2a2, #b8b2b3, #c5c2c4, #d4d3d4, #e3e3e3); */
+    background-image: url('./josh-rose-trYl7JYATH0-unsplash.jpg');
     width: 100%;
     height: 93.6vh;
     overflow: hidden;
@@ -83,7 +84,7 @@
   .edit-outer  .form-container .inner_edit input:focus {
     /*background-color: #12eb25;
     */background-color: #eff8ff;
-    border-bottom: 3px solid #393e46;
+    border-bottom: 3px solid #008891;
     transition: border 0.2s linear;
     -webkit-transition: border 0.2s linear;
     -moz-transition: border 0.2s linear;

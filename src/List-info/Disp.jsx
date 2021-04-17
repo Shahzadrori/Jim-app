@@ -44,20 +44,15 @@ const Display = (props) => {
           />
         );
       }
-    } else 
-    // if( check(item.name) == true){
-      if (item.expdate !== null) {
-        return (
-          <div className="fil-div">{props.Pic_data.map(filter)}</div>
-        );
-      }
-      // return null;
-    // }
+    } else {
+      return null;
+    }
   }
   function filter(item) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
-    let diff = -presentdate.diff(expdate, "days");
+    let diff = (-presentdate.diff(expdate, "days")) + 1;
+    console.log(diff)
     if (diff <= 5 || item.expdate == null) {
       if (check(item.name) == true) {
         return (

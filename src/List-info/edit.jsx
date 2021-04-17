@@ -133,19 +133,19 @@ const Edit = (props) => {
     var age = document.getElementById("age").value;
     if (names === "" || names === null) {
       alert("Name field should not be empty");
-      // } else if (names.length === 4 || names.length < 4) {
-      //  alert("Name field should atleast contain 4 digits");
-      // } else if (Number(names)) {
-      //  alert("Name shoul contain alphabet letters");
-      // } else if (phone.length !== 11) {
-      //  alert("Phone Number should contain 11 digits");
-      // } else if (age < 16) {
-      //  alert("Age should be above sixteen");
-      // } else if (
-      //   document.getElementById("pic").value == "" ||
-      //   document.getElementById("pic").value == null
-      // ) {
-      //   alert("Image field should not be empty");
+      } else if (names.length < 3) {
+       alert("Name field should atleast contain 3 digits");
+      } else if (Number(names)) {
+       alert("Name shoul contain alphabet letters");
+      } else if (phone.length !== 11) {
+       alert("Phone Number should contain 11 digits");
+      } else if (age < 16) {
+       alert("Age should be above sixteen");
+      } else if (
+        document.getElementById("pic").value == "" ||
+        document.getElementById("pic").value == null
+      ) {
+        alert("Image field should not be empty");
     } else {
       const db1 = await openDB("db-data", 1);
       await db1
@@ -169,14 +169,14 @@ const Edit = (props) => {
               weight:inp_val.weight
             },
           });
-          setinp_val({
-            name: "",
-            phone: "",
-            age: "",
-            pic: "",
-            height:'',
-            weight:''
-          });
+          // setinp_val({
+            // name: "",
+            // phone: "",
+            // age: "",
+            // pic: "",
+            // height:'',
+            // weight:''
+          // });
           window.location.href = "/list";
         })
         .catch((err) => console.log(err));
@@ -234,7 +234,7 @@ const Edit = (props) => {
               type="text"
               placeholder={props.data[0].age}
             />
-            <label>Photo :</label>
+            <label>Photo (Photo must be selected ) :</label>
             <input type="file" name="pic" onChange={Target}  id="pic" />
             <label>Height :</label>
             <input
