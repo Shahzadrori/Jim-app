@@ -206,9 +206,6 @@ const List = (props) => {
   return (
     <div className="list-main" key={props.Index} >
       <div className="list-wrapper" key={props.Index} >
-        {/* <div className="img-div">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE4oKc96JbLOhTiCy5nL_o_35CZpvq2pOI1w&usqp=CAU" />
-        </div> */}
         <div className="content">
           {Example()}
           <img

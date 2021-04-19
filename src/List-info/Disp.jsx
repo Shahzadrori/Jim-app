@@ -18,7 +18,12 @@ const Display = (props) => {
     const db1 = openDB("db-data", 1);
     let cursor = await (await db1).transaction("store1").store.openCursor();
     while (cursor) {
-      await setflag(true);
+      function set(){
+      if(cursor.value.value.expdate == null){
+        setflag(true);
+      }
+      }
+      set()
       await props.Pic_it(cursor.value.value);
       await props.get_data(cursor.value.value);
       cursor = await cursor.continue();
@@ -51,8 +56,8 @@ const Display = (props) => {
   function filter(item) {
     let expdate = moment(item.expdate, "DD-MM-YYYY");
     let presentdate = moment();
-    let diff = (-presentdate.diff(expdate, "days")) + 1;
-    console.log(diff)
+    let diff = -presentdate.diff(expdate, "days") + 1;
+    // console.log(diff)
     if (diff <= 5 || item.expdate == null) {
       if (check(item.name) == true) {
         return (
@@ -71,9 +76,8 @@ const Display = (props) => {
     } else {
       return null;
     }
-    
   }
- 
+
   function check(cardname) {
     var value = cardname.indexOf(props.card_item) > -1;
     return value;
@@ -83,9 +87,18 @@ const Display = (props) => {
   }
   function Disple() {
     if (flag) {
-      return <div className="fil-div">{props.Pic_data.map(filter)}</div>;
+
+    // props.Pic_data.map((item) => {
+      // if ((item.paydate == undefined) == true) {
+        return <div className="fil-div">{props.Pic_data.map(filter)}</div>;
+      // }
+    // });
     }
   }
+  props.Pic_data.map((item) => {
+    console.log(item.paydate == undefined);
+  });
+
   return (
     <>
       <div className="disp-top">
@@ -102,7 +115,7 @@ const Display = (props) => {
   );
 };
 const mapstate = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     card_item: state.Areducer,
     regis_items: state.Breducer,
